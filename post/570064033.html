@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="php,golang,linux,html,javascript,hexo,前端,vue,星光,天策"><meta name="keywords" content="php,golang,linux,html,javascript,hexo,前端,vue,星光,天策"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.5"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.5"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css?v=2.0.5"><title>swoole两种运行模式BASE和PROCESS的区别 | 星光的博客</title><script data-ad-client="ca-pub-5977992732306814" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">swoole两种运行模式BASE和PROCESS的区别</h1><a id="logo" href="/.">星光的博客</a><p class="description">php后端工程师，兼职前端和go开发</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">swoole两种运行模式BASE和PROCESS的区别</h1><div class="post-meta"><a href="/post/570064033.html#comments" class="comment-count"></a><p><span class="date">2020-04-13</span><span><a href="/categories/swoole/" class="category">swoole</a></span></p></div><div class="post-content"><h2 id="Server的两种运行模式介绍"><a href="#Server的两种运行模式介绍" class="headerlink" title="Server的两种运行模式介绍"></a>Server的两种运行模式介绍</h2><h3 id="单线程模式（SWOOLE-BASE）"><a href="#单线程模式（SWOOLE-BASE）" class="headerlink" title="单线程模式（SWOOLE_BASE）"></a>单线程模式（SWOOLE_BASE）</h3><p>这种模式就是传统的异步非阻塞<strong>Server</strong>。与Nginx和Node.js等程序是完全一致的。</p>
+<p>在时间循环中直接回调PHP的函数，而不是dispatch投递任务。如果回调函数中有阻塞操作会导致Server退化为同步模式。worker_num参数对与BASE模式仍然有效，会启动多个Worker进程。</p>
+<ul>
+<li>BASE模式下没有Master进程的角色</li>
+<li>每个Worker进程同时承担了Process模式下Reactor线程和Worker进程两部分职责</li>
+<li>BASE模式下Manager进程是可选的，当设置了worker_num=1，并且没有使用Task和MaxRequest特性时，底层将直接创建一个单独的Worker进程，不创建Manager进程</li>
+</ul>
+<p><strong>BASE模式的优点：</strong></p>
+<ul>
+<li>BASE模式没有IPC开销，性能更好</li>
+<li>BASE模式代码更简单，不容易出错</li>
+</ul>
+<p><strong>BASE模式的缺点：</strong></p>
+<ul>
+<li>TCP连接是在Worker进程中维持的，所以当某个Worker进程挂掉时，此Worker内的所有连接都将被关闭</li>
+<li>少量TCP长连接无法利用到所有Worker进程</li>
+<li>TCP连接与Worker是绑定的，长连接应用中某些连接的数据量大，这些连接所在的Worker进程负载会非常高。但某些连接数据量小，所以在Worker进程的负载会非常低，不同的Worker进程无法实现均衡。<br><strong>BASE模式的适用场景：</strong></li>
+</ul>
+<p>如果客户端连接之间不需要交互，可以使用BASE模式。如Memcache、Http服务器等。</p>
+<h3 id="进程模式（SWOOLE-PROCESS）"><a href="#进程模式（SWOOLE-PROCESS）" class="headerlink" title="进程模式（SWOOLE_PROCESS）"></a>进程模式（SWOOLE_PROCESS）</h3><p>多进程模式是最复杂的方式，用了大量的进程间通信、进程管理机制。适合业务逻辑非常复杂的场景。Swoole提供了完善的进程管理、内存保护机制。 在业务逻辑非常复杂的情况下，也可以长期稳定运行。</p>
+<p>Swoole在Reactor线程中提供了Buffer的功能，可以应对大量慢速连接和逐字节的恶意客户端。另外也提供了CPU亲和设置选项，使程序运行的效率更好。</p>
+<p><strong>进程模式的优点：</strong></p>
+<ul>
+<li>连接与数据请求发送是分离的，不会因为某些连接数据量大某些连接数据量小导致Worker进程不均衡</li>
+<li>Worker进程发送致命错误时，连接并不会被切断</li>
+<li>可实现单连接并发，仅保持少量TCP连接，请求可以并发地在多个Worker进程中处理</li>
+</ul>
+<p><strong>进程模式的缺点：</strong></p>
+<ul>
+<li><p>存在2次IPC的开销，master进程与worker进程需要使用UnixSocket进行通信</p>
+</li>
+<li><p>不支持某些高级功能，如sendwait、pause、resume等操作</p>
+<p>原文链接：<br><a href="https://wiki.swoole.com/wiki/page/353.html" target="_blank" rel="noopener">https://wiki.swoole.com/wiki/page/353.html</a><br><a href="https://wiki.swoole.com/wiki/diff/?id=353&amp;version=2&amp;compare=current" target="_blank" rel="noopener">https://wiki.swoole.com/wiki/diff/?id=353&amp;version=2&amp;compare=current</a></p>
+</li>
+</ul>
+</div><div class="post-copyright"><blockquote><p>原文作者: xingguang</p><p>原文链接: <a href="https://wangzhuanglin.gitee.io/post/570064033.html">https://wangzhuanglin.gitee.io/post/570064033.html</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/post/2627105888.html" class="pre">使用docker容器运行mongodb</a><a href="/post/3001131064.html" class="next">Swoole 如何处理高并发以及异步 I/O 的实现</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.5"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.5"></script><script>var gitalk = new Gitalk({
+  clientID: 'fe51b6fab2e6bc732537',
+  clientSecret: '73b392debaae9e2cb42af08aeeb8f9de753b00b8',
+  repo: 'blogtalk',
+  owner: 'yizhidaozuihou',
+  admin: ['yizhidaozuihou'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: false,
+  language: 'zh-CN',
+  pagerDirection: 'last'
+})
+gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Server的两种运行模式介绍"><span class="toc-text">Server的两种运行模式介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单线程模式（SWOOLE-BASE）"><span class="toc-text">单线程模式（SWOOLE_BASE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程模式（SWOOLE-PROCESS）"><span class="toc-text">进程模式（SWOOLE_PROCESS）</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/post/527254571.html">docker安装软件环境集合</a></li><li class="post-list-item"><a class="post-list-link" href="/post/1624279696.html">docker打包自定义镜像并上传docker hub</a></li><li class="post-list-item"><a class="post-list-link" href="/post/1452351953.html">phpstrom实用插件集合</a></li><li class="post-list-item"><a class="post-list-link" href="/post/2712546463.html">Mysql开启全部sql日志查询</a></li><li class="post-list-item"><a class="post-list-link" href="/post/2798837510.html">golang之捕获异常</a></li><li class="post-list-item"><a class="post-list-link" href="/post/816087200.html">golang之基于zap开箱即用日志组件</a></li><li class="post-list-item"><a class="post-list-link" href="/post/561152273.html">golang个人总结好用库集合</a></li><li class="post-list-item"><a class="post-list-link" href="/post/132771847.html">golang之viper操作库</a></li><li class="post-list-item"><a class="post-list-link" href="/post/3243567407.html">golang库集合</a></li><li class="post-list-item"><a class="post-list-link" href="/post/3838666233.html">golang之json操作库</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Elasticsearch/">Elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/yii2/">yii2</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo%E6%8A%98%E8%85%BE/">hexo折腾</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/phpStorm/">phpStorm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rabbitmq/">rabbitmq</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swoole/">swoole</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vagrant/">vagrant</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96%E7%BC%96%E7%A8%8B/">其他编程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">编程思想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%90%90%E7%A2%8E/">编程琐碎</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">29</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://blog.dbh6.cn" title="大宝神" target="_blank">大宝神</a><ul></ul><a href="http://doc.aiwaly.com/docs/golang/golang-1b9du6af0iu7b" title="go大神笔记" target="_blank">go大神笔记</a><ul></ul><a href="https://learnku.com/docs/gin-gonic/2019/go-gin-document/6149" title="gin框架中文文档" target="_blank">gin框架中文文档</a><ul></ul><a href="https://learnku.com/articles/41230" title="golang第三方包大全" target="_blank">golang第三方包大全</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a><p><a href="http://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank">粤ICP备20009929号</a></p></p><p><span> Copyright &copy;<a href="/." rel="nofollow">xingguang.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script type="text/javascript" src="/js/search.json.js?v=2.0.5"></script><script>//百度统计
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9d26cb37102d613f1bb272ba408ec7b0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script><script>//百度自动推送
+(function(){
+var bp = document.createElement('script');
+var curProtocol = window.location.protocol.split(':')[0];
+if (curProtocol === 'https') {
+bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+else {
+bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(bp, s);
+})();
+</script><script>//360搜索自动推送
+(function(){
+var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+document.write('<script src="' + src + '" id="sozz"><\\/script>');
+})();</script><div id="fullscreen-img" class="hide"><span class="close"></span></div><script type="text/javascript" src="/js/imgview.js?v=2.0.5" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.5" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
