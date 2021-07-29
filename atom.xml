@@ -69,10 +69,10 @@
     <title>phpstrom实用插件集合</title>
     <link href="https://wangzhuanglin.gitee.io/post/1452351953.html"/>
     <id>https://wangzhuanglin.gitee.io/post/1452351953.html</id>
-    <published>2021-01-30T10:02:00.000Z</published>
-    <updated>2021-07-08T08:03:10.570Z</updated>
+    <published>2021-01-30T18:02:00.000Z</published>
+    <updated>2021-07-29T02:02:36.357Z</updated>
     
-    <content type="html"><![CDATA[<p>以下是个人在实践工作中总结的好用的phpstrom集合，持续不断更新中。。</p><h3 id="1、中英文转换：translation"><a href="#1、中英文转换：translation" class="headerlink" title="1、中英文转换：translation"></a>1、中英文转换：translation</h3><pre><code>快捷键 Ctrl+Shift+Y   OR 选中需要翻译的文本，然后鼠标右键选择Translate</code></pre><h3 id="2、拼写法转换：camelCase"><a href="#2、拼写法转换：camelCase" class="headerlink" title="2、拼写法转换：camelCase"></a>2、拼写法转换：camelCase</h3><pre><code>选中需要改变的变量  使用  快捷键 shift + alt + u ，变量就会改变，直到找到需要的格式。</code></pre><h3 id="3、php-注释增强工具：PHP-Annotation"><a href="#3、php-注释增强工具：PHP-Annotation" class="headerlink" title="3、php 注释增强工具：PHP Annotation"></a>3、php 注释增强工具：PHP Annotation</h3><pre><code>可以自动提示补全注解名和点击跳转追踪</code></pre><h3 id="4、自动关联数组键输入和完成：deep-assoc-completion"><a href="#4、自动关联数组键输入和完成：deep-assoc-completion" class="headerlink" title="4、自动关联数组键输入和完成：deep-assoc-completion"></a>4、自动关联数组键输入和完成：deep-assoc-completion</h3><pre><code>帮助完成数组参数 - 可以使用哪些键</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>以下是个人在实践工作中总结的好用的phpstrom集合，持续不断更新中。。</p><h3 id="1、中英文转换：translation"><a href="#1、中英文转换：translation" class="headerlink" title="1、中英文转换：translation"></a>1、中英文转换：translation</h3><pre><code>快捷键 Ctrl+Shift+Y   OR 选中需要翻译的文本，然后鼠标右键选择Translate</code></pre><h3 id="2、拼写法转换：camelCase"><a href="#2、拼写法转换：camelCase" class="headerlink" title="2、拼写法转换：camelCase"></a>2、拼写法转换：camelCase</h3><pre><code>选中需要改变的变量  使用  快捷键 shift + alt + u ，变量就会改变，直到找到需要的格式。</code></pre><h3 id="3、php-注释增强工具：PHP-Annotation"><a href="#3、php-注释增强工具：PHP-Annotation" class="headerlink" title="3、php 注释增强工具：PHP Annotation"></a>3、php 注释增强工具：PHP Annotation</h3><pre><code>可以自动提示补全注解名和点击跳转追踪</code></pre><h3 id="4、自动关联数组键输入和完成：deep-assoc-completion"><a href="#4、自动关联数组键输入和完成：deep-assoc-completion" class="headerlink" title="4、自动关联数组键输入和完成：deep-assoc-completion"></a>4、自动关联数组键输入和完成：deep-assoc-completion</h3><pre><code>帮助完成数组参数 - 可以使用哪些键</code></pre><h3 id="5、proto语法高亮追踪提示：Protocol-Buffers"><a href="#5、proto语法高亮追踪提示：Protocol-Buffers" class="headerlink" title="5、proto语法高亮追踪提示：Protocol Buffers"></a>5、proto语法高亮追踪提示：Protocol Buffers</h3><pre><code>proto语法高亮追踪提示，临时看其他项目不想安装依赖包时使用 </code></pre>]]></content>
     
     <summary type="html">
     
