@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangzhuanglin.gitee.io/"/>
-  <updated>2021-07-17T03:30:36.282Z</updated>
+  <updated>2021-08-21T14:13:56.894Z</updated>
   <id>https://wangzhuanglin.gitee.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux设置开机服务自动启动/关闭自动启动命令</title>
+    <link href="https://wangzhuanglin.gitee.io/post/1924607937.html"/>
+    <id>https://wangzhuanglin.gitee.io/post/1924607937.html</id>
+    <published>2021-08-20T10:48:11.000Z</published>
+    <updated>2021-08-21T14:13:56.894Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list 显示开机可以自动启动的服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --add *** 添加开机自动启动***服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --del *** 删除开机自动启动***服务</span></span><br></pre></td></tr></table></figure><p>参考地址：<a href="https://blog.csdn.net/weixin_34254823/article/details/92815942" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34254823/article/details/92815942</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>docker安装软件环境集合</title>
@@ -484,31 +506,6 @@
       
         &lt;h3 id=&quot;创建文档&quot;&gt;&lt;a href=&quot;#创建文档&quot; class=&quot;headerlink&quot; title=&quot;创建文档&quot;&gt;&lt;/a&gt;创建文档&lt;/h3&gt;&lt;p&gt;命令有三种:&lt;/p&gt;
 &lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
-      
-    
-    </summary>
-    
-    
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用docker容器运行mongodb</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2627105888.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2627105888.html</id>
-    <published>2020-04-19T00:49:00.000Z</published>
-    <updated>2021-07-15T08:59:48.392Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用docker容器运行mongodb</p><h3 id="1、下载Mongodb的官方docker镜像"><a href="#1、下载Mongodb的官方docker镜像" class="headerlink" title="1、下载Mongodb的官方docker镜像"></a>1、下载Mongodb的官方docker镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo:latest</span><br></pre></td></tr></table></figure><h3 id="2、启动一个Mongodb服务器容器"><a href="#2、启动一个Mongodb服务器容器" class="headerlink" title="2、启动一个Mongodb服务器容器"></a>2、启动一个Mongodb服务器容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mongo -p 27017:27017 --restart=always -v /mongodb/data:/data/db -d mongo:latest</span><br></pre></td></tr></table></figure><p>–name mongodb 容器名称<br>-v /mongodb/data:/data/db –&gt;挂载数据目录<br>-d –&gt;后台运行容器  </p><h3 id="3、添加用户和设置密码，并且尝试连接"><a href="#3、添加用户和设置密码，并且尝试连接" class="headerlink" title="3、添加用户和设置密码，并且尝试连接"></a>3、添加用户和设置密码，并且尝试连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mongo mongo admin</span><br><span class="line"><span class="comment"># 创建一个名为 admin，密码为 123456 的用户。</span></span><br><span class="line">&gt;  db.createUser(&#123; user:<span class="string">'admin'</span>,<span class="built_in">pwd</span>:<span class="string">'123456'</span>,roles:[ &#123; role:<span class="string">'userAdminAnyDatabase'</span>, db: <span class="string">'admin'</span>&#125;,<span class="string">"readWriteAnyDatabase"</span>]&#125;);</span><br><span class="line"><span class="comment"># 尝试使用上面创建的用户信息进行连接。</span></span><br><span class="line">&gt; db.auth(<span class="string">'admin'</span>, <span class="string">'123456'</span>)</span><br></pre></td></tr></table></figure><p><strong>查看mongodb容器日志</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs mongodb</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;使用docker容器运行mongodb&lt;/p&gt;
-&lt;h3 id=&quot;1、下载Mongodb的官方docker镜像&quot;&gt;&lt;a href=&quot;#1、下载Mongodb的官方docker镜像&quot; class=&quot;headerlink&quot; title=&quot;1、下载Mongodb的官方docker镜
       
     
     </summary>

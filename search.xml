@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>linux设置开机服务自动启动/关闭自动启动命令</title>
+    <url>/post/1924607937.html</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list 显示开机可以自动启动的服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --add *** 添加开机自动启动***服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --del *** 删除开机自动启动***服务</span></span><br></pre></td></tr></table></figure>
+
+<p>参考地址：<a href="https://blog.csdn.net/weixin_34254823/article/details/92815942" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34254823/article/details/92815942</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>docker安装软件环境集合</title>
     <url>/post/527254571.html</url>
     <content><![CDATA[<p>有一个小想法，整理一篇docker安装软件环境集合下安装环境文章，方便自己或其它人开箱即用，目前就自己遇到哪些需要安装的软件安装后就顺便更新到这篇博客文章。</p>
