@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangzhuanglin.gitee.io/"/>
-  <updated>2021-08-21T14:13:56.894Z</updated>
+  <updated>2021-07-17T03:30:36.282Z</updated>
   <id>https://wangzhuanglin.gitee.io/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>linux设置开机服务自动启动/关闭自动启动命令</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1924607937.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1924607937.html</id>
-    <published>2021-08-20T10:48:11.000Z</published>
-    <updated>2021-08-21T14:13:56.894Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list 显示开机可以自动启动的服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --add *** 添加开机自动启动***服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --del *** 删除开机自动启动***服务</span></span><br></pre></td></tr></table></figure><p>参考地址：<a href="https://blog.csdn.net/weixin_34254823/article/details/92815942" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34254823/article/details/92815942</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>docker安装软件环境集合</title>
@@ -108,6 +86,30 @@
     
     
       <category term="phpStorm" scheme="https://wangzhuanglin.gitee.io/categories/phpStorm/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux设置开机服务自动启动/关闭自动启动命令</title>
+    <link href="https://wangzhuanglin.gitee.io/post/1924607937.html"/>
+    <id>https://wangzhuanglin.gitee.io/post/1924607937.html</id>
+    <published>2020-08-20T10:48:00.000Z</published>
+    <updated>2021-08-21T14:18:26.770Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list 显示开机可以自动启动的服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --add *** 添加开机自动启动***服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --del *** 删除开机自动启动***服务</span></span><br></pre></td></tr></table></figure><p>参考地址：<a href="https://blog.csdn.net/weixin_34254823/article/details/92815942" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34254823/article/details/92815942</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
     
     
   </entry>
