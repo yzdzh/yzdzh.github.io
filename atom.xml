@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-07-17T03:30:36.282Z</updated>
+  <updated>2021-10-19T20:22:58.940Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于win10 + wsl + ubuntu + terminal的本地开发环境</title>
+    <link href="https://yzdzh.github.io/post/2270783465.html"/>
+    <id>https://yzdzh.github.io/post/2270783465.html</id>
+    <published>2021-10-19T20:13:00.000Z</published>
+    <updated>2021-10-19T20:22:58.940Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="先来一堆废话背景介绍："><a href="#先来一堆废话背景介绍：" class="headerlink" title="先来一堆废话背景介绍："></a>先来一堆废话背景介绍：</h5><p>之前都是使用vagrant+VirtualBox做为本地开发环境，一直也都是挺不错的，后来在新公司认识到win10 + wsl + ubuntu + terminal的开发环境，相较起vagrant+VirtualBox，优势和劣势如下：<br><strong>优势：</strong><br>1、可以直接将项目代码放入linux环境，而不是通过目录映射的方式。目录映射一方面代码编译速度慢，另一方面有可能会出现因为window和linux环境文件编码不同而导致的编译失败问题（这点本人在执行compose等操作时曾经吃过亏）。<br>2、hosts文件和.ssh文件夹可实现自动共享，不用本地定义个域名要window写一次，虚拟机里面的hosts文件也写一份。</p><p><strong>劣势：</strong><br>1、代码是放在子系统虚拟机中的，如果子系统突然奔溃修复不了的话很可能会导致代码没及时上传git而丢失白写的情况。所以需要养成每天下班前上传代码的好习惯。<br>2、占用内存大，本人实际开发中实际占内存10GB多点，加上其它开发软件，占了19GB左右（幸亏公司电脑内存是32GB）。</p><h4 id="环境搭建流程："><a href="#环境搭建流程：" class="headerlink" title="环境搭建流程："></a>环境搭建流程：</h4><h5 id="1-打开“Linux-子系统”与“虚拟机平台”"><a href="#1-打开“Linux-子系统”与“虚拟机平台”" class="headerlink" title="1. 打开“Linux 子系统”与“虚拟机平台”"></a>1. 打开“Linux 子系统”与“虚拟机平台”</h5><p><img src="/resource/images/pasted2-5.png" alt="upload successful"><br>选中上图圈出的两个项目，点击“确定”。</p><p>或者，也可以通过命令行操作。以管理员身份执行 CMD 或 PowerShell，执行如下两个命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable</span>-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable</span>-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure><h5 id="2-安装-WSL-内核"><a href="#2-安装-WSL-内核" class="headerlink" title="2. 安装 WSL 内核"></a>2. 安装 WSL 内核</h5><p>点击下面的按钮从微软下载最新的 x64 或 arm64 WSL 内核：<br><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank" rel="noopener">最新版 x64 WSL 2 内核</a><br><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi" target="_blank" rel="noopener">最新版 arm64 wsl 2 内核</a></p><p>下载并安装 MSI 包即可。</p><h5 id="3-设置-WSL-默认版本为-2"><a href="#3-设置-WSL-默认版本为-2" class="headerlink" title="3. 设置 WSL 默认版本为 2"></a>3. 设置 WSL 默认版本为 2</h5><p>打开 CMD 或 PowerShell，执行如下的命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --<span class="built_in">set</span>-default-version 2</span><br></pre></td></tr></table></figure><h5 id="4-安装ubuntu-和-terminal"><a href="#4-安装ubuntu-和-terminal" class="headerlink" title="4.安装ubuntu 和 terminal"></a>4.安装ubuntu 和 terminal</h5><p>直接从Microsoft store商店直接搜索下载即可，建议ubuntu版本为20.04或以上。</p><h5 id="5-安装docker"><a href="#5-安装docker" class="headerlink" title="5.安装docker"></a>5.安装docker</h5><p>直接下载安装即可（建议版本为4.1）<br><a href="https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310</a></p><p>至此，虚拟机环境搭建完毕。  </p><p><strong>注意必看：</strong><br>1、ubuntu默认是安装时创建的账号，非root账号，这给开发带来不便，如何设置默认root登入可以看我另一篇文章：<a href="http://www.baidu.com" target="_blank" rel="noopener">添加链接描述</a>   </p><p>2、wsl内子系统的ip每次启动都会重置，这给开发带来不便，如何解决这个问题可以看我另一篇文章：<a href="http://www.baidu.com" target="_blank" rel="noopener">添加链接描述</a></p><p>3、鄙人本地的lnmp环境是使用的是docker-compose.yaml一键安装及配置文件和目录挂载，具体可以看我另一篇文章：<a href="http://www.baidu.com" target="_blank" rel="noopener">添加链接描述</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;先来一堆废话背景介绍：&quot;&gt;&lt;a href=&quot;#先来一堆废话背景介绍：&quot; class=&quot;headerlink&quot; title=&quot;先来一堆废话背景介绍：&quot;&gt;&lt;/a&gt;先来一堆废话背景介绍：&lt;/h5&gt;&lt;p&gt;之前都是使用vagrant+VirtualBox做为本地开发环境，一
+      
+    
+    </summary>
+    
+    
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>docker安装软件环境集合</title>
@@ -489,31 +513,6 @@
     
     
       <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>submit text3批量选中指定关键词的所有行</title>
-    <link href="https://yzdzh.github.io/post/1152603659.html"/>
-    <id>https://yzdzh.github.io/post/1152603659.html</id>
-    <published>2020-04-20T09:12:00.000Z</published>
-    <updated>2020-04-20T09:13:36.887Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>如下数据,想选中关键词为:_id: ObjectId(“,的所有行</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.getCollection("goods").insert([ &#123;</span><br><span class="line">    _id: ObjectId(<span class="string">"5e9d165dad06000091003a57"</span>),</span><br><span class="line">    <span class="keyword">name</span>: <span class="string">"哈士奇饼干1"</span>,</span><br><span class="line">    price: <span class="number">33</span></span><br><span class="line">&#125; ]);</span><br><span class="line">db.getCollection("goods").insert([ &#123;</span><br><span class="line">    _id: ObjectId(<span class="string">"5e9d165dad06000091003a58"</span>),</span><br><span class="line">    <span class="keyword">name</span>: <span class="string">"神奇宝贝一只1"</span>,</span><br><span class="line">    stock: <span class="number">100</span>,</span><br><span class="line">    price: <span class="number">20.58</span></span><br><span class="line">&#125; ]);</span><br></pre></td></tr></table></figure><p><strong>1、选择任意一个”_id: ObjectId(“”后Ctrl+F出现搜索界面，然后按下Find All,这时就会选中所有”_id: ObjectId(“”的关键词。</strong></p><p><strong>2、按下Ctrl+L即可选中所有包含关键词”_id: ObjectId(“”的行。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;如下数据,想选中关键词为:_id: ObjectId(“,的所有行&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line
-      
-    
-    </summary>
-    
-    
-      <category term="编程琐碎" scheme="https://yzdzh.github.io/categories/%E7%BC%96%E7%A8%8B%E7%90%90%E7%A2%8E/"/>
     
     
   </entry>
