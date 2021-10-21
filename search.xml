@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WSL子系统修改默认root登入</title>
+    <url>/post/2798337741.html</url>
+    <content><![CDATA[<p>一般子系统就是自己用，每次启动还要人工切到root权限，很是麻烦，如何让Win10的WSL子系统默认root登入呢？</p>
+<h5 id="命令行操作方法如下："><a href="#命令行操作方法如下：" class="headerlink" title="命令行操作方法如下："></a>命令行操作方法如下：</h5><p>1、Windows进入cmd命令行，执行指令进入Apps目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> %HOMEPATH%\AppData\Local\Microsoft\WindowsApps</span><br></pre></td></tr></table></figure>
+
+<p>2、执行指令列出文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure>
+
+<p>3、进入定位的子系统文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure>
+
+<p>4、执行指令列出文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu2004.exe</span><br></pre></td></tr></table></figure>
+
+<p>5、执行指令修改默认用户为root：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu2004.exe config --default-user root</span><br></pre></td></tr></table></figure>
+
+<p>6、重启WSL子系统即可看到效果，默认登入的就是root账户了。</p>
+<p>原文链接：<a href="https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html" target="_blank" rel="noopener">https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html</a></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基于win10 + wsl + ubuntu + terminal的本地开发环境</title>
     <url>/post/2270783465.html</url>
     <content><![CDATA[<h3 id="先来一堆废话背景介绍："><a href="#先来一堆废话背景介绍：" class="headerlink" title="先来一堆废话背景介绍："></a><strong>先来一堆废话背景介绍：</strong></h3><p>之前都是使用vagrant+VirtualBox做为本地开发环境，一直也都是挺不错的，后来在新公司认识到win10 + wsl + ubuntu + terminal的开发环境，相较起vagrant+VirtualBox，优势和劣势如下：<br><strong>优势：</strong><br>1、可以直接将项目代码放入linux环境，而不是通过目录映射的方式。目录映射一方面代码编译速度慢，另一方面有可能会出现因为window和linux环境文件编码不同而导致的编译失败问题（这点本人在执行compose等操作时曾经吃过亏）。<br>2、hosts文件和.ssh文件夹可实现自动共享，不用本地定义个域名要window写一次，虚拟机里面的hosts文件也写一份。</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-10-21T18:02:27.134Z</updated>
+  <updated>2021-10-21T19:15:25.243Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WSL子系统修改默认root登入</title>
+    <link href="https://yzdzh.github.io/post/2798337741.html"/>
+    <id>https://yzdzh.github.io/post/2798337741.html</id>
+    <published>2021-10-21T19:13:00.000Z</published>
+    <updated>2021-10-21T19:15:25.243Z</updated>
+    
+    <content type="html"><![CDATA[<p>一般子系统就是自己用，每次启动还要人工切到root权限，很是麻烦，如何让Win10的WSL子系统默认root登入呢？</p><h5 id="命令行操作方法如下："><a href="#命令行操作方法如下：" class="headerlink" title="命令行操作方法如下："></a>命令行操作方法如下：</h5><p>1、Windows进入cmd命令行，执行指令进入Apps目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> %HOMEPATH%\AppData\Local\Microsoft\WindowsApps</span><br></pre></td></tr></table></figure><p>2、执行指令列出文件夹：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure><p>输出示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure><p>3、进入定位的子系统文件夹：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure><p>4、执行指令列出文件夹：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure><p>输出示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu2004.exe</span><br></pre></td></tr></table></figure><p>5、执行指令修改默认用户为root：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubuntu2004.exe config --default-user root</span><br></pre></td></tr></table></figure><p>6、重启WSL子系统即可看到效果，默认登入的就是root账户了。</p><p>原文链接：<a href="https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html" target="_blank" rel="noopener">https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一般子系统就是自己用，每次启动还要人工切到root权限，很是麻烦，如何让Win10的WSL子系统默认root登入呢？&lt;/p&gt;
+&lt;h5 id=&quot;命令行操作方法如下：&quot;&gt;&lt;a href=&quot;#命令行操作方法如下：&quot; class=&quot;headerlink&quot; title=&quot;命令行操作方
+      
+    
+    </summary>
+    
+    
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>基于win10 + wsl + ubuntu + terminal的本地开发环境</title>
@@ -483,30 +508,6 @@
       
         &lt;p&gt;添加账号密码&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;b
-      
-    
-    </summary>
-    
-    
-      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>centos7安装mongodb和设置开机自动启动</title>
-    <link href="https://yzdzh.github.io/post/2911353081.html"/>
-    <id>https://yzdzh.github.io/post/2911353081.html</id>
-    <published>2020-04-21T02:51:00.000Z</published>
-    <updated>2020-12-29T02:55:46.458Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1、安装mongod"><a href="#1、安装mongod" class="headerlink" title="1、安装mongod"></a>1、安装mongod</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.2.5.tgz</span><br><span class="line">tar -zxvf mongodb-linux-x86_64-rhel70-4.2.5.tgz</span><br><span class="line">mv mongodb-linux-x86_64-rhel70-4.2.5/ /usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"></span><br><span class="line">mkdir  -p  /usr/<span class="built_in">local</span>/mongodb/data</span><br><span class="line">mkdir  -p  /usr/<span class="built_in">local</span>/mongodb/logs</span><br><span class="line"></span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/mongodb/bin/mongod mongod</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/mongodb/bin/mongo mongo</span><br></pre></td></tr></table></figure><h2 id="2、设置开机自动启动"><a href="#2、设置开机自动启动" class="headerlink" title="2、设置开机自动启动"></a>2、设置开机自动启动</h2><h3 id="1、新增sh脚本"><a href="#1、新增sh脚本" class="headerlink" title="1、新增sh脚本"></a>1、新增sh脚本</h3><p>添加关联mongodb.conf文件<br>vim /etc/mongodb.conf</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net:</span><br><span class="line">  port: 27017</span><br><span class="line">  bindIp: 0.0.0.0  <span class="comment"># Listen to local interface only, comment to listen on all interfaces.</span></span><br><span class="line">  ipv6: <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>新增sh脚本放在根目录的shell下面mongod_start.sh</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># pkill -9 mongod;</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mongodb/bin/mongod --shutdown --dbpath /usr/<span class="built_in">local</span>/mongodb/data/;</span><br><span class="line">nohup /usr/<span class="built_in">local</span>/mongodb/bin/mongod  -f /etc/mongodb.conf --dbpath=/usr/<span class="built_in">local</span>/mongodb/data --logpath=/usr/<span class="built_in">local</span>/mongodb/logs/log.txt  &gt; /shell/mongod.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>设置权限777</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 mongod_start.sh</span><br></pre></td></tr></table></figure><h3 id="2、添加脚本到开机自启动"><a href="#2、添加脚本到开机自启动" class="headerlink" title="2、添加脚本到开机自启动"></a>2、添加脚本到开机自启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure><p>文件后面追加<br>sh /shell/mongod_start.sh</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure><p>然后就搞定了</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1、安装mongod&quot;&gt;&lt;a href=&quot;#1、安装mongod&quot; class=&quot;headerlink&quot; title=&quot;1、安装mongod&quot;&gt;&lt;/a&gt;1、安装mongod&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr
       
     
     </summary>
