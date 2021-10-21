@@ -49,7 +49,7 @@
 <h4 id="4-安装ubuntu-和-terminal"><a href="#4-安装ubuntu-和-terminal" class="headerlink" title="4.安装ubuntu 和 terminal"></a>4.安装ubuntu 和 terminal</h4><p>直接从Microsoft store商店直接搜索下载即可，建议ubuntu版本为20.04或以上。</p>
 <h4 id="5-安装docker"><a href="#5-安装docker" class="headerlink" title="5.安装docker"></a>5.安装docker</h4><p>直接下载安装即可（建议版本为4.1）<br><a href="https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310</a></p>
 <p>至此，虚拟机环境搭建完毕。  </p>
-<p><strong>注意必看：</strong><br>1、ubuntu默认是安装时创建的账号，非root账号，这给开发带来不便，如何设置默认root登入可以看我另一篇文章：<a href="/post/2798337741.html">/post/2798337741.html</a>   </p>
+<p><strong>注意必看：</strong><br>1、ubuntu默认是安装时创建的账号，非root账号，这给开发带来不便，如何设置默认root登入可以看我另一篇文章：<a href="/post/2798337741.html">WSL子系统修改默认root登入</a>   </p>
 <p>2、wsl内子系统的ip每次启动都会重置，这给开发带来不便，如何解决这个问题可以看我另一篇文章：<a href="http://www.baidu.com" target="_blank" rel="noopener">添加链接描述</a></p>
 <p>3、鄙人本地的lnmp环境是使用的是docker-compose.yaml一键安装及配置文件和目录挂载，git地址为(私人仓库不对外开放)：<a href="https://github.com/yzdzh/docker_php_dev" target="_blank" rel="noopener">https://github.com/yzdzh/docker_php_dev</a></p>
 <p>4.安装docker-compose命令如下:  </p>
