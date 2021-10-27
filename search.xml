@@ -14,6 +14,9 @@
 <h4 id="3、设置bat脚本开机自动启动"><a href="#3、设置bat脚本开机自动启动" class="headerlink" title="3、设置bat脚本开机自动启动"></a>3、设置bat脚本开机自动启动</h4><p>1、设置bat脚本开机自动启动”窗口+R”打开命令窗口，并且输入命令<strong>Shell:startup</strong>，点击确定按钮运行该命令<br>2、将自制的bat启动脚本快捷方式放入文件夹中</p>
 <p><img src="/resource/images/pasted2-7.png" alt="upload successful"></p>
 ]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
   </entry>
   <entry>
     <title>WSL子系统修改默认root登入</title>
