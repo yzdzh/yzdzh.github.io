@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux下清除docker容器终端输出的全部日志</title>
+    <url>/post/3848110738.html</url>
+    <content><![CDATA[<p>查询当前目录下所有文件大小  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">du -h --max-depth=1</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查询当前目录下所有文件大小  </span><br><span class="line">```bash</span><br><span class="line">ls -lh</span><br></pre></td></tr></table></figure>
+
+<p>清除docker容器终端输出的全部日志  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">truncate -s 0 /var/lib/docker/containers/*/*-json.log</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>win10开机设置wsl子系统固定内网ip</title>
     <url>/post/3748404520.html</url>
     <content><![CDATA[<p>wsl的liunx子系统虽然很优秀，但是每次重启都会重新分配内网ip，但实际开发中，本地环境还是需要固定内网ip比较方便，但是wsl不支持设置固定内网ip，折中办法就是每次开机或重启是将内网ip设置为指定ip。</p>

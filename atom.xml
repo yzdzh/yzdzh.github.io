@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-10-27T19:14:41.564Z</updated>
+  <updated>2021-11-07T12:37:21.900Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux下清除docker容器终端输出的全部日志</title>
+    <link href="https://yzdzh.github.io/post/3848110738.html"/>
+    <id>https://yzdzh.github.io/post/3848110738.html</id>
+    <published>2021-11-07T12:33:00.000Z</published>
+    <updated>2021-11-07T12:37:21.900Z</updated>
+    
+    <content type="html"><![CDATA[<p>查询当前目录下所有文件大小  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">du -h --max-depth=1</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查询当前目录下所有文件大小  </span><br><span class="line">```bash</span><br><span class="line">ls -lh</span><br></pre></td></tr></table></figure><p>清除docker容器终端输出的全部日志  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate -s 0 /var/lib/docker/containers/*/*-json.log</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;查询当前目录下所有文件大小  &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>win10开机设置wsl子系统固定内网ip</title>
@@ -490,30 +515,6 @@
     
     
       <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>vagrant虚拟机共享目录加速</title>
-    <link href="https://yzdzh.github.io/post/1735609695.html"/>
-    <id>https://yzdzh.github.io/post/1735609695.html</id>
-    <published>2020-04-25T13:13:00.000Z</published>
-    <updated>2020-04-25T13:15:31.985Z</updated>
-    
-    <content type="html"><![CDATA[<p>vagrant一般都是搭配VirtualBox虚拟机的，但是vagrant默认启动VirtualBox虚拟机的目录共享方式是VirtualBox方式，这种方式性能差，如果文件夹里面的文件数量不多的情况下影响还不是很大，如果数量多的话会很慢，网上说的可以通过安装vagrant一款插件使共享目录以”nfs”方式，速度会变快很多</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant plugin install vagrant-winnfsd</span><br></pre></td></tr></table></figure><p>但是我实际上发现还有另外一款vagrant插件能使共享目录性能更高。<br>这款插件不但能使共享目录支持”nfs”方式而且还有其他系统优化，使实际共享目录性能更高。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant plugin install vagrant-vbguest</span><br></pre></td></tr></table></figure><p>不管是哪一款vagant插件都需要在对应的共享目录后面加”, type: “nfs””才能生效</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.synced_folder <span class="string">"D:/xiangmu"</span>,<span class="string">"/home/wwwroot"</span> , <span class="built_in">type</span>: <span class="string">"nfs"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;vagrant一般都是搭配VirtualBox虚拟机的，但是vagrant默认启动VirtualBox虚拟机的目录共享方式是VirtualBox方式，这种方式性能差，如果文件夹里面的文件数量不多的情况下影响还不是很大，如果数量多的话会很慢，网上说的可以通过安装vagrant
-      
-    
-    </summary>
-    
-    
-      <category term="vagrant" scheme="https://yzdzh.github.io/categories/vagrant/"/>
     
     
   </entry>
