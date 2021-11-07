@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ssh生成公钥私钥对和远程免密登录</title>
+    <url>/post/588796899.html</url>
+    <content><![CDATA[<h5 id="1、在本地机器上使用ssh-keygen产生公钥私钥对"><a href="#1、在本地机器上使用ssh-keygen产生公钥私钥对" class="headerlink" title="1、在本地机器上使用ssh-keygen产生公钥私钥对"></a>1、在本地机器上使用ssh-keygen产生公钥私钥对</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">本地先安装git客户端，终端执行</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"yourname"</span></span><br><span class="line">一路回车</span><br><span class="line"></span><br><span class="line">全局设置git 用户信息</span><br><span class="line">git config --global user.email yourname</span><br><span class="line">git config --global user.name yourname</span><br><span class="line"></span><br><span class="line">chmod 600 ~/.ssh/id_rsa  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、用ssh-copy-id将公钥复制到远程机器中"><a href="#2、用ssh-copy-id将公钥复制到远程机器中" class="headerlink" title="2、用ssh-copy-id将公钥复制到远程机器中"></a>2、用ssh-copy-id将公钥复制到远程机器中</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub  用户名字@192.168.x.xxx</span><br><span class="line"></span><br><span class="line">注意: ssh-copy-id 将key写到远程机器的 ~/ .ssh/authorized_key.文件中</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、登录到远程机器不用输入密码"><a href="#3、登录到远程机器不用输入密码" class="headerlink" title="3、登录到远程机器不用输入密码"></a>3、登录到远程机器不用输入密码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh 用户名字@192.168.x.xxx</span><br><span class="line">Last login: Sun Nov 16 17:22:33 2008 from 192.168.1.2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux下清除docker容器终端输出的全部日志</title>
     <url>/post/3848110738.html</url>
     <content><![CDATA[<p>查询当前目录下所有文件大小  </p>
