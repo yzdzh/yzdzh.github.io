@@ -4,7 +4,10 @@
     <title>Linux下清除docker容器终端输出的全部日志</title>
     <url>/post/3848110738.html</url>
     <content><![CDATA[<p>查询当前目录下所有文件大小  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">du -h --max-depth=1</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">查询当前目录下所有文件大小  </span><br><span class="line">```bash</span><br><span class="line">ls -lh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">du -h --max-depth=1</span><br></pre></td></tr></table></figure>
+
+<p>查询当前目录下所有文件大小  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls -lh</span><br></pre></td></tr></table></figure>
 
 <p>清除docker容器终端输出的全部日志  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">truncate -s 0 /var/lib/docker/containers/*/*-json.log</span><br></pre></td></tr></table></figure>]]></content>
