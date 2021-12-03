@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-12-03T19:27:44.745Z</updated>
+  <updated>2021-12-03T19:28:14.773Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://yzdzh.github.io/post/1494107583.html"/>
     <id>https://yzdzh.github.io/post/1494107583.html</id>
     <published>2021-12-03T19:21:00.000Z</published>
-    <updated>2021-12-03T19:27:44.745Z</updated>
+    <updated>2021-12-03T19:28:14.773Z</updated>
     
-    <content type="html"><![CDATA[<p>一般是被用chattr命令锁住文件</p><h3 id="1、lsattr命令查看文件的属性"><a href="#1、lsattr命令查看文件的属性" class="headerlink" title="1、lsattr命令查看文件的属性"></a>1、lsattr命令查看文件的属性</h3><p>执行命令lsattr authorized_keys查看当前文件属性，可以发现有i和a两个属性。<br><img src="/resource/images/pasted2-11.png" alt="upload successful"></p><h3 id="2、去掉锁住的权限"><a href="#2、去掉锁住的权限" class="headerlink" title="2、去掉锁住的权限"></a>2、去掉锁住的权限</h3><p>去掉lsattr命令查看到的i和a两个属性</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -ia authorized_keys</span><br></pre></td></tr></table></figure><h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>一般是被用chattr命令锁住文件</p><h3 id="1、lsattr命令查看文件的属性"><a href="#1、lsattr命令查看文件的属性" class="headerlink" title="1、lsattr命令查看文件的属性"></a>1、lsattr命令查看文件的属性</h3><p>执行命令lsattr authorized_keys查看当前文件属性，可以发现有i和a两个属性。<br><img src="/resource/images/pasted2-11.png" alt="upload successful"></p><h3 id="2、去掉锁住的权限"><a href="#2、去掉锁住的权限" class="headerlink" title="2、去掉锁住的权限"></a>2、去掉锁住的权限</h3><p>去掉lsattr命令查看到的i和a两个属性</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -ia authorized_keys</span><br></pre></td></tr></table></figure><h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure><p>借鉴于原文：<a href="https://www.cnblogs.com/cpl9412290130/p/11592803.html" target="_blank" rel="noopener">https://www.cnblogs.com/cpl9412290130/p/11592803.html</a></p>]]></content>
     
     <summary type="html">
     
