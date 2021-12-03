@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-12-03T19:12:16.741Z</updated>
+  <updated>2021-12-03T19:27:44.745Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux中root账号也无法修改文件权限解决方法</title>
+    <link href="https://yzdzh.github.io/post/1494107583.html"/>
+    <id>https://yzdzh.github.io/post/1494107583.html</id>
+    <published>2021-12-03T19:21:00.000Z</published>
+    <updated>2021-12-03T19:27:44.745Z</updated>
+    
+    <content type="html"><![CDATA[<p>一般是被用chattr命令锁住文件</p><h3 id="1、lsattr命令查看文件的属性"><a href="#1、lsattr命令查看文件的属性" class="headerlink" title="1、lsattr命令查看文件的属性"></a>1、lsattr命令查看文件的属性</h3><p>执行命令lsattr authorized_keys查看当前文件属性，可以发现有i和a两个属性。<br><img src="/resource/images/pasted2-11.png" alt="upload successful"></p><h3 id="2、去掉锁住的权限"><a href="#2、去掉锁住的权限" class="headerlink" title="2、去掉锁住的权限"></a>2、去掉锁住的权限</h3><p>去掉lsattr命令查看到的i和a两个属性</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -ia authorized_keys</span><br></pre></td></tr></table></figure><h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一般是被用chattr命令锁住文件&lt;/p&gt;
+&lt;h3 id=&quot;1、lsattr命令查看文件的属性&quot;&gt;&lt;a href=&quot;#1、lsattr命令查看文件的属性&quot; class=&quot;headerlink&quot; title=&quot;1、lsattr命令查看文件的属性&quot;&gt;&lt;/a&gt;1、lsattr命令
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>mongodb容器的数据导入和导出</title>
@@ -483,31 +508,6 @@
       
       
         &lt;h3 id=&quot;golang用于创建和发送电子邮件的库&quot;&gt;&lt;a href=&quot;#golang用于创建和发送电子邮件的库&quot; class=&quot;headerlink&quot; title=&quot;golang用于创建和发送电子邮件的库&quot;&gt;&lt;/a&gt;golang用于创建和发送电子邮件的库&lt;/h3&gt;&lt;p&gt;do
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>golang之json操作库</title>
-    <link href="https://yzdzh.github.io/post/3838666233.html"/>
-    <id>https://yzdzh.github.io/post/3838666233.html</id>
-    <published>2020-05-13T14:24:00.000Z</published>
-    <updated>2020-05-13T14:24:43.037Z</updated>
-    
-    <content type="html"><![CDATA[<p>总结有三个非常好用的json操作库<br>1、gjson （读取json）<br>2、sjson   （增删改json）<br>3、gojsonq  （高级查询统计json数据）  </p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">go</span> get github.com/tidwall/gjson</span><br><span class="line">$ <span class="keyword">go</span> get github.com/tidwall/sjson</span><br><span class="line">$ <span class="keyword">go</span> get github.com/thedevsaddam/gojsonq</span><br></pre></td></tr></table></figure><p>具体详情文章：<br>gjson ：<a href="https://mp.weixin.qq.com/s?__biz=MzAxMTA4Njc0OQ==&amp;mid=2651439052&amp;idx=4&amp;sn=4b668ec590db68ac5850e4c9eff6bfd1&amp;chksm=80bb613eb7cce828155ccfa92821b3da15f2551b8f6335bf6b8189aa9747a20c0ce1855de4f5&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxMTA4Njc0OQ==&amp;mid=2651439052&amp;idx=4&amp;sn=4b668ec590db68ac5850e4c9eff6bfd1&amp;chksm=80bb613eb7cce828155ccfa92821b3da15f2551b8f6335bf6b8189aa9747a20c0ce1855de4f5&amp;scene=21#wechat_redirect</a><br>sjson   ：<a href="https://mp.weixin.qq.com/s/ucfJxIw_NLb6TGrhQa3UcQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ucfJxIw_NLb6TGrhQa3UcQ</a><br>gojsonq  ：<a href="https://mp.weixin.qq.com/s/ZfaH6ROWiVX9IsoxJ04oXw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/ZfaH6ROWiVX9IsoxJ04oXw</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;总结有三个非常好用的json操作库&lt;br&gt;1、gjson （读取json）&lt;br&gt;2、sjson   （增删改json）&lt;br&gt;3、gojsonq  （高级查询统计json数据）  &lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
       
     
     </summary>

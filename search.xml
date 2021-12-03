@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>linux中root账号也无法修改文件权限解决方法</title>
+    <url>/post/1494107583.html</url>
+    <content><![CDATA[<p>一般是被用chattr命令锁住文件</p>
+<h3 id="1、lsattr命令查看文件的属性"><a href="#1、lsattr命令查看文件的属性" class="headerlink" title="1、lsattr命令查看文件的属性"></a>1、lsattr命令查看文件的属性</h3><p>执行命令lsattr authorized_keys查看当前文件属性，可以发现有i和a两个属性。<br><img src="/resource/images/pasted2-11.png" alt="upload successful"></p>
+<h3 id="2、去掉锁住的权限"><a href="#2、去掉锁住的权限" class="headerlink" title="2、去掉锁住的权限"></a>2、去掉锁住的权限</h3><p>去掉lsattr命令查看到的i和a两个属性</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr -ia authorized_keys</span><br></pre></td></tr></table></figure>
+<h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>mongodb容器的数据导入和导出</title>
     <url>/post/381300251.html</url>
     <content><![CDATA[<h3 id="1、mongodump导出备份"><a href="#1、mongodump导出备份" class="headerlink" title="1、mongodump导出备份"></a>1、mongodump导出备份</h3><h4 id="1-、执行mongodump命令"><a href="#1-、执行mongodump命令" class="headerlink" title="1)、执行mongodump命令"></a>1)、执行mongodump命令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongodump -h 127.0.0.1:27017 -d ag_mongo -u root -p 123456 --authenticationDatabase admin -o /mongo_sql_back</span><br></pre></td></tr></table></figure>
