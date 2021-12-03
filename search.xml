@@ -10,7 +10,7 @@
 <h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure>
 
-<p>借鉴于原文：<a href="https://www.cnblogs.com/cpl9412290130/p/11592803.html" target="_blank" rel="noopener">https://www.cnblogs.com/cpl9412290130/p/11592803.html</a></p>
+<p>借鉴于原文：<br><a href="https://www.cnblogs.com/cpl9412290130/p/11592803.html" target="_blank" rel="noopener">https://www.cnblogs.com/cpl9412290130/p/11592803.html</a><br><a href="https://www.runoob.com/linux/linux-comm-chattr.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-chattr.html</a></p>
 ]]></content>
       <categories>
         <category>linux</category>
