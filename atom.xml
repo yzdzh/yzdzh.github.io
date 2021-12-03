@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2021-11-07T19:41:39.458Z</updated>
+  <updated>2021-12-03T18:28:29.228Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker容器以ROOT账号登录（获取ROOT权限/ROOT密码）</title>
+    <link href="https://yzdzh.github.io/post/3568385113.html"/>
+    <id>https://yzdzh.github.io/post/3568385113.html</id>
+    <published>2021-12-03T18:27:00.000Z</published>
+    <updated>2021-12-03T18:28:29.228Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="第一步：查看容器的CONTAINER-ID"><a href="#第一步：查看容器的CONTAINER-ID" class="headerlink" title="第一步：查看容器的CONTAINER ID"></a>第一步：查看容器的CONTAINER ID</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure><h6 id="第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca"><a href="#第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca" class="headerlink" title="第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca"></a>第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root 4650e8d1bcca bash</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h6 id=&quot;第一步：查看容器的CONTAINER-ID&quot;&gt;&lt;a href=&quot;#第一步：查看容器的CONTAINER-ID&quot; class=&quot;headerlink&quot; title=&quot;第一步：查看容器的CONTAINER ID&quot;&gt;&lt;/a&gt;第一步：查看容器的CONTAINER ID&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>ssh生成公钥私钥对和远程免密登录</title>
@@ -485,30 +509,6 @@
       
         &lt;p&gt;MongoDB 中索引的类型大致包含单键索引、复合索引、多键值索引、地理索引、全文索引、 散列索引等，下面简单介绍各类索引的用法。&lt;/p&gt;
 &lt;h3 id=&quot;1、单字段索引&quot;&gt;&lt;a href=&quot;#1、单字段索引&quot; class=&quot;headerlink&quot; title=&quot;1、单字段
-      
-    
-    </summary>
-    
-    
-      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB-分片片键</title>
-    <link href="https://yzdzh.github.io/post/1182994018.html"/>
-    <id>https://yzdzh.github.io/post/1182994018.html</id>
-    <published>2020-05-03T14:44:00.000Z</published>
-    <updated>2020-05-03T14:46:40.041Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1．分片"><a href="#1．分片" class="headerlink" title="1．分片"></a>1．分片</h2><p>   分片是什么？分片就是将数据存储在多个机器上。当数据集超过单台服务器的容量，服务器的内存，磁盘IO都会有问题，即超过单台服务器的性能瓶颈。此时有两种解决方案，垂直扩展和水平扩展（分片）。 </p><p>  垂直扩展就是增加CPU，增加容量，但高性能系统的CPU和容量不成比例，这样扩展成本大，并且有上限。      </p><p>  水平扩展分片，将数据分发到多个服务器，每个服务器是一个单独的数据库，各个服务器加起来组成一个逻辑数据库，把写压力和操作分流到不同服务器，提高容量和吞吐量。  </p><p>  MongoDB的文档是无模式的，不固定结构，因此只能进行水平分片。当块超过指定大小或者文档数超过最大文档数，MongoDB尝试分割这个块，若分割成功，把它标记为一个大块避免重复分割。拆分块的关键就是片键，下面介绍常见片键的种类。</p><h2 id="2．片键种类"><a href="#2．片键种类" class="headerlink" title="2．片键种类"></a>2．片键种类</h2><p>  片键是文档的一个属性字段或者一个复合索引字段，一旦建立不能改变。片键是分片拆分数据的关键，片键的选择直接影响集群的性能。  </p><p>  MongoDB首先根据片键划分块chunks当块超过指定大小（默认64M），然后把块分到其他的分片上，片键类型主要有以下几种：    </p><p>  注意：片键也是查询时常用的一个索引。</p><h3 id="（1）-递增片键"><a href="#（1）-递增片键" class="headerlink" title="（1） 递增片键"></a>（1） 递增片键</h3><p>   这类片键比较常见，比如使用时间戳，日期，自增的主键，ObjectId，_id等，此类片键的写入操作集中在一个分片服务器上，写入不具有分散性，这会导致单台服务器压力较大，但分割比较容易，这台服务器可能会成为性能瓶颈。  </p><p>递增片键的创建，对foo数据库的bar集合使用timestamp时间戳分片  </p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; use foo</span><br><span class="line">mongos&gt; db.bar.ensureIndex(&#123;"timestamp":1&#125;)</span><br><span class="line">mongos&gt; sh.enableSharding("foo")</span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line">mongos&gt; sh.shardCollection("foo.bar",&#123;"timestamp":1&#125;)</span><br><span class="line">&#123; "collectionsharded" : "foo.bar", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure><h3 id="（2）-哈希片键"><a href="#（2）-哈希片键" class="headerlink" title="（2） 哈希片键"></a>（2） 哈希片键</h3><p>   使用一个哈希索引字段作为片键，优点是使数据在各节点分布比较均匀，数据写入可随机分发到每个分片服务器上，把写入的压力分散到了各个服务器上。但是读也是随机的，可能会命中更多的分片，一般具有随机性的片键（如密码，哈希，MD5）查询隔离性能比较差。   </p><p>哈希片键的创建，对GridFS的chunks集合使用files_id哈希分片</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; db.bar.ensureIndex(&#123;"files_id":"hashed"&#125;)</span><br><span class="line">mongos&gt; sh.enableSharding("foo")</span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line">mongos&gt; sh.shardCollection("foo.fs.chunks",&#123;"files_id":"hashed"&#125;)</span><br><span class="line">&#123; "collectionsharded" : " foo.fs.chunks ", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure><h3 id="（3）-组合片键"><a href="#（3）-组合片键" class="headerlink" title="（3） 组合片键"></a>（3） 组合片键</h3><p>  数据库中没有比较合适的片键供选择，或者是打算使用的片键基数太小（即变化少如星期只有7天可变化），可以选另一个字段使用组合片键，甚至可以添加冗余字段来组合。一般是粗粒度+细粒度进行组合。 </p><p>组合片键的创建，对GridFS的chunks集合使用files_id和n组合分片</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.enableSharding("foo")</span><br><span class="line">&#123; "ok" : 1 &#125;</span><br><span class="line">mongos&gt; sh.shardCollection("foo.fs.chunks",&#123;"files_id":1, "n":1&#125;)</span><br><span class="line">&#123; "collectionsharded" : " foo.fs.chunks ", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure><h3 id="（4）-标签分片"><a href="#（4）-标签分片" class="headerlink" title="（4） 标签分片"></a>（4） 标签分片</h3><p>  数据存储在指定的分片服务器上，可以为分片添加tag标签，然后指定相应的tag，比如让10.<em>.</em>.<em>(T)出现在shard0000上，11.</em>.<em>.</em>(Q)出现在shard0001或shard0002上，就可以使用tag让均衡器指定分发。</p><p>标签分片的创建</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mongos &gt; sh.addShardTag("shard0000", "T")</span><br><span class="line">mongos &gt; sh.addShardTag("shard0001", "Q")</span><br><span class="line">mongos &gt; sh.addShardTag("shard0002", "Q")</span><br><span class="line">mongos&gt; sh.addTagRange("foo.ips",&#123; "ip": "010.000.000.000 ", … , "ip": "011.000.000.000 "&#125;&#125;, "T")</span><br><span class="line">mongos&gt; sh.addTagRange("foo.ips",&#123; "ip": "011.000.000.000 ", … , "ip": "012.000.000.000 "&#125;&#125;, "Q")</span><br></pre></td></tr></table></figure><h3 id="3．片键选择策略"><a href="#3．片键选择策略" class="headerlink" title="3．片键选择策略"></a>3．片键选择策略</h3><p>   大致了解了片键的种类，那么怎么选择片键呢？无非从两个方面考虑，数据的查询和写入，最好的效果就是数据查询时能命中更少的分片，数据写入时能够随机的写入每个分片，关键在于如何权衡性能和负载。  </p><p>如何选择片键主要从下面几个问题考虑：<br>（1）首先确定一个经常性查询的字段<br>（2）找到影响这些操作性能的关键点<br>（3）如果选的字段基数比较小，添加一个粒度细的字段  </p><p>   怎么选择，如何权衡，跟具体的业务以及数据类型都有关系，具体问题具体分析。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1．分片&quot;&gt;&lt;a href=&quot;#1．分片&quot; class=&quot;headerlink&quot; title=&quot;1．分片&quot;&gt;&lt;/a&gt;1．分片&lt;/h2&gt;&lt;p&gt;   分片是什么？分片就是将数据存储在多个机器上。当数据集超过单台服务器的容量，服务器的内存，磁盘IO都会有问题，即超过单台
       
     
     </summary>

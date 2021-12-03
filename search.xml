@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>docker容器以ROOT账号登录（获取ROOT权限/ROOT密码）</title>
+    <url>/post/3568385113.html</url>
+    <content><![CDATA[<h6 id="第一步：查看容器的CONTAINER-ID"><a href="#第一步：查看容器的CONTAINER-ID" class="headerlink" title="第一步：查看容器的CONTAINER ID"></a>第一步：查看容器的CONTAINER ID</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<h6 id="第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca"><a href="#第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca" class="headerlink" title="第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca"></a>第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root 4650e8d1bcca bash</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ssh生成公钥私钥对和远程免密登录</title>
     <url>/post/588796899.html</url>
     <content><![CDATA[<h5 id="1、在本地机器上使用ssh-keygen产生公钥私钥对"><a href="#1、在本地机器上使用ssh-keygen产生公钥私钥对" class="headerlink" title="1、在本地机器上使用ssh-keygen产生公钥私钥对"></a>1、在本地机器上使用ssh-keygen产生公钥私钥对</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">本地先安装git客户端，终端执行</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"yourname"</span></span><br><span class="line">一路回车</span><br><span class="line"></span><br><span class="line">全局设置git 用户信息</span><br><span class="line">git config --global user.email yourname</span><br><span class="line">git config --global user.name yourname</span><br><span class="line"></span><br><span class="line">chmod 600 ~/.ssh/id_rsa  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
