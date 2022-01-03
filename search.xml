@@ -23,7 +23,7 @@
   <entry>
     <title>linux网络带宽监控工具</title>
     <url>/post/3478081417.html</url>
-    <content><![CDATA[<p>*<em>centos安装命令   *</em></p>
+    <content><![CDATA[<p><strong>centos安装命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install dstat -y</span><br></pre></td></tr></table></figure>
 <p><strong>查看命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dstat -cdnrsy</span><br></pre></td></tr></table></figure>
