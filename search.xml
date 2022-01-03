@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ab压测工具</title>
+    <url>/post/984256984.html</url>
+    <content><![CDATA[<p>ubuntu安装ab</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure>
+
+<p>centos安装ab</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure>
+
+
+<p>ab 测试命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure>
+
+<p>其中－n表示请求数，－c表示并发数</p>
+<p>原文链接：<a href="https://www.jianshu.com/p/43d04d8baaf7" target="_blank" rel="noopener">https://www.jianshu.com/p/43d04d8baaf7</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>linux网络带宽监控工具</title>
     <url>/post/3478081417.html</url>
     <content><![CDATA[<p>centos安装命令   </p>

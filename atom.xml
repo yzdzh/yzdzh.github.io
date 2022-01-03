@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-01-03T18:13:03.765Z</updated>
+  <updated>2022-01-03T18:19:08.431Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ab压测工具</title>
+    <link href="https://yzdzh.github.io/post/984256984.html"/>
+    <id>https://yzdzh.github.io/post/984256984.html</id>
+    <published>2021-12-31T19:05:00.000Z</published>
+    <updated>2022-01-03T18:19:08.431Z</updated>
+    
+    <content type="html"><![CDATA[<p>ubuntu安装ab</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure><p>centos安装ab</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure><p>ab 测试命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure><p>其中－n表示请求数，－c表示并发数</p><p>原文链接：<a href="https://www.jianshu.com/p/43d04d8baaf7" target="_blank" rel="noopener">https://www.jianshu.com/p/43d04d8baaf7</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ubuntu安装ab&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;cod
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>linux网络带宽监控工具</title>
     <link href="https://yzdzh.github.io/post/3478081417.html"/>
     <id>https://yzdzh.github.io/post/3478081417.html</id>
-    <published>2022-01-03T18:00:00.000Z</published>
-    <updated>2022-01-03T18:13:03.765Z</updated>
+    <published>2021-12-31T18:02:00.000Z</published>
+    <updated>2022-01-03T18:18:50.974Z</updated>
     
     <content type="html"><![CDATA[<p>centos安装命令   </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install dstat -y</span><br></pre></td></tr></table></figure><p>查看命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dstat -cdnrsy</span><br></pre></td></tr></table></figure><p>效果如下图：</p><p><img src="/resource/images/pasted2-12.png" alt="upload successful"></p><table><thead><tr><th>分组</th><th>分组含义及子项字段含义</th></tr></thead><tbody><tr><td>CPU状态</td><td>CPU的使用率。显示了用户占比，系统占比、空闲占比、等待占比、硬中断和软中断情况。</td></tr><tr><td>磁盘统计</td><td>磁盘的读写，分别显示磁盘的读、写总数。</td></tr><tr><td>网络统计</td><td>网络设备发送和接受的数据，分别显示的网络收、发数据总数。</td></tr><tr><td>分页统计</td><td>系统的分页活动。分别显示换入（in）和换出（out）。</td></tr><tr><td>系统统计</td><td>统计中断（int）和上下文切换（csw）。</td></tr></tbody></table><p>常见选项 </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。</span><br><span class="line">-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。</span><br><span class="line">-d：显示磁盘读写数据大小。</span><br><span class="line">-D hda,total：include hda and total。</span><br><span class="line">-n：显示网络状态。</span><br><span class="line">-N eth1,total：有多块网卡时，指定要显示的网卡。</span><br><span class="line">-l：显示系统负载情况。</span><br><span class="line">-m：显示内存使用情况。</span><br><span class="line">-g：显示页面使用情况。</span><br><span class="line">-p：显示进程状态。</span><br><span class="line">-s：显示交换分区使用情况。</span><br><span class="line">-S：类似D/N。</span><br><span class="line">-r：I/O请求情况。</span><br><span class="line">-y：系统状态。</span><br><span class="line">--ipc：显示ipc消息队列，信号等信息。</span><br><span class="line">--socket：用来显示tcp udp端口状态。</span><br><span class="line">-a：此为默认选项，等同于-cdngy。</span><br><span class="line">-v：等同于 -pmgdsc -D total。</span><br><span class="line">--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv &amp; 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。</span><br></pre></td></tr></table></figure><p>原文链接：<a href="https://blog.csdn.net/sinat_34789167/article/details/80986709" target="_blank" rel="noopener">https://blog.csdn.net/sinat_34789167/article/details/80986709</a></p>]]></content>
     
@@ -483,31 +508,6 @@
 &lt;li&gt;灵活的输出方式&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;但是, 性能终究是忍痛舍弃
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>golang个人总结好用库集合</title>
-    <link href="https://yzdzh.github.io/post/561152273.html"/>
-    <id>https://yzdzh.github.io/post/561152273.html</id>
-    <published>2020-05-18T18:37:00.000Z</published>
-    <updated>2021-07-17T02:42:51.842Z</updated>
-    
-    <content type="html"><![CDATA[<p>以下是个人在实践工作中总结的好用库集合，持续不断更新中。。</p><h3 id="一、json处理库"><a href="#一、json处理库" class="headerlink" title="一、json处理库"></a>一、json处理库</h3><p><a href=http://wangzhuanglin.gitee.io/post/3838666233.html target = _blank>http://wangzhuanglin.gitee.io/post/3838666233.html</a></p><h3 id="二、配置文件处理库"><a href="#二、配置文件处理库" class="headerlink" title="二、配置文件处理库"></a>二、配置文件处理库</h3><p><a href=http://wangzhuanglin.gitee.io/post/132771847.html target = _blank>http://wangzhuanglin.gitee.io/post/132771847.html</a></p><h3 id="三、日志库"><a href="#三、日志库" class="headerlink" title="三、日志库"></a>三、日志库</h3><p><a href=http://wangzhuanglin.gitee.io/post/816087200.html target = _blank>http://wangzhuanglin.gitee.io/post/816087200.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;以下是个人在实践工作中总结的好用库集合，持续不断更新中。。&lt;/p&gt;
-&lt;h3 id=&quot;一、json处理库&quot;&gt;&lt;a href=&quot;#一、json处理库&quot; class=&quot;headerlink&quot; title=&quot;一、json处理库&quot;&gt;&lt;/a&gt;一、json处理库&lt;/h3&gt;&lt;p&gt;&lt;a hr
       
     
     </summary>
