@@ -23,11 +23,11 @@
   <entry>
     <title>linux网络带宽监控工具</title>
     <url>/post/3478081417.html</url>
-    <content><![CDATA[<p>centos安装命令   </p>
+    <content><![CDATA[<p>*<em>centos安装命令   *</em></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install dstat -y</span><br></pre></td></tr></table></figure>
-<p>查看命令</p>
+<p><strong>查看命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dstat -cdnrsy</span><br></pre></td></tr></table></figure>
-<p>效果如下图：</p>
+<p><strong>效果如下图：</strong></p>
 <p><img src="/resource/images/pasted2-12.png" alt="upload successful"></p>
 <table>
 <thead>
@@ -57,7 +57,7 @@
 <td>统计中断（int）和上下文切换（csw）。</td>
 </tr>
 </tbody></table>
-<p>常见选项 </p>
+<p>*<em>常见选项 *</em></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。</span><br><span class="line">-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。</span><br><span class="line">-d：显示磁盘读写数据大小。</span><br><span class="line">-D hda,total：include hda and total。</span><br><span class="line">-n：显示网络状态。</span><br><span class="line">-N eth1,total：有多块网卡时，指定要显示的网卡。</span><br><span class="line">-l：显示系统负载情况。</span><br><span class="line">-m：显示内存使用情况。</span><br><span class="line">-g：显示页面使用情况。</span><br><span class="line">-p：显示进程状态。</span><br><span class="line">-s：显示交换分区使用情况。</span><br><span class="line">-S：类似D/N。</span><br><span class="line">-r：I/O请求情况。</span><br><span class="line">-y：系统状态。</span><br><span class="line">--ipc：显示ipc消息队列，信号等信息。</span><br><span class="line">--socket：用来显示tcp udp端口状态。</span><br><span class="line">-a：此为默认选项，等同于-cdngy。</span><br><span class="line">-v：等同于 -pmgdsc -D total。</span><br><span class="line">--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv &amp; 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。</span><br></pre></td></tr></table></figure>
 
 <p>原文链接：<a href="https://blog.csdn.net/sinat_34789167/article/details/80986709" target="_blank" rel="noopener">https://blog.csdn.net/sinat_34789167/article/details/80986709</a></p>
