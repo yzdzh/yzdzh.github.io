@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-01-03T18:19:08.431Z</updated>
+  <updated>2022-01-03T18:23:42.799Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://yzdzh.github.io/post/984256984.html"/>
     <id>https://yzdzh.github.io/post/984256984.html</id>
     <published>2021-12-31T19:05:00.000Z</published>
-    <updated>2022-01-03T18:19:08.431Z</updated>
+    <updated>2022-01-03T18:23:42.799Z</updated>
     
-    <content type="html"><![CDATA[<p>ubuntu安装ab</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure><p>centos安装ab</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure><p>ab 测试命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure><p>其中－n表示请求数，－c表示并发数</p><p>原文链接：<a href="https://www.jianshu.com/p/43d04d8baaf7" target="_blank" rel="noopener">https://www.jianshu.com/p/43d04d8baaf7</a></p>]]></content>
+    <content type="html"><![CDATA[<p><strong>ubuntu安装ab</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure><p><strong>centos安装ab</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure><p><strong>ab 测试命令</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure><p>其中－n表示请求数，－c表示并发数</p><p>原文链接：<a href="https://www.jianshu.com/p/43d04d8baaf7" target="_blank" rel="noopener">https://www.jianshu.com/p/43d04d8baaf7</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;ubuntu安装ab&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;cod
+        &lt;p&gt;&lt;strong&gt;ubuntu安装ab&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/
       
     
     </summary>

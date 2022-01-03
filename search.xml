@@ -3,14 +3,14 @@
   <entry>
     <title>ab压测工具</title>
     <url>/post/984256984.html</url>
-    <content><![CDATA[<p>ubuntu安装ab</p>
+    <content><![CDATA[<p><strong>ubuntu安装ab</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure>
 
-<p>centos安装ab</p>
+<p><strong>centos安装ab</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure>
 
 
-<p>ab 测试命令</p>
+<p><strong>ab 测试命令</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure>
 
 <p>其中－n表示请求数，－c表示并发数</p>
