@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-01-30T20:29:41.398Z</updated>
+  <updated>2022-01-30T20:31:04.084Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="https://yzdzh.github.io/post/2119301209.html"/>
     <id>https://yzdzh.github.io/post/2119301209.html</id>
     <published>2022-01-30T20:19:00.000Z</published>
-    <updated>2022-01-30T20:29:41.398Z</updated>
+    <updated>2022-01-30T20:31:04.084Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="官网下载java11做为学习版本"><a href="#官网下载java11做为学习版本" class="headerlink" title="官网下载java11做为学习版本"></a>官网下载java11做为学习版本</h4><p>下载地址：<a href="http://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">http://jdk.java.net/java-se-ri/11</a></p><h4 id="1、JDK目录结构介绍"><a href="#1、JDK目录结构介绍" class="headerlink" title="1、JDK目录结构介绍"></a>1、JDK目录结构介绍</h4><p><img src="/resource/images/pasted2-13.png" alt="upload successful"></p><p>安装后配置环境变量</p><p><img src="/resource/images/pasted2-14.png" alt="upload successful"></p><p>变量名：JAVA_HOME<br>值：D:\develop\java\jdk-11</p><p>变量名：Path<br>值：D:\develop\java\jdk-11\bin</p><h4 id="2、开始编写第一个程序HelloWorld"><a href="#2、开始编写第一个程序HelloWorld" class="headerlink" title="2、开始编写第一个程序HelloWorld"></a>2、开始编写第一个程序HelloWorld</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"HelloWorld"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/resource/images/pasted2-15.png" alt="upload successful"></p><h4 id="3、编译java并执行java文件"><a href="#3、编译java并执行java文件" class="headerlink" title="3、编译java并执行java文件"></a>3、编译java并执行java文件</h4><p><img src="/resource/images/pasted2-16.png" alt="upload successful"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="官网下载java11做为学习版本"><a href="#官网下载java11做为学习版本" class="headerlink" title="官网下载java11做为学习版本"></a>官网下载java11做为学习版本</h3><p>下载地址：<a href="http://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">http://jdk.java.net/java-se-ri/11</a></p><h3 id="1、JDK目录结构介绍"><a href="#1、JDK目录结构介绍" class="headerlink" title="1、JDK目录结构介绍"></a>1、JDK目录结构介绍</h3><p><img src="/resource/images/pasted2-13.png" alt="upload successful"></p><p>安装后配置环境变量</p><p><img src="/resource/images/pasted2-14.png" alt="upload successful"></p><p>变量名：JAVA_HOME<br>值：D:\develop\java\jdk-11</p><p>变量名：Path<br>值：D:\develop\java\jdk-11\bin</p><h3 id="2、开始编写第一个程序HelloWorld"><a href="#2、开始编写第一个程序HelloWorld" class="headerlink" title="2、开始编写第一个程序HelloWorld"></a>2、开始编写第一个程序HelloWorld</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"HelloWorld"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/resource/images/pasted2-15.png" alt="upload successful"></p><h3 id="3、编译java并执行java文件"><a href="#3、编译java并执行java文件" class="headerlink" title="3、编译java并执行java文件"></a>3、编译java并执行java文件</h3><p><img src="/resource/images/pasted2-16.png" alt="upload successful"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h4 id=&quot;官网下载java11做为学习版本&quot;&gt;&lt;a href=&quot;#官网下载java11做为学习版本&quot; class=&quot;headerlink&quot; title=&quot;官网下载java11做为学习版本&quot;&gt;&lt;/a&gt;官网下载java11做为学习版本&lt;/h4&gt;&lt;p&gt;下载地址：&lt;a href=&quot;
+        &lt;h3 id=&quot;官网下载java11做为学习版本&quot;&gt;&lt;a href=&quot;#官网下载java11做为学习版本&quot; class=&quot;headerlink&quot; title=&quot;官网下载java11做为学习版本&quot;&gt;&lt;/a&gt;官网下载java11做为学习版本&lt;/h3&gt;&lt;p&gt;下载地址：&lt;a href=&quot;
       
     
     </summary>
