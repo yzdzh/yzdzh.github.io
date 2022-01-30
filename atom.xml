@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-01-03T18:23:42.799Z</updated>
+  <updated>2022-01-30T20:28:12.253Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java新启程-HelloWorld</title>
+    <link href="https://yzdzh.github.io/post/2119301209.html"/>
+    <id>https://yzdzh.github.io/post/2119301209.html</id>
+    <published>2022-01-30T20:19:00.000Z</published>
+    <updated>2022-01-30T20:28:12.253Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="官网下载java11做为学习版本"><a href="#官网下载java11做为学习版本" class="headerlink" title="官网下载java11做为学习版本"></a>官网下载java11做为学习版本</h4><p>下载地址：<a href="http://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">http://jdk.java.net/java-se-ri/11</a></p><h4 id="JDK目录结构介绍"><a href="#JDK目录结构介绍" class="headerlink" title="JDK目录结构介绍"></a>JDK目录结构介绍</h4><p><img src="/resource/images/pasted2-13.png" alt="upload successful"></p><p>安装后配置环境变量</p><p><img src="/resource/images/pasted2-14.png" alt="upload successful"></p><p>变量名：JAVA_HOME<br>值：D:\develop\java\jdk-11</p><p>变量名：Path<br>值：D:\develop\java\jdk-11\bin</p><h4 id="开始编写第一个程序HelloWorld"><a href="#开始编写第一个程序HelloWorld" class="headerlink" title="开始编写第一个程序HelloWorld"></a>开始编写第一个程序HelloWorld</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"HelloWorld"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/resource/images/pasted2-15.png" alt="upload successful"></p><h4 id="编译java并执行java文件"><a href="#编译java并执行java文件" class="headerlink" title="编译java并执行java文件"></a>编译java并执行java文件</h4><p><img src="/resource/images/pasted2-16.png" alt="upload successful"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;官网下载java11做为学习版本&quot;&gt;&lt;a href=&quot;#官网下载java11做为学习版本&quot; class=&quot;headerlink&quot; title=&quot;官网下载java11做为学习版本&quot;&gt;&lt;/a&gt;官网下载java11做为学习版本&lt;/h4&gt;&lt;p&gt;下载地址：&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="https://yzdzh.github.io/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>ab压测工具</title>
@@ -477,37 +501,6 @@
 &lt;li&gt;使用了defer panic 和recover关键字&lt;/li&gt;
 &lt;li&gt;描述：1.抛出panic异常，2.在defer通过recover捕获异常，然后正常处理　　&lt;/li&gt;
 &lt;/u
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>golang之基于zap开箱即用日志组件</title>
-    <link href="https://yzdzh.github.io/post/816087200.html"/>
-    <id>https://yzdzh.github.io/post/816087200.html</id>
-    <published>2020-05-19T09:34:00.000Z</published>
-    <updated>2020-05-19T09:34:39.935Z</updated>
-    
-    <content type="html"><![CDATA[<p>logrus 是 golang 一款非常优秀的日志框架, 其优点非常明显:</p><ul><li>优雅的代码框架设计</li><li>使用简单</li><li>组件化的开发思路</li><li>灵活的输出方式</li></ul><p>但是, 性能终究是忍痛舍弃 logrus 的“阿喀琉斯之踵”<br>目前 golang 日志库的大众选择主要集中在: logrus, zap, zerolog. zap 和 zerolog 的性能都是优秀的, 但是从用法习惯上我更倾向于 zap.</p><h3 id="简单介绍-Zap-的使用"><a href="#简单介绍-Zap-的使用" class="headerlink" title="简单介绍 Zap 的使用"></a>简单介绍 Zap 的使用</h3><p>Zap 提供三种不同方式的输出(以 Info为 例)</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log.Info(<span class="string">"hello zap"</span>) <span class="comment">// &#123;"level":"info","ts":1576423173.016333,"caller":"test_zap/main.go:28","msg":"hello zap"&#125;</span></span><br><span class="line">log.Infof(<span class="string">"hello %s"</span>, <span class="string">"zap"</span>) <span class="comment">// &#123;"level":"info","ts":1576423203.056074,"caller":"test_zap/main.go:29","msg":"hello zap"&#125;</span></span><br><span class="line">log.Infow(<span class="string">"hello zap"</span>, <span class="string">"field1"</span>, <span class="string">"value1"</span>) <span class="comment">//&#123;"level":"info","ts":1576423203.0560799,"caller":"test_zap/main.go:30","msg":"hello zap","field1":"value1"&#125;</span></span><br></pre></td></tr></table></figure><p>如果我们对 logrus 的 key-value 理论比较在意的话, 使用 zap infow 可以完美解决</p><ul><li>Zap 使用起来不便利的地方</li><li>Zap 使用上不能像 logrus 那样开箱即用</li><li>使用者需要自己去组装相关函数</li><li>Zap 同样不提供日志切割的功能, 但是想添加上这个功能没有 logrus 那样便利</li></ul><p>基于这些问题, 我封装了一套开箱即用的日志组件: <a href="https://github.com/yizhidaozuihou/log" target="_blank" rel="noopener">https://github.com/yizhidaozuihou/log</a></p><p>打造 Zap 开箱即用日志组件<br>提供的功能:</p><ul><li>提供的功能: 像 logrus 一样, 全局的 Debug, Info … 函数</li><li>日志分割功能. 默认文件大小1024M，自动压缩, 最大有3个文件备份，备份保存时间7天, 不会打印日志被调用的文文件名和位置</li><li>日志默认会被分成五类文件：debug、info、warn、error、panic 都会打印在xxx.log. xxx.log.Request输出 request log 的地方(如果有需要的话)</li></ul><p>使用方法</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> get github.com/yizhidaozuihou/log</span><br></pre></td></tr></table></figure><p>例子</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"github.com/yizhidaozuihou/log"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="comment">// init log</span></span><br><span class="line"><span class="comment">// set absolute path, and level</span></span><br><span class="line"><span class="comment">// set output level</span></span><br><span class="line"><span class="comment">// don't need request log</span></span><br><span class="line"><span class="comment">// set log's caller using logOption</span></span><br><span class="line">log.Init(<span class="string">"./test.log"</span>, log.DebugLevel, <span class="literal">false</span>, log.SetCaller(<span class="literal">true</span>))</span><br><span class="line">log.Info(<span class="string">"hello george log"</span>)</span><br><span class="line"><span class="comment">// flush</span></span><br><span class="line">log.Sync()</span><br><span class="line"><span class="comment">//output: &#123;"level":"info","ts":"2019-12-16T10:37:11.364+0800","caller":"example/example.go:12","msg":"hello george log"&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;logrus 是 golang 一款非常优秀的日志框架, 其优点非常明显:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;优雅的代码框架设计&lt;/li&gt;
-&lt;li&gt;使用简单&lt;/li&gt;
-&lt;li&gt;组件化的开发思路&lt;/li&gt;
-&lt;li&gt;灵活的输出方式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;但是, 性能终究是忍痛舍弃
       
     
     </summary>
