@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows11安装Android子系统及抓包方法</title>
+    <url>/post/2040882575.html</url>
+    <content><![CDATA[<p>需要确保已经开启Hyper-V功能</p>
+<h3 id="1、安装Android子系统"><a href="#1、安装Android子系统" class="headerlink" title="1、安装Android子系统"></a>1、安装Android子系统</h3><p>1）、直接打开网站：<a href="https://store.rg-adguard.net" target="_blank" rel="noopener">https://store.rg-adguard.net</a></p>
+<p><img src="/resource/images/pasted2-17.png" alt="upload successful"><br>　　按照上图，在对应的选择框中分别选择ProductID、Slow，在搜索框中输入9P3395VX91NR，点击确定。</p>
+<p>　　然后点击最后一个msibundle文件，就能下载该文件了。（我这边浏览器下载很慢，我是直接复制链接用的迅雷下载，直接满速，一分多种就下载好了。）</p>
+<p>2）、将下载的文件放在D盘根目录下，然后以管理员身份运行powershell，预防万一可以打开powershell后运行，确保完全是管理员模式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Start-Process powershell -Verb runAs</span><br></pre></td></tr></table></figure>
+
+<p>3）、进入D盘后安卓安卓子系统 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Add-AppxPackage 文件名</span><br></pre></td></tr></table></figure>
+
+<p><img src="/resource/images/pasted2-18.png" alt="upload successful"><br>Add-AppxPackage 【你下载的msibundle文件全称】<br>PS：直接在Add-AppxPackage后面复制你下载的msibundle文件名，包括后缀.msibundle</p>
+<p>安装好以后就能在开始菜单中看到安卓子系统的图标了。</p>
+<p><img src="/resource/images/pasted2-19.png" alt="upload successful"></p>
+<p>然后开启“开发人员模式”</p>
+<p><img src="/resource/images/pasted2-20.png" alt="upload successful"></p>
+<h3 id="2、安装Android侧载工具（WSA-工具箱）"><a href="#2、安装Android侧载工具（WSA-工具箱）" class="headerlink" title="2、安装Android侧载工具（WSA 工具箱）"></a>2、安装Android侧载工具（WSA 工具箱）</h3><p>这款侧载工具是我们国内的大佬开发的，名字叫做WSA 工具箱，它主要的功能就是安装APK文件、后台APP管理、查看子系统进程以及文件传输。这款工具其实是上架微软商店的应用，所以它也是绝对的安全，我们尽管放心用便是。</p>
+<p><img src="/resource/images/pasted2-21.png" alt="upload successful"></p>
+<p>如果搜索不到，这个是它的地址：<br><a href="https://www.microsoft.com/store/productId/9PPSP2MKVTGT" target="_blank" rel="noopener">https://www.microsoft.com/store/productId/9PPSP2MKVTGT</a></p>
+<h3 id="3、Fiddler配置android子系统app抓包"><a href="#3、Fiddler配置android子系统app抓包" class="headerlink" title="3、Fiddler配置android子系统app抓包"></a>3、Fiddler配置android子系统app抓包</h3><p>对应开发人员，需要在模拟机上对测试包进行地址抓包<br>1）、下载Fiddler软件<br>2）、开启允许远程连接</p>
+<p><img src="/resource/images/pasted2-22.png" alt="upload successful"><br>3）、https相关设置</p>
+<p><img src="/resource/images/pasted2-23.png" alt="upload successful"><br>4）、获取对应的wsa的宿主地址<br>打开cmd或powershell 输入 ipconfig 获取对应配置</p>
+<p><img src="/resource/images/pasted2-24.png" alt="upload successful"><br>获取当前地址 192.168.33.11<br>5）、需要下载一个浏览器，比如x浏览器 或者如果wsa中已有，可以忽略该步骤<br>用浏览器打开 <a href="http://192.168.33.11:8888" target="_blank" rel="noopener">http://192.168.33.11:8888</a></p>
+<p><img src="/resource/images/pasted2-25.png" alt="upload successful"></p>
+<p>下载完成后，是无法进行安装的，需要去设置里安装。此时 打开已经下载好的was工具箱</p>
+<p><img src="/resource/images/pasted2-26.png" alt="upload successful"><br>依次执行</p>
+<p><img src="/resource/images/pasted2-27.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-28.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-29.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-30.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-31.png" alt="upload successful"><br>点击安装完成即可</p>
+<p>6）、设置proxy</p>
+<p><img src="/resource/images/pasted2-32.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-33.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>java新启程-HelloWorld</title>
     <url>/post/2119301209.html</url>
     <content><![CDATA[<h3 id="官网下载java11做为学习版本"><a href="#官网下载java11做为学习版本" class="headerlink" title="官网下载java11做为学习版本"></a>官网下载java11做为学习版本</h3><p>下载地址：<a href="http://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">http://jdk.java.net/java-se-ri/11</a></p>
