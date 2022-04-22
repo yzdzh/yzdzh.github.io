@@ -299,6 +299,23 @@
 </tbody></table>
 <h3 id="2、导入数据库"><a href="#2、导入数据库" class="headerlink" title="2、导入数据库"></a>2、导入数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i  com_mysql mysqldump -c -uroot -p123456    app_agent  &lt;  app_agent.sql</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -i  com_mysql【docker容器名称/ID】 mysqltest_db_copy【数据库名称】 &lt; /opt/sql_bak/test_db.sql【本地数据表路径】</span><br></pre></td></tr></table></figure>
 <p>注意：这里需要将参数 -it 更换为 -i ，<br>否则会报错：”the input device is not a TTY”</p>
+<h3 id="具体导入导出示例"><a href="#具体导入导出示例" class="headerlink" title="具体导入导出示例"></a>具体导入导出示例</h3><h4 id="———–本地服务器操作————————–"><a href="#———–本地服务器操作————————–" class="headerlink" title="———–本地服务器操作————————–"></a>———–本地服务器操作————————–</h4><h6 id="直接将结果导出sql文件"><a href="#直接将结果导出sql文件" class="headerlink" title="直接将结果导出sql文件"></a>直接将结果导出sql文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it  com_mysql mysqldump -c -uroot -p123456    <span class="built_in">test</span>  &gt;  test.sql</span><br></pre></td></tr></table></figure>
+
+<h6 id="scp复制文件到要导入的服务器指定文件夹"><a href="#scp复制文件到要导入的服务器指定文件夹" class="headerlink" title="scp复制文件到要导入的服务器指定文件夹"></a>scp复制文件到要导入的服务器指定文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp test.sql  root@192.168.0.185:/home/servers/docker_php_dev/mysql/backup</span><br><span class="line"></span><br><span class="line">输入远程服务器的密码</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————"><a href="#——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————" class="headerlink" title="——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————-"></a>——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————-</h4><h6 id="进入mysql容器"><a href="#进入mysql容器" class="headerlink" title="进入mysql容器"></a>进入mysql容器</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it  com_mysql bash</span><br></pre></td></tr></table></figure>
+
+<h6 id="进入mysql"><a href="#进入mysql" class="headerlink" title="进入mysql"></a>进入mysql</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p </span><br><span class="line"></span><br><span class="line">输入mysql的root密码</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="进入要导入的数据库"><a href="#进入要导入的数据库" class="headerlink" title="进入要导入的数据库"></a>进入要导入的数据库</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use <span class="built_in">test</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行source命令直接导入sql文件"><a href="#执行source命令直接导入sql文件" class="headerlink" title="执行source命令直接导入sql文件"></a>执行source命令直接导入sql文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /bitnami/backup/test.sql</span><br></pre></td></tr></table></figure>
+
+
 <p>借鉴于原文：<a href="https://blog.csdn.net/qq_27565769/article/details/80731271" target="_blank" rel="noopener">https://blog.csdn.net/qq_27565769/article/details/80731271</a></p>
 ]]></content>
       <categories>
