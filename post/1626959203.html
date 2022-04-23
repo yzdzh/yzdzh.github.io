@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.5"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.5"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><link rel="stylesheet" type="text/css" href="https://unpkg.com/gitalk/dist/gitalk.css?v=2.0.5"><title>为什么一定要用MQ中间件？ | 星光的博客</title><script data-ad-client="ca-pub-5977992732306814" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">为什么一定要用MQ中间件？</h1><a id="logo" href="/.">星光的博客</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">为什么一定要用MQ中间件？</h1><div class="post-meta"><a href="/post/1626959203.html#comments" class="comment-count"></a><p><span class="date">2020-03-21</span><span><a href="/categories/rabbitmq/" class="category">rabbitmq</a></span></p></div><div class="post-content"><p>这篇文章我们会把消息中间件这块高频的面试问题来给大家说一下，也会涵盖一些 MQ 中间件常见的技术问题。</p>
+<p>假如说面试官看你简历里写了 MQ 中间件的使用经验，很可能会有如下的问题：</p>
+<p>你们公司生产环境用的是什么消息中间件?<br>为什么要在系统架构中引入消息中间件?<br>引入消息中间件之后会有什么好处以及坏处?<br>好，下面我们一个个的来分析!</p>
+<p><strong>你们公司生产环境用的是什么消息中间件?</strong></p>
+<p>这个首先你可以说下你们公司选用的是什么消息中间件，比如用的是 RabbitMQ，然后可以初步给一些你对不同 MQ 中间件技术的选型分析。</p>
+<p>举个例子：比如说 ActiveMQ 是老牌的消息中间件，国内很多公司过去运用的还是非常广泛的，功能很强大。</p>
+<p>但是问题在于没法确认 ActiveMQ 可以支撑互联网公司的高并发、高负载以及高吞吐的复杂场景，在国内互联网公司落地较少。而且使用较多的是一些传统企业，用 ActiveMQ 做异步调用和系统解耦。</p>
+<p>然后你可以说说 RabbitMQ，他的好处在于可以支撑高并发、高吞吐、性能很高，同时有非常完善便捷的后台管理界面可以使用。</p>
+<p>另外，他还支持集群化、高可用部署架构、消息高可靠支持，功能较为完善。</p>
+<p>而且经过调研，国内各大互联网公司落地大规模 RabbitMQ 集群支撑自身业务的 case 较多，国内各种中小型互联网公司使用 RabbitMQ 的实践也比较多。</p>
+<p>除此之外，RabbitMQ 的开源社区很活跃，较高频率的迭代版本，来修复发现的 Bug 以及进行各种优化，因此综合考虑过后，公司采取了 RabbitMQ。</p>
+<p>但是 RabbitMQ 也有一点缺陷，就是他自身是基于 Erlang 语言开发的，所以导致较为难以分析里面的源码，也较难进行深层次的源码定制和改造，毕竟需要较为扎实的 Erlang 语言功底才可以。</p>
+<p>然后可以聊聊 RocketMQ，是阿里开源的，经过阿里的生产环境的超高并发、高吞吐的考验，性能卓越，同时还支持分布式事务等特殊场景。</p>
+<p>而且 RocketMQ 是基于 Java 语言开发的，适合深入阅读源码，有需要可以站在源码层面解决线上生产问题，包括源码的二次开发和改造。</p>
+<p>另外就是 Kafka。Kafka 提供的消息中间件的功能明显较少一些，相对上述几款 MQ 中间件要少很多。</p>
+<p>但是 Kafka 的优势在于专为超高吞吐量的实时日志采集、实时数据同步、实时数据计算等场景来设计。</p>
+<p>因此 Kafka 在大数据领域中配合实时计算技术(比如 Spark Streaming、Storm、Flink)使用的较多。但是在传统的 MQ 中间件使用场景中较少采用。</p>
+<p>PS：如果大家对上述一些 MQ 技术还没在自己电脑部署过，没写几个 helloworld 体验一下的话，建议先上各个技术的官网找到 helloworld demo，自己跑一遍玩玩。</p>
+<p><strong>为什么在你们系统架构中要引入消息中间件?</strong></p>
+<p>回答这个问题，其实就是让你先说说消息中间件的常见使用场景。然后结合你们自身系统对应的使用场景，说一下在你们系统中引入消息中间件解决了什么问题。</p>
+<p><font color='red'> <strong>1. 系统解耦</strong></font></p>
+<p>假设你有个系统 A，这个系统 A 会产出一个核心数据，现在下游有系统 B 和系统 C 需要这个数据。那简单，系统 A 就是直接调用系统 B 和系统 C 的接口发送数据给他们就好了。</p>
+<p>整个过程，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200321224517720.png" alt="在这里插入图片描述"><br>但是现在要是来了系统 D、系统 E、系统 F、系统 G，等等，十来个其他系统慢慢的都需要这份核心数据呢?如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321224622217.png" alt="在这里插入图片描述"><br>大家可别以为这是开玩笑，一个大规模系统，往往会拆分为几十个甚至上百个子系统，每个子系统又对应 N 多个服务，这些系统与系统之间有着错综复杂的关系网络。</p>
+<p>如果某个系统产出一份核心数据，可能下游无数的其他系统都需要这份数据来实现各种业务逻辑。</p>
+<p>此时如果你要是采取上面那种模式来设计系统架构，那么绝对你负责系统 A 的同学要被烦死了。</p>
+<p>先是来一个人找他要求发送数据给一个新的系统 H，系统 A 的同学要修改代码，然后在那个代码里加入调用新系统 H 的流程。</p>
+<p>一会那个系统 B 是个陈旧老系统要下线了，告诉系统 A 的同学：别给我发送数据了，接着系统 A 再次修改代码不再给这个系统 B。</p>
+<p>然后如果要是某个下游系统突然宕机了呢?系统 A 的调用代码里是不是会抛异常?</p>
+<p>那系统A的同学会收到报警说异常了，结果他还要去 care 是下游哪个系统宕机了。</p>
+<p>所以在实际的系统架构设计中，如果全部采取这种系统耦合的方式，在某些场景下绝对是不合适的，系统耦合度太严重。</p>
+<p>并且互相耦合起来并不是核心链路的调用，而是一些非核心的场景(比如上述的数据消费)导致了系统耦合，这样会严重的影响上下游系统的开发和维护效率。</p>
+<p>因此在上述系统架构中，就可以采用 MQ 中间件来实现系统解耦。系统 A 就把自己的一份核心数据发到 MQ 里，下游哪个系统感兴趣自己去消费即可，不需要了就取消数据的消费，如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321224649412.png" alt="在这里插入图片描述"></p>
+<p><font color='red'> <strong>2. 异步调用</strong></font></p>
+<p>假设你有一个系统调用链路，是系统 A 调用系统 B，一般耗时 20ms;系统 B 调用系统 C，一般耗时 200ms;系统 C 调用系统 D，一般耗时 2s，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200321224720747.png" alt="面试大杀器：为什么一定要用MQ中间件？"></p>
+<p>现在最大的问题就是：用户一个请求过来巨慢无比，因为走完一个链路，需要耗费 20ms + 200ms + 2000ms(2s) = 2220ms，也就是 2 秒多的时间。</p>
+<p>但是实际上，链路中的系统 A 调用系统 B，系统 B 调用系统 C，这两个步骤起来也就 220ms。</p>
+<p>就因为引入了系统 C 调用系统 D 这个步骤，导致最终链路执行时间是 2 秒多，直接将链路调用性能降低了 10 倍，这就是导致链路执行过慢的罪魁祸首。</p>
+<p>那此时我们可以思考一下，是不是可以将系统 D 从链路中抽离出去做成异步调用呢?其实很多的业务场景是可以允许异步调用的。</p>
+<p>举个例子，你平时点个外卖，咔嚓一下子下订单然后付款了，此时账户扣款、创建订单、通知商家给你准备菜品。</p>
+<p>接着，是不是需要找个骑手给你送餐?那这个找骑手的过程，是需要一套复杂算法来实现调度的，比较耗时。</p>
+<p>但是其实稍微晚个几十秒完成骑手的调度都是 ok 的，因为实际并不需要在你支付的一瞬间立马给你找好骑手，也没那个必要。</p>
+<p>那么我们是不是就可以把找骑手给你送餐的这个步骤从链路中抽离出去，做成异步化的，哪怕延迟个几十秒，但是只要在一定时间范围内给你找到一个骑手去送餐就可以了。</p>
+<p>这样是不是就可以让你下订单点外卖的速度变得超快?支付成功之后，直接创建好订单、账户扣款、通知商家立马给你准备做菜就 ok 了，这个过程可能就几百毫秒。</p>
+<p>然后后台异步化的耗费可能几十秒通过调度算法给你找到一个骑手去送餐，但是这个步骤不影响我们快速下订单。</p>
+<p>当然我们不是说那些大家熟悉的外卖平台的技术架构就一定是这么实现的，只不过是用一个生活中常见的例子给大家举例说明而已。</p>
+<p>所以上面的链路也是同理，如果业务流程支持异步化的话，是不是就可以考虑把系统 C 对系统 D 的调用抽离出去做成异步化的，不要放在链路中同步依次调用。</p>
+<p>这样，实现思路就是系统 A→系统 B→系统 C，直接就耗费 220ms 后直接成功了。</p>
+<p>然后系统 C 就是发送个消息到 MQ 中间件里，由系统 D 消费到消息之后慢慢的异步来执行这个耗时 2s 的业务处理。通过这种方式直接将核心链路的执行性能提升了 10 倍。</p>
+<p>整个过程，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200321224745792.png" alt="面试大杀器：为什么一定要用MQ中间件？"></p>
+<p><font color='red'> <strong>3. 流量削峰</strong></font></p>
+<p>假设你有一个系统，平时正常的时候每秒可能就几百个请求，系统部署在 8 核 16G 的机器的上，正常处理都是 ok 的，每秒几百请求是可以轻松抗住的。</p>
+<p>但是如下图所示，在高峰期一下子来了每秒钟几千请求，瞬时出现了流量高峰，此时你的选择是要搞 10 台机器，抗住每秒几千请求的瞬时高峰吗?<br><img src="https://img-blog.csdnimg.cn/20200321224807846.png" alt="面试大杀器：为什么一定要用MQ中间件？"></p>
+<p>那如果瞬时高峰每天就那么半个小时，接着直接就降低为了每秒就几百请求，如果你线上部署了很多台机器，那么每台机器就处理每秒几十个请求就可以了，这不是有点浪费机器资源吗?</p>
+<p>大部分时候，每秒几百请求，一台机器就足够了，但是为了抗那每天瞬时的高峰，硬是部署了 10 台机器，每天就那半个小时有用，别的时候都是浪费资源的。<br><img src="https://img-blog.csdnimg.cn/20200321224827571.png" alt="面试大杀器：为什么一定要用MQ中间件？"><br>但是如果你就部署一台机器，那会导致瞬时高峰时，一下子压垮你的系统，因为绝对无法抗住每秒几千的请求高峰。</p>
+<p>此时我们就可以用 MQ 中间件来进行流量削峰。所有机器前面部署一层 MQ，平时每秒几百请求大家都可以轻松接收消息。</p>
+<p>一旦到了瞬时高峰期，一下涌入每秒几千的请求，就可以积压在 MQ 里面，然后那一台机器慢慢的处理和消费。</p>
+<p>等高峰期过了，再消费一段时间，MQ 里积压的数据就消费完毕了。<br><img src="https://img-blog.csdnimg.cn/20200321224845864.png" alt="面试大杀器：为什么一定要用MQ中间件？"></p>
+<p>这个就是很典型的一个 MQ 的用法，用有限的机器资源承载高并发请求。</p>
+<p>如果业务场景允许异步削峰，高峰期积压一些请求在 MQ 里，然后高峰期过了，后台系统在一定时间内消费完毕不再积压的话，那就很适合用这种技术方案。</p>
+<p><strong>引入消息中间件之后会有什么好处以及坏处?</strong></p>
+<p>如果你在系统架构里引入了消息中间件之后，会有哪些缺点?</p>
+<p><font color='red'> <strong>1. 系统可用性降低</strong></font></p>
+<p>首先是你的系统整体可用性绝对会降低，给你举个例子，我们就拿之前的一幅图来说明。</p>
+<p>比如说一个核心链路里面，系统 A→系统 B→系统 C，然后系统 C 是通过 MQ 异步调用系统 D 的。<br><img src="https://img-blog.csdnimg.cn/20200321224958483.png" alt="在这里插入图片描述"><br>看起来很好，你用这个 MQ 异步化的手段解决了一个核心链路执行性能过差的问题。</p>
+<p>但是你有没有考虑另外一个问题，就是万一你依赖的那个 MQ 中间件突然挂掉了怎么办?</p>
+<p>这个还真的不是异想天开，MQ、Redis、MySQL 这些组件都有可能会挂掉。一旦你的 MQ 挂了，就导致你的系统的核心业务流程中断了。</p>
+<p>本来你要是不引入 MQ 中间件，那其实就是一些系统之间的调用，但是现在你引入了 MQ，就导致你多了一个依赖。一旦多了一个依赖，就会导致你的可用性降低。</p>
+<p>因此，一旦引入了 MQ 中间件，你就必须去考虑这个 MQ 是如何部署的，如何保证高可用性。</p>
+<p>甚至在复杂的高可用的场景下，你还要考虑如果 MQ 一旦挂了以后，你的系统有没有备用兜底的技术方案，可以保证系统继续运行下去。</p>
+<p><font color='red'><strong>2. 系统稳定性降低</strong></font></p>
+<p>还是上面那张图，大家再来看一下：<br><img src="https://img-blog.csdnimg.cn/20200321225033424.png" alt="在这里插入图片描述"></p>
+<p>不知道大家有没有发现一个问题，这个链路除了 MQ 中间件挂掉这个可能存在的隐患之外，可能还有一些其他的技术问题。</p>
+<p>比如说，莫名其妙的，系统 C 发了一个消息到 MQ，结果那个消息因为<font color='red'>网络故障</font>等问题，就丢失了。这就导致系统 D 没有收到那条消息。</p>
+<p>这可就惨了，这样会导致系统 D 没完成自己该做的任务，此时可能整个系统会出现业务错乱，数据丢失，严重的 Bug，用户体验很差等各种问题。</p>
+<p>这还只是其中之一，万一说系统 C 给 MQ 发送消息，不小心一抽风<font color='red'>重复发了一条一模一样的</font>，导致消息重复了，这个时候该怎么办?</p>
+<p>可能会导致系统 D 一下子把一条数据插入了两次，导致数据错误，脏数据的产生，最后一样会导致各种问题。</p>
+<p>或者说如果系统 D 突然宕机了几个小时，导致无法消费消息，结果大量的消息在 MQ 中间件里积压了很久，这个时候怎么办?</p>
+<p>即使系统 D 恢复了，也需要慢慢的消费数据来进行处理。所以这就是引入 MQ 中间件的第二个大问题，系统稳定性可能会下降，故障会增多，各种各样乱七八糟的问题都可能产生。</p>
+<p>而且一旦产生了一个问题，就会导致系统整体出问题。你就需要为了解决各种 MQ 引发的技术问题，采取很多的技术方案。</p>
+<p>关于这个，我们后面会用专门的文章聊聊 MQ 中间件的这些问题的解决方案，包括：</p>
+<ul>
+<li><strong>消息高可靠传递(0 丢失)</strong></li>
+<li><strong>消息幂等性传递(绝对不重复)</strong></li>
+<li><strong>百万消息积压的线上故障处理</strong></li>
+</ul>
+<p><font color='red'><strong>3. 分布式一致性问题</strong></font></p>
+<p>引入消息中间件，还有分布式一致性的问题。举个例子，比如说系统 C 现在处理自己本地数据库成功了，然后发送了一个消息给 MQ，系统 D 也确实是消费到了。</p>
+<p>但是结果不幸的是，系统 D 操作自己本地数据库失败了，那这个时候咋办?</p>
+<p>系统 C 成功了，系统 D 失败了，会导致系统整体数据不一致了啊。所以此时又需要使用可靠消息最终一致性的分布式事务方案来保障。</p>
+<p>关于这个，可以参考之前的一篇文章：最终一致性分布式事务如何保障实际生产中 99.99% 高可用?</p>
+<p>我们在里面详细阐述了系统之间异步调用场景下，如何采用分布式事务方案保证其数据一致性。</p>
+<p><strong>总结</strong></p>
+<p>最后，我们来做一个简单的小结。在面试中要答好这个问题，首先一定要熟悉 MQ 这个技术的优缺点。了解清楚把他引入系统是为了解决哪些问题的，但是他自身又会带来哪些问题。</p>
+<p>此外，对于引入 MQ 以后，是否对他自身可能引发的问题有一些方案的设计，来保证你的系统高可用、高可靠的运行，保证数据的一致性。这个也要做好相应的准备。</p>
+<p>原文链接：<a href="https://blog.csdn.net/u011277123/article/details/87803486" target="_blank" rel="noopener">https://blog.csdn.net/u011277123/article/details/87803486</a></p>
+</div><div class="post-copyright"><blockquote><p>原文作者: xingguang</p><p>原文链接: <a href="https://yzdzh.github.io/post/1626959203.html">https://yzdzh.github.io/post/1626959203.html</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/post/2929107307.html" class="pre">go-grpc调试工具grpcui</a><a href="/post/1297686480.html" class="next">yii2简单实现redis消息队列</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.5"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.5"></script><script>var gitalk = new Gitalk({
+  clientID: 'fe51b6fab2e6bc732537',
+  clientSecret: '73b392debaae9e2cb42af08aeeb8f9de753b00b8',
+  repo: 'blogtalk',
+  owner: 'yizhidaozuihou',
+  admin: ['yizhidaozuihou'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: false,
+  language: 'zh-CN',
+  pagerDirection: 'last'
+})
+gitalk.render('container')</script></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/post/1542514284.html">certbot自动签证机器人</a></li><li class="post-list-item"><a class="post-list-link" href="/post/2040882575.html">Windows11安装Android子系统及抓包方法</a></li><li class="post-list-item"><a class="post-list-link" href="/post/2119301209.html">java新启程-HelloWorld</a></li><li class="post-list-item"><a class="post-list-link" href="/post/984256984.html">ab压测工具</a></li><li class="post-list-item"><a class="post-list-link" href="/post/3478081417.html">linux网络带宽监控工具</a></li><li class="post-list-item"><a class="post-list-link" href="/post/710540892.html">k8s-集群搭建的三种方式和区别，kubeadm、minikube，二进制包</a></li><li class="post-list-item"><a class="post-list-link" href="/post/1494107583.html">linux中root账号也无法修改文件权限解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/post/381300251.html">mongodb容器的数据导入和导出</a></li><li class="post-list-item"><a class="post-list-link" href="/post/1607203207.html">mysql容器的数据导入和导出</a></li><li class="post-list-item"><a class="post-list-link" href="/post/3568385113.html">docker容器以ROOT账号登录（获取ROOT权限/ROOT密码）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Elasticsearch/">Elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/yii2/">yii2</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/golang/">golang</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo%E6%8A%98%E8%85%BE/">hexo折腾</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/k8s/">k8s</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/phpStorm/">phpStorm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rabbitmq/">rabbitmq</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swoole/">swoole</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vagrant/">vagrant</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wsl/">wsl</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96%E7%BC%96%E7%A8%8B/">其他编程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">编程思想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%90%90%E7%A2%8E/">编程琐碎</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/">2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://doc.aiwaly.com/docs/golang/golang-1b9du6af0iu7b" title="go大神笔记" target="_blank">go大神笔记</a><ul></ul><a href="https://learnku.com/docs/gin-gonic/2019/go-gin-document/6149" title="gin框架中文文档" target="_blank">gin框架中文文档</a><ul></ul><a href="https://learnku.com/articles/41230" title="golang第三方包大全" target="_blank">golang第三方包大全</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a><p><a href="http://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank">粤ICP备20009929号</a></p></p><p><span> Copyright &copy;<a href="/." rel="nofollow">xingguang.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script type="text/javascript" src="/js/search.json.js?v=2.0.5"></script><script>//百度统计
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9d26cb37102d613f1bb272ba408ec7b0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script><script>//百度自动推送
+(function(){
+var bp = document.createElement('script');
+var curProtocol = window.location.protocol.split(':')[0];
+if (curProtocol === 'https') {
+bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+else {
+bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(bp, s);
+})();
+</script><script>//360搜索自动推送
+(function(){
+var src = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+document.write('<script src="' + src + '" id="sozz"><\\/script>');
+})();</script><div id="fullscreen-img" class="hide"><span class="close"></span></div><script type="text/javascript" src="/js/imgview.js?v=2.0.5" async></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.5" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
