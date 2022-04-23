@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>星光的博客</title>
   
-  
+  <subtitle>php后端工程师，兼职前端和go开发</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
