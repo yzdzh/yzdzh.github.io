@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>星光的博客</title>
   
-  <subtitle>php后端工程师，兼职前端和go开发</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://wangzhuanglin.gitee.io/"/>
+  <link href="https://yzdzh.github.io/"/>
   <updated>2022-04-24T07:47:25.772Z</updated>
-  <id>https://wangzhuanglin.gitee.io/</id>
+  <id>https://yzdzh.github.io/</id>
   
   <author>
     <name>xingguang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>docker安装软件环境集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/527254571.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/527254571.html</id>
+    <link href="https://yzdzh.github.io/post/527254571.html"/>
+    <id>https://yzdzh.github.io/post/527254571.html</id>
     <published>2021-04-26T16:15:00.000Z</published>
     <updated>2022-04-24T07:47:25.772Z</updated>
     
@@ -36,15 +36,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>docker打包自定义镜像并上传docker hub</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1624279696.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1624279696.html</id>
+    <link href="https://yzdzh.github.io/post/1624279696.html"/>
+    <id>https://yzdzh.github.io/post/1624279696.html</id>
     <published>2021-04-26T08:05:00.000Z</published>
     <updated>2021-04-27T01:33:41.867Z</updated>
     
@@ -60,15 +60,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>phpstrom实用插件集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1452351953.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1452351953.html</id>
+    <link href="https://yzdzh.github.io/post/1452351953.html"/>
+    <id>https://yzdzh.github.io/post/1452351953.html</id>
     <published>2021-01-30T10:02:00.000Z</published>
     <updated>2021-07-08T08:03:10.570Z</updated>
     
@@ -85,15 +85,15 @@
     </summary>
     
     
-      <category term="phpStorm" scheme="https://wangzhuanglin.gitee.io/categories/phpStorm/"/>
+      <category term="phpStorm" scheme="https://yzdzh.github.io/categories/phpStorm/"/>
     
     
   </entry>
   
   <entry>
     <title>Mysql开启全部sql日志查询</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2712546463.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2712546463.html</id>
+    <link href="https://yzdzh.github.io/post/2712546463.html"/>
+    <id>https://yzdzh.github.io/post/2712546463.html</id>
     <published>2020-08-12T10:11:00.000Z</published>
     <updated>2020-08-12T10:12:36.570Z</updated>
     
@@ -110,15 +110,15 @@
     </summary>
     
     
-      <category term="mysql" scheme="https://wangzhuanglin.gitee.io/categories/mysql/"/>
+      <category term="mysql" scheme="https://yzdzh.github.io/categories/mysql/"/>
     
     
   </entry>
   
   <entry>
     <title>golang之捕获异常</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2798837510.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2798837510.html</id>
+    <link href="https://yzdzh.github.io/post/2798837510.html"/>
+    <id>https://yzdzh.github.io/post/2798837510.html</id>
     <published>2020-05-22T10:00:00.000Z</published>
     <updated>2020-05-22T10:01:11.239Z</updated>
     
@@ -138,15 +138,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>golang之基于zap开箱即用日志组件</title>
-    <link href="https://wangzhuanglin.gitee.io/post/816087200.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/816087200.html</id>
+    <link href="https://yzdzh.github.io/post/816087200.html"/>
+    <id>https://yzdzh.github.io/post/816087200.html</id>
     <published>2020-05-19T09:34:00.000Z</published>
     <updated>2020-05-19T09:34:39.935Z</updated>
     
@@ -169,15 +169,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>golang个人总结好用库集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/561152273.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/561152273.html</id>
+    <link href="https://yzdzh.github.io/post/561152273.html"/>
+    <id>https://yzdzh.github.io/post/561152273.html</id>
     <published>2020-05-18T18:37:00.000Z</published>
     <updated>2022-04-24T07:47:25.772Z</updated>
     
@@ -194,15 +194,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>golang之viper操作库</title>
-    <link href="https://wangzhuanglin.gitee.io/post/132771847.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/132771847.html</id>
+    <link href="https://yzdzh.github.io/post/132771847.html"/>
+    <id>https://yzdzh.github.io/post/132771847.html</id>
     <published>2020-05-18T08:58:00.000Z</published>
     <updated>2020-05-18T08:58:47.364Z</updated>
     
@@ -220,15 +220,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>golang库集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3243567407.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3243567407.html</id>
+    <link href="https://yzdzh.github.io/post/3243567407.html"/>
+    <id>https://yzdzh.github.io/post/3243567407.html</id>
     <published>2020-05-13T15:25:00.000Z</published>
     <updated>2020-05-13T15:39:52.683Z</updated>
     
@@ -244,15 +244,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>golang之json操作库</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3838666233.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3838666233.html</id>
+    <link href="https://yzdzh.github.io/post/3838666233.html"/>
+    <id>https://yzdzh.github.io/post/3838666233.html</id>
     <published>2020-05-13T14:24:00.000Z</published>
     <updated>2020-05-13T14:24:43.037Z</updated>
     
@@ -269,15 +269,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>go依赖管理--Go modules</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2526408434.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2526408434.html</id>
+    <link href="https://yzdzh.github.io/post/2526408434.html"/>
+    <id>https://yzdzh.github.io/post/2526408434.html</id>
     <published>2020-05-12T16:01:00.000Z</published>
     <updated>2020-05-12T16:06:28.273Z</updated>
     
@@ -293,15 +293,15 @@
     </summary>
     
     
-      <category term="golang" scheme="https://wangzhuanglin.gitee.io/categories/golang/"/>
+      <category term="golang" scheme="https://yzdzh.github.io/categories/golang/"/>
     
     
   </entry>
   
   <entry>
     <title>MongoDB中各种类型的索引</title>
-    <link href="https://wangzhuanglin.gitee.io/post/579789855.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/579789855.html</id>
+    <link href="https://yzdzh.github.io/post/579789855.html"/>
+    <id>https://yzdzh.github.io/post/579789855.html</id>
     <published>2020-05-03T15:57:00.000Z</published>
     <updated>2020-05-03T15:58:19.435Z</updated>
     
@@ -318,15 +318,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>MongoDB-分片片键</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1182994018.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1182994018.html</id>
+    <link href="https://yzdzh.github.io/post/1182994018.html"/>
+    <id>https://yzdzh.github.io/post/1182994018.html</id>
     <published>2020-05-03T14:44:00.000Z</published>
     <updated>2020-05-03T14:46:40.041Z</updated>
     
@@ -342,15 +342,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>MongoDB之分片集群与复制集</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3134727742.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3134727742.html</id>
+    <link href="https://yzdzh.github.io/post/3134727742.html"/>
+    <id>https://yzdzh.github.io/post/3134727742.html</id>
     <published>2020-05-03T13:15:00.000Z</published>
     <updated>2020-05-03T13:20:02.461Z</updated>
     
@@ -366,15 +366,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>vagrant虚拟机共享目录加速</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1735609695.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1735609695.html</id>
+    <link href="https://yzdzh.github.io/post/1735609695.html"/>
+    <id>https://yzdzh.github.io/post/1735609695.html</id>
     <published>2020-04-25T13:13:00.000Z</published>
     <updated>2020-04-25T13:15:31.985Z</updated>
     
@@ -390,15 +390,15 @@
     </summary>
     
     
-      <category term="vagrant" scheme="https://wangzhuanglin.gitee.io/categories/vagrant/"/>
+      <category term="vagrant" scheme="https://yzdzh.github.io/categories/vagrant/"/>
     
     
   </entry>
   
   <entry>
     <title>mongodb添加账号密码</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2802551252.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2802551252.html</id>
+    <link href="https://yzdzh.github.io/post/2802551252.html"/>
+    <id>https://yzdzh.github.io/post/2802551252.html</id>
     <published>2020-04-21T02:52:00.000Z</published>
     <updated>2020-04-21T02:52:45.538Z</updated>
     
@@ -415,15 +415,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>centos7安装mongodb和设置开机自动启动</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2911353081.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2911353081.html</id>
+    <link href="https://yzdzh.github.io/post/2911353081.html"/>
+    <id>https://yzdzh.github.io/post/2911353081.html</id>
     <published>2020-04-21T02:51:00.000Z</published>
     <updated>2020-12-29T02:55:46.458Z</updated>
     
@@ -439,15 +439,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>submit text3批量选中指定关键词的所有行</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1152603659.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1152603659.html</id>
+    <link href="https://yzdzh.github.io/post/1152603659.html"/>
+    <id>https://yzdzh.github.io/post/1152603659.html</id>
     <published>2020-04-20T09:12:00.000Z</published>
     <updated>2020-04-20T09:13:36.887Z</updated>
     
@@ -464,15 +464,15 @@
     </summary>
     
     
-      <category term="编程琐碎" scheme="https://wangzhuanglin.gitee.io/categories/%E7%BC%96%E7%A8%8B%E7%90%90%E7%A2%8E/"/>
+      <category term="编程琐碎" scheme="https://yzdzh.github.io/categories/%E7%BC%96%E7%A8%8B%E7%90%90%E7%A2%8E/"/>
     
     
   </entry>
   
   <entry>
     <title>MongoDB基本操作之CRUD</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1234652124.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1234652124.html</id>
+    <link href="https://yzdzh.github.io/post/1234652124.html"/>
+    <id>https://yzdzh.github.io/post/1234652124.html</id>
     <published>2020-04-19T16:24:00.000Z</published>
     <updated>2020-04-23T02:46:54.213Z</updated>
     
@@ -489,15 +489,15 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
   
   <entry>
     <title>使用docker容器运行mongodb</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2627105888.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2627105888.html</id>
+    <link href="https://yzdzh.github.io/post/2627105888.html"/>
+    <id>https://yzdzh.github.io/post/2627105888.html</id>
     <published>2020-04-19T00:49:00.000Z</published>
     <updated>2021-07-15T08:59:48.392Z</updated>
     
@@ -514,7 +514,7 @@
     </summary>
     
     
-      <category term="mongodb" scheme="https://wangzhuanglin.gitee.io/categories/mongodb/"/>
+      <category term="mongodb" scheme="https://yzdzh.github.io/categories/mongodb/"/>
     
     
   </entry>
