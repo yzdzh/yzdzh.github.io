@@ -5,9 +5,9 @@
   <subtitle>php后端工程师，兼职前端和go开发</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://wangzhuanglin.gitee.io/"/>
+  <link href="https://yzdzh.github.io/"/>
   <updated>2022-03-23T18:41:19.000Z</updated>
-  <id>https://wangzhuanglin.gitee.io/</id>
+  <id>https://yzdzh.github.io/</id>
   
   <author>
     <name>xingguang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>certbot自动签证机器人</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1542514284.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1542514284.html</id>
+    <link href="https://yzdzh.github.io/post/1542514284.html"/>
+    <id>https://yzdzh.github.io/post/1542514284.html</id>
     <published>2022-03-23T18:37:00.000Z</published>
     <updated>2022-03-23T18:41:19.000Z</updated>
     
@@ -35,15 +35,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>Windows11安装Android子系统及抓包方法</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2040882575.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2040882575.html</id>
+    <link href="https://yzdzh.github.io/post/2040882575.html"/>
+    <id>https://yzdzh.github.io/post/2040882575.html</id>
     <published>2022-03-23T18:29:00.000Z</published>
     <updated>2022-03-23T18:35:12.000Z</updated>
     
@@ -60,15 +60,15 @@
     </summary>
     
     
-      <category term="wsl" scheme="https://wangzhuanglin.gitee.io/categories/wsl/"/>
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
     
     
   </entry>
   
   <entry>
     <title>java新启程-HelloWorld</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2119301209.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2119301209.html</id>
+    <link href="https://yzdzh.github.io/post/2119301209.html"/>
+    <id>https://yzdzh.github.io/post/2119301209.html</id>
     <published>2022-01-30T20:19:00.000Z</published>
     <updated>2022-01-30T20:31:04.000Z</updated>
     
@@ -84,15 +84,15 @@
     </summary>
     
     
-      <category term="java" scheme="https://wangzhuanglin.gitee.io/categories/java/"/>
+      <category term="java" scheme="https://yzdzh.github.io/categories/java/"/>
     
     
   </entry>
   
   <entry>
     <title>ab压测工具</title>
-    <link href="https://wangzhuanglin.gitee.io/post/984256984.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/984256984.html</id>
+    <link href="https://yzdzh.github.io/post/984256984.html"/>
+    <id>https://yzdzh.github.io/post/984256984.html</id>
     <published>2021-12-31T19:05:00.000Z</published>
     <updated>2022-01-03T18:23:42.000Z</updated>
     
@@ -109,15 +109,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>linux网络带宽监控工具</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3478081417.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3478081417.html</id>
+    <link href="https://yzdzh.github.io/post/3478081417.html"/>
+    <id>https://yzdzh.github.io/post/3478081417.html</id>
     <published>2021-12-31T18:02:00.000Z</published>
     <updated>2022-01-03T18:22:54.000Z</updated>
     
@@ -134,15 +134,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>k8s-集群搭建的三种方式和区别，kubeadm、minikube，二进制包</title>
-    <link href="https://wangzhuanglin.gitee.io/post/710540892.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/710540892.html</id>
+    <link href="https://yzdzh.github.io/post/710540892.html"/>
+    <id>https://yzdzh.github.io/post/710540892.html</id>
     <published>2021-12-30T19:47:00.000Z</published>
     <updated>2022-01-01T19:53:01.000Z</updated>
     
@@ -159,15 +159,15 @@
     </summary>
     
     
-      <category term="k8s" scheme="https://wangzhuanglin.gitee.io/categories/k8s/"/>
+      <category term="k8s" scheme="https://yzdzh.github.io/categories/k8s/"/>
     
     
   </entry>
   
   <entry>
     <title>linux中root账号也无法修改文件权限解决方法</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1494107583.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1494107583.html</id>
+    <link href="https://yzdzh.github.io/post/1494107583.html"/>
+    <id>https://yzdzh.github.io/post/1494107583.html</id>
     <published>2021-12-03T19:21:00.000Z</published>
     <updated>2021-12-03T19:28:37.000Z</updated>
     
@@ -184,15 +184,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>mongodb容器的数据导入和导出</title>
-    <link href="https://wangzhuanglin.gitee.io/post/381300251.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/381300251.html</id>
+    <link href="https://yzdzh.github.io/post/381300251.html"/>
+    <id>https://yzdzh.github.io/post/381300251.html</id>
     <published>2021-12-03T19:01:00.000Z</published>
     <updated>2021-12-03T19:12:16.000Z</updated>
     
@@ -208,15 +208,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>mysql容器的数据导入和导出</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1607203207.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1607203207.html</id>
+    <link href="https://yzdzh.github.io/post/1607203207.html"/>
+    <id>https://yzdzh.github.io/post/1607203207.html</id>
     <published>2021-12-03T18:30:00.000Z</published>
     <updated>2022-04-22T18:43:08.000Z</updated>
     
@@ -232,15 +232,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>docker容器以ROOT账号登录（获取ROOT权限/ROOT密码）</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3568385113.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3568385113.html</id>
+    <link href="https://yzdzh.github.io/post/3568385113.html"/>
+    <id>https://yzdzh.github.io/post/3568385113.html</id>
     <published>2021-12-03T18:27:00.000Z</published>
     <updated>2021-12-03T18:28:29.000Z</updated>
     
@@ -256,15 +256,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>ssh生成公钥私钥对和远程免密登录</title>
-    <link href="https://wangzhuanglin.gitee.io/post/588796899.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/588796899.html</id>
+    <link href="https://yzdzh.github.io/post/588796899.html"/>
+    <id>https://yzdzh.github.io/post/588796899.html</id>
     <published>2021-11-07T19:38:00.000Z</published>
     <updated>2021-11-07T19:41:39.000Z</updated>
     
@@ -280,15 +280,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>Linux下清除docker容器终端输出的全部日志</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3848110738.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3848110738.html</id>
+    <link href="https://yzdzh.github.io/post/3848110738.html"/>
+    <id>https://yzdzh.github.io/post/3848110738.html</id>
     <published>2021-11-07T12:33:00.000Z</published>
     <updated>2021-11-07T12:43:11.000Z</updated>
     
@@ -305,15 +305,15 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
   
   <entry>
     <title>win10开机设置wsl子系统固定内网ip</title>
-    <link href="https://wangzhuanglin.gitee.io/post/3748404520.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/3748404520.html</id>
+    <link href="https://yzdzh.github.io/post/3748404520.html"/>
+    <id>https://yzdzh.github.io/post/3748404520.html</id>
     <published>2021-10-27T18:54:00.000Z</published>
     <updated>2021-10-27T19:14:41.000Z</updated>
     
@@ -330,15 +330,15 @@
     </summary>
     
     
-      <category term="wsl" scheme="https://wangzhuanglin.gitee.io/categories/wsl/"/>
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
     
     
   </entry>
   
   <entry>
     <title>WSL子系统修改默认root登入</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2798337741.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2798337741.html</id>
+    <link href="https://yzdzh.github.io/post/2798337741.html"/>
+    <id>https://yzdzh.github.io/post/2798337741.html</id>
     <published>2021-10-21T19:13:00.000Z</published>
     <updated>2021-10-21T19:15:25.000Z</updated>
     
@@ -355,15 +355,15 @@
     </summary>
     
     
-      <category term="wsl" scheme="https://wangzhuanglin.gitee.io/categories/wsl/"/>
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
     
     
   </entry>
   
   <entry>
     <title>基于win10 + wsl + ubuntu + terminal的本地开发环境</title>
-    <link href="https://wangzhuanglin.gitee.io/post/2270783465.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/2270783465.html</id>
+    <link href="https://yzdzh.github.io/post/2270783465.html"/>
+    <id>https://yzdzh.github.io/post/2270783465.html</id>
     <published>2021-10-19T20:13:00.000Z</published>
     <updated>2021-10-27T19:09:50.000Z</updated>
     
@@ -379,15 +379,15 @@
     </summary>
     
     
-      <category term="wsl" scheme="https://wangzhuanglin.gitee.io/categories/wsl/"/>
+      <category term="wsl" scheme="https://yzdzh.github.io/categories/wsl/"/>
     
     
   </entry>
   
   <entry>
     <title>docker安装软件环境集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/527254571.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/527254571.html</id>
+    <link href="https://yzdzh.github.io/post/527254571.html"/>
+    <id>https://yzdzh.github.io/post/527254571.html</id>
     <published>2021-04-26T16:15:00.000Z</published>
     <updated>2022-04-24T07:19:51.832Z</updated>
     
@@ -404,15 +404,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>docker打包自定义镜像并上传docker hub</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1624279696.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1624279696.html</id>
+    <link href="https://yzdzh.github.io/post/1624279696.html"/>
+    <id>https://yzdzh.github.io/post/1624279696.html</id>
     <published>2021-04-26T08:05:00.000Z</published>
     <updated>2021-04-27T01:33:41.867Z</updated>
     
@@ -428,15 +428,15 @@
     </summary>
     
     
-      <category term="docker" scheme="https://wangzhuanglin.gitee.io/categories/docker/"/>
+      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
     
     
   </entry>
   
   <entry>
     <title>phpstrom实用插件集合</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1452351953.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1452351953.html</id>
+    <link href="https://yzdzh.github.io/post/1452351953.html"/>
+    <id>https://yzdzh.github.io/post/1452351953.html</id>
     <published>2021-01-30T10:02:00.000Z</published>
     <updated>2021-07-08T08:03:10.570Z</updated>
     
@@ -453,15 +453,15 @@
     </summary>
     
     
-      <category term="phpStorm" scheme="https://wangzhuanglin.gitee.io/categories/phpStorm/"/>
+      <category term="phpStorm" scheme="https://yzdzh.github.io/categories/phpStorm/"/>
     
     
   </entry>
   
   <entry>
     <title>php获取指定前缀常量便捷操作方法</title>
-    <link href="https://wangzhuanglin.gitee.io/post/4113924384.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/4113924384.html</id>
+    <link href="https://yzdzh.github.io/post/4113924384.html"/>
+    <id>https://yzdzh.github.io/post/4113924384.html</id>
     <published>2020-09-03T04:04:00.000Z</published>
     <updated>2021-09-03T06:04:31.000Z</updated>
     
@@ -478,15 +478,15 @@
     </summary>
     
     
-      <category term="php" scheme="https://wangzhuanglin.gitee.io/categories/php/"/>
+      <category term="php" scheme="https://yzdzh.github.io/categories/php/"/>
     
     
   </entry>
   
   <entry>
     <title>linux设置开机服务自动启动/关闭自动启动命令</title>
-    <link href="https://wangzhuanglin.gitee.io/post/1924607937.html"/>
-    <id>https://wangzhuanglin.gitee.io/post/1924607937.html</id>
+    <link href="https://yzdzh.github.io/post/1924607937.html"/>
+    <id>https://yzdzh.github.io/post/1924607937.html</id>
     <published>2020-08-20T10:48:00.000Z</published>
     <updated>2021-08-21T14:18:26.000Z</updated>
     
@@ -502,7 +502,7 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangzhuanglin.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
     
     
   </entry>
