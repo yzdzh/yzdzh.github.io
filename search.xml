@@ -1,11 +1,446 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>certbot自动签证机器人</title>
+    <url>/post/1542514284.html</url>
+    <content><![CDATA[<h3 id="宿主机安装插件方法"><a href="#宿主机安装插件方法" class="headerlink" title="宿主机安装插件方法"></a>宿主机安装插件方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install certbot python2-certbot-nginx -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="docker-nginx容器安装方法"><a href="#docker-nginx容器安装方法" class="headerlink" title="docker nginx容器安装方法"></a>docker nginx容器安装方法</h3><h5 id="1、容器需要将证书文件夹挂载到宿主机-etc-letsencrypt"><a href="#1、容器需要将证书文件夹挂载到宿主机-etc-letsencrypt" class="headerlink" title="1、容器需要将证书文件夹挂载到宿主机 /etc/letsencrypt"></a>1、容器需要将证书文件夹挂载到宿主机 /etc/letsencrypt</h5><h5 id="2、安装certbot插件"><a href="#2、安装certbot插件" class="headerlink" title="2、安装certbot插件"></a>2、安装certbot插件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt install certbot python-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+
+<p>安装证书命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">certbot --nginx</span><br></pre></td></tr></table></figure>
+
+<p>注：<br>1、如果报错temp_checkpoint，直接执行以下命令删掉临时文件即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -rf /var/lib/letsencrypt/temp_checkpoint/*</span><br></pre></td></tr></table></figure>
+
+<p>#定时脚本更新证书有效期</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * * /usr/bin/certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+
+<p>#定时脚本更新证书有效期（docker内访问）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * *  docker <span class="built_in">exec</span> -it com_nginx  bash -c  <span class="string">"/usr/bin/certbot renew --dry-run"</span></span><br></pre></td></tr></table></figure>
+
+
+<p>nginx常用命令<br>检测重启是否nginx正常： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>重启nginx：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Windows11安装Android子系统及抓包方法</title>
+    <url>/post/2040882575.html</url>
+    <content><![CDATA[<p>需要确保已经开启Hyper-V功能</p>
+<h3 id="1、安装Android子系统"><a href="#1、安装Android子系统" class="headerlink" title="1、安装Android子系统"></a>1、安装Android子系统</h3><p>1）、直接打开网站：<a href="https://store.rg-adguard.net" target="_blank" rel="noopener">https://store.rg-adguard.net</a></p>
+<p><img src="/resource/images/pasted2-17.png" alt="upload successful"><br>　　按照上图，在对应的选择框中分别选择ProductID、Slow，在搜索框中输入9P3395VX91NR，点击确定。</p>
+<p>　　然后点击最后一个msibundle文件，就能下载该文件了。（我这边浏览器下载很慢，我是直接复制链接用的迅雷下载，直接满速，一分多种就下载好了。）</p>
+<p>2）、将下载的文件放在D盘根目录下，然后以管理员身份运行powershell，预防万一可以打开powershell后运行，确保完全是管理员模式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Start-Process powershell -Verb runAs</span><br></pre></td></tr></table></figure>
+
+<p>3）、进入D盘后安卓安卓子系统 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Add-AppxPackage 文件名</span><br></pre></td></tr></table></figure>
+
+<p><img src="/resource/images/pasted2-18.png" alt="upload successful"><br>Add-AppxPackage 【你下载的msibundle文件全称】<br>PS：直接在Add-AppxPackage后面复制你下载的msibundle文件名，包括后缀.msibundle</p>
+<p>安装好以后就能在开始菜单中看到安卓子系统的图标了。</p>
+<p><img src="/resource/images/pasted2-19.png" alt="upload successful"></p>
+<p>然后开启“开发人员模式”</p>
+<p><img src="/resource/images/pasted2-20.png" alt="upload successful"></p>
+<h3 id="2、安装Android侧载工具（WSA-工具箱）"><a href="#2、安装Android侧载工具（WSA-工具箱）" class="headerlink" title="2、安装Android侧载工具（WSA 工具箱）"></a>2、安装Android侧载工具（WSA 工具箱）</h3><p>这款侧载工具是我们国内的大佬开发的，名字叫做WSA 工具箱，它主要的功能就是安装APK文件、后台APP管理、查看子系统进程以及文件传输。这款工具其实是上架微软商店的应用，所以它也是绝对的安全，我们尽管放心用便是。</p>
+<p><img src="/resource/images/pasted2-21.png" alt="upload successful"></p>
+<p>如果搜索不到，这个是它的地址：<br><a href="https://www.microsoft.com/store/productId/9PPSP2MKVTGT" target="_blank" rel="noopener">https://www.microsoft.com/store/productId/9PPSP2MKVTGT</a></p>
+<h3 id="3、Fiddler配置android子系统app抓包"><a href="#3、Fiddler配置android子系统app抓包" class="headerlink" title="3、Fiddler配置android子系统app抓包"></a>3、Fiddler配置android子系统app抓包</h3><p>对应开发人员，需要在模拟机上对测试包进行地址抓包<br>1）、下载Fiddler软件<br>2）、开启允许远程连接</p>
+<p><img src="/resource/images/pasted2-22.png" alt="upload successful"><br>3）、https相关设置</p>
+<p><img src="/resource/images/pasted2-23.png" alt="upload successful"><br>4）、获取对应的wsa的宿主地址<br>打开cmd或powershell 输入 ipconfig 获取对应配置</p>
+<p><img src="/resource/images/pasted2-24.png" alt="upload successful"><br>获取当前地址 192.168.33.11<br>5）、需要下载一个浏览器，比如x浏览器 或者如果wsa中已有，可以忽略该步骤<br>用浏览器打开 <a href="http://192.168.33.11:8888" target="_blank" rel="noopener">http://192.168.33.11:8888</a></p>
+<p><img src="/resource/images/pasted2-25.png" alt="upload successful"></p>
+<p>下载完成后，是无法进行安装的，需要去设置里安装。此时 打开已经下载好的was工具箱</p>
+<p><img src="/resource/images/pasted2-26.png" alt="upload successful"><br>依次执行</p>
+<p><img src="/resource/images/pasted2-27.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-28.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-29.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-30.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-31.png" alt="upload successful"><br>点击安装完成即可</p>
+<p>6）、设置proxy</p>
+<p><img src="/resource/images/pasted2-32.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-33.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java新启程-HelloWorld</title>
+    <url>/post/2119301209.html</url>
+    <content><![CDATA[<h3 id="官网下载java11做为学习版本"><a href="#官网下载java11做为学习版本" class="headerlink" title="官网下载java11做为学习版本"></a>官网下载java11做为学习版本</h3><p>下载地址：<a href="http://jdk.java.net/java-se-ri/11" target="_blank" rel="noopener">http://jdk.java.net/java-se-ri/11</a></p>
+<h3 id="1、JDK目录结构介绍"><a href="#1、JDK目录结构介绍" class="headerlink" title="1、JDK目录结构介绍"></a>1、JDK目录结构介绍</h3><p><img src="/resource/images/pasted2-13.png" alt="upload successful"></p>
+<p>安装后配置环境变量</p>
+<p><img src="/resource/images/pasted2-14.png" alt="upload successful"></p>
+<p>变量名：JAVA_HOME<br>值：D:\develop\java\jdk-11</p>
+<p>变量名：Path<br>值：D:\develop\java\jdk-11\bin</p>
+<h3 id="2、开始编写第一个程序HelloWorld"><a href="#2、开始编写第一个程序HelloWorld" class="headerlink" title="2、开始编写第一个程序HelloWorld"></a>2、开始编写第一个程序HelloWorld</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"HelloWorld"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/resource/images/pasted2-15.png" alt="upload successful"></p>
+<h3 id="3、编译java并执行java文件"><a href="#3、编译java并执行java文件" class="headerlink" title="3、编译java并执行java文件"></a>3、编译java并执行java文件</h3><p><img src="/resource/images/pasted2-16.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ab压测工具</title>
+    <url>/post/984256984.html</url>
+    <content><![CDATA[<p><strong>ubuntu安装ab</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install apache2-utils</span><br></pre></td></tr></table></figure>
+
+<p><strong>centos安装ab</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install httpd-tools</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>ab 测试命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ab -n 100 -c 10 http://test.com/</span><br></pre></td></tr></table></figure>
+
+<p>其中－n表示请求数，－c表示并发数</p>
+<p>原文链接：<a href="https://www.jianshu.com/p/43d04d8baaf7" target="_blank" rel="noopener">https://www.jianshu.com/p/43d04d8baaf7</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux网络带宽监控工具</title>
+    <url>/post/3478081417.html</url>
+    <content><![CDATA[<p><strong>centos安装命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install dstat -y</span><br></pre></td></tr></table></figure>
+<p><strong>查看命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dstat -cdnrsy</span><br></pre></td></tr></table></figure>
+<p><strong>效果如下图：</strong></p>
+<p><img src="/resource/images/pasted2-12.png" alt="upload successful"></p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>分组含义及子项字段含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU状态</td>
+<td>CPU的使用率。显示了用户占比，系统占比、空闲占比、等待占比、硬中断和软中断情况。</td>
+</tr>
+<tr>
+<td>磁盘统计</td>
+<td>磁盘的读写，分别显示磁盘的读、写总数。</td>
+</tr>
+<tr>
+<td>网络统计</td>
+<td>网络设备发送和接受的数据，分别显示的网络收、发数据总数。</td>
+</tr>
+<tr>
+<td>分页统计</td>
+<td>系统的分页活动。分别显示换入（in）和换出（out）。</td>
+</tr>
+<tr>
+<td>系统统计</td>
+<td>统计中断（int）和上下文切换（csw）。</td>
+</tr>
+</tbody></table>
+<p>*<em>常见选项 *</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。</span><br><span class="line">-C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。</span><br><span class="line">-d：显示磁盘读写数据大小。</span><br><span class="line">-D hda,total：include hda and total。</span><br><span class="line">-n：显示网络状态。</span><br><span class="line">-N eth1,total：有多块网卡时，指定要显示的网卡。</span><br><span class="line">-l：显示系统负载情况。</span><br><span class="line">-m：显示内存使用情况。</span><br><span class="line">-g：显示页面使用情况。</span><br><span class="line">-p：显示进程状态。</span><br><span class="line">-s：显示交换分区使用情况。</span><br><span class="line">-S：类似D/N。</span><br><span class="line">-r：I/O请求情况。</span><br><span class="line">-y：系统状态。</span><br><span class="line">--ipc：显示ipc消息队列，信号等信息。</span><br><span class="line">--socket：用来显示tcp udp端口状态。</span><br><span class="line">-a：此为默认选项，等同于-cdngy。</span><br><span class="line">-v：等同于 -pmgdsc -D total。</span><br><span class="line">--output 文件：此选项也比较有用，可以把状态信息以csv的格式重定向到指定的文件中，以便日后查看。例：dstat --output /root/dstat.csv &amp; 此时让程序默默的在后台运行并把结果输出到/root/dstat.csv文件中。</span><br></pre></td></tr></table></figure>
+
+<p>原文链接：<a href="https://blog.csdn.net/sinat_34789167/article/details/80986709" target="_blank" rel="noopener">https://blog.csdn.net/sinat_34789167/article/details/80986709</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>k8s-集群搭建的三种方式和区别，kubeadm、minikube，二进制包</title>
+    <url>/post/710540892.html</url>
+    <content><![CDATA[<p>k8s-集群搭建的三种方式，目前主流的搭建k8s集群的方式有kubeadm、minikube，二进制包。  </p>
+<h5 id="1、kubeadm"><a href="#1、kubeadm" class="headerlink" title="1、kubeadm"></a>1、kubeadm</h5><ul>
+<li>是一个工具，用于快速搭建kubernetes集群，目前应该是比较方便和推荐的，简单易用  </li>
+<li>kubeadm是Kubernetes 1.4开始新增的特性   </li>
+<li>kubeadm init 以及 kubeadm join 这两个命令可以快速创建 kubernetes 集群  </li>
+</ul>
+<h5 id="2、minikube"><a href="#2、minikube" class="headerlink" title="2、minikube"></a>2、minikube</h5><ul>
+<li>一般用于本地开发、测试和学习，不能用于生产环境  </li>
+<li>是一个工具，minikube快速搭建一个运行在本地的单节点的Kubernetes  </li>
+</ul>
+<h5 id="3、二进制包"><a href="#3、二进制包" class="headerlink" title="3、二进制包"></a>3、二进制包</h5><ul>
+<li>在官网下载相关的组件的二进制包，上面的两个是工具，可以快速搭建集群，也就是相当于用程序脚本帮我们装好了集群，前两者属于自动部署，简化部署操作，自动部署屏蔽了很多细节，使得对各个模块感知很少，遇到问题很难排查，如果手动安装，对kubernetes理解也会更全面。  </li>
+<li>目前生产环境的主流搭建方式，已在生产环境验证，kubeadm也可以搭建生产环境，不过kubeadm应该还没有被大规模在生产环境验证</li>
+</ul>
+<p>参考原文：<a href="https://www.cnblogs.com/albertzhangyu/p/13446528.html" target="_blank" rel="noopener">https://www.cnblogs.com/albertzhangyu/p/13446528.html</a></p>
+]]></content>
+      <categories>
+        <category>k8s</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux中root账号也无法修改文件权限解决方法</title>
+    <url>/post/1494107583.html</url>
+    <content><![CDATA[<p>一般是被用chattr命令锁住文件</p>
+<h3 id="1、lsattr命令查看文件的属性"><a href="#1、lsattr命令查看文件的属性" class="headerlink" title="1、lsattr命令查看文件的属性"></a>1、lsattr命令查看文件的属性</h3><p>执行命令lsattr authorized_keys查看当前文件属性，可以发现有i和a两个属性。<br><img src="/resource/images/pasted2-11.png" alt="upload successful"></p>
+<h3 id="2、去掉锁住的权限"><a href="#2、去掉锁住的权限" class="headerlink" title="2、去掉锁住的权限"></a>2、去掉锁住的权限</h3><p>去掉lsattr命令查看到的i和a两个属性</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr -ia authorized_keys</span><br></pre></td></tr></table></figure>
+<h3 id="3、还原权限"><a href="#3、还原权限" class="headerlink" title="3、还原权限"></a>3、还原权限</h3><p>修改完后还原文件权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr +ia authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>借鉴于原文：<br><a href="https://www.cnblogs.com/cpl9412290130/p/11592803.html" target="_blank" rel="noopener">https://www.cnblogs.com/cpl9412290130/p/11592803.html</a><br><a href="https://www.runoob.com/linux/linux-comm-chattr.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-chattr.html</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mongodb容器的数据导入和导出</title>
+    <url>/post/381300251.html</url>
+    <content><![CDATA[<h3 id="1、mongodump导出备份"><a href="#1、mongodump导出备份" class="headerlink" title="1、mongodump导出备份"></a>1、mongodump导出备份</h3><h4 id="1-、执行mongodump命令"><a href="#1-、执行mongodump命令" class="headerlink" title="1)、执行mongodump命令"></a>1)、执行mongodump命令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongodump -h 127.0.0.1:27017 -d ag_mongo -u root -p 123456 --authenticationDatabase admin -o /mongo_sql_back</span><br></pre></td></tr></table></figure>
+
+<p>注：<br>-h 地址<br>-d 数据库名称<br>-u 用户名<br>-p 密码<br>-o 输出地址<br>–authenticationDatabase admin 验证账户的数据库  </p>
+<h4 id="2-、将备份文件从里面cp出来（如果已经容器目录映射，则忽略此步骤）"><a href="#2-、将备份文件从里面cp出来（如果已经容器目录映射，则忽略此步骤）" class="headerlink" title="2)、将备份文件从里面cp出来（如果已经容器目录映射，则忽略此步骤）"></a>2)、将备份文件从里面cp出来（如果已经容器目录映射，则忽略此步骤）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker cp com_mongo:mongo_sql_back /mongo_sql_back</span><br><span class="line"></span><br><span class="line">docker cp 容器名:容器内导出数据库文件夹 宿主机保存文件夹</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、mongorestore恢复数据库"><a href="#2、mongorestore恢复数据库" class="headerlink" title="2、mongorestore恢复数据库"></a>2、mongorestore恢复数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongorestore -h 127.0.0.1:27017 -d ag_mongo --dir /mongo_sql_back/ag_mongo -u root -p 123456 --authenticationDatabase admin</span><br></pre></td></tr></table></figure>
+
+<p>注：<br>-h 地址<br>-d 数据库名称<br>-u 用户名<br>-p 密码<br>–dir 导入的数据库文件夹<br>–authenticationDatabase admin 验证账户的数据库  </p>
+<p>借鉴于原文：<a href="https://www.jianshu.com/p/398bcccd7981" target="_blank" rel="noopener">https://www.jianshu.com/p/398bcccd7981</a></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mysql容器的数据导入和导出</title>
+    <url>/post/1607203207.html</url>
+    <content><![CDATA[<h3 id="1、mysqldump导出备份"><a href="#1、mysqldump导出备份" class="headerlink" title="1、mysqldump导出备份"></a>1、mysqldump导出备份</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it  com_mysql mysqldump -c -uroot -p123456    app_agent  &gt;  app_agent.sql</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it  com_mysql【docker容器名称/ID】 mysqldump -uroot -p123456【数据库密码】 test_db【数据库名称】 &gt; /opt/sql_bak/test_db.sql【导出表格路径】</span><br></pre></td></tr></table></figure>
+<p> 选项说明</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>缩写</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–host</td>
+<td>-h</td>
+<td>服务器IP地址</td>
+</tr>
+<tr>
+<td>–port</td>
+<td>-P</td>
+<td>服务器端口号</td>
+</tr>
+<tr>
+<td>–user</td>
+<td>-u</td>
+<td>MySQL 用户名</td>
+</tr>
+<tr>
+<td>–pasword</td>
+<td>-p</td>
+<td>MySQL 密码</td>
+</tr>
+<tr>
+<td>–databases</td>
+<td></td>
+<td>指定要备份的数据库</td>
+</tr>
+<tr>
+<td>–all-databases</td>
+<td></td>
+<td>备份mysql服务器上的所有数据库</td>
+</tr>
+<tr>
+<td>–compact</td>
+<td>-c</td>
+<td>压缩模式，产生更少的输出</td>
+</tr>
+<tr>
+<td>–comments</td>
+<td></td>
+<td>添加注释信息</td>
+</tr>
+<tr>
+<td>–complete-insert</td>
+<td></td>
+<td>输出完成的插入语句</td>
+</tr>
+<tr>
+<td>–lock-tables</td>
+<td></td>
+<td>备份前，锁定所有数据库表</td>
+</tr>
+<tr>
+<td>–no-create-db/–no-create-info</td>
+<td></td>
+<td>禁止生成创建数据库语句</td>
+</tr>
+<tr>
+<td>–force</td>
+<td></td>
+<td>当出现错误时仍然继续备份操作</td>
+</tr>
+<tr>
+<td>–default-character-set</td>
+<td></td>
+<td>指定默认字符集</td>
+</tr>
+<tr>
+<td>–add-locks</td>
+<td></td>
+<td>备份数据库表时锁定数据库表</td>
+</tr>
+</tbody></table>
+<h3 id="2、导入数据库"><a href="#2、导入数据库" class="headerlink" title="2、导入数据库"></a>2、导入数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i  com_mysql mysqldump -c -uroot -p123456    app_agent  &lt;  app_agent.sql</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -i  com_mysql【docker容器名称/ID】 mysqltest_db_copy【数据库名称】 &lt; /opt/sql_bak/test_db.sql【本地数据表路径】</span><br></pre></td></tr></table></figure>
+<p>注意：这里需要将参数 -it 更换为 -i ，<br>否则会报错：”the input device is not a TTY”</p>
+<h3 id="具体导入导出示例"><a href="#具体导入导出示例" class="headerlink" title="具体导入导出示例"></a>具体导入导出示例</h3><h4 id="———–本地服务器操作————————–"><a href="#———–本地服务器操作————————–" class="headerlink" title="———–本地服务器操作————————–"></a>———–本地服务器操作————————–</h4><h6 id="直接将结果导出sql文件"><a href="#直接将结果导出sql文件" class="headerlink" title="直接将结果导出sql文件"></a>直接将结果导出sql文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it  com_mysql mysqldump -c -uroot -p123456    <span class="built_in">test</span>  &gt;  test.sql</span><br></pre></td></tr></table></figure>
+
+<h6 id="scp复制文件到要导入的服务器指定文件夹"><a href="#scp复制文件到要导入的服务器指定文件夹" class="headerlink" title="scp复制文件到要导入的服务器指定文件夹"></a>scp复制文件到要导入的服务器指定文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp test.sql  root@192.168.0.185:/home/servers/docker_php_dev/mysql/backup</span><br><span class="line"></span><br><span class="line">输入远程服务器的密码</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————"><a href="#——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————" class="headerlink" title="——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————-"></a>——–远程服务器操作（以下操作可以先准备好，到最后的source命令不要执行就行了）—————-</h4><h6 id="进入mysql容器"><a href="#进入mysql容器" class="headerlink" title="进入mysql容器"></a>进入mysql容器</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it  com_mysql bash</span><br></pre></td></tr></table></figure>
+
+<h6 id="进入mysql"><a href="#进入mysql" class="headerlink" title="进入mysql"></a>进入mysql</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p </span><br><span class="line"></span><br><span class="line">输入mysql的root密码</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="进入要导入的数据库"><a href="#进入要导入的数据库" class="headerlink" title="进入要导入的数据库"></a>进入要导入的数据库</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use <span class="built_in">test</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行source命令直接导入sql文件"><a href="#执行source命令直接导入sql文件" class="headerlink" title="执行source命令直接导入sql文件"></a>执行source命令直接导入sql文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /bitnami/backup/test.sql</span><br></pre></td></tr></table></figure>
+
+
+<p>借鉴于原文：<a href="https://blog.csdn.net/qq_27565769/article/details/80731271" target="_blank" rel="noopener">https://blog.csdn.net/qq_27565769/article/details/80731271</a></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>docker容器以ROOT账号登录（获取ROOT权限/ROOT密码）</title>
+    <url>/post/3568385113.html</url>
+    <content><![CDATA[<h6 id="第一步：查看容器的CONTAINER-ID"><a href="#第一步：查看容器的CONTAINER-ID" class="headerlink" title="第一步：查看容器的CONTAINER ID"></a>第一步：查看容器的CONTAINER ID</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<h6 id="第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca"><a href="#第二步：获取root权限，例如需要进入的CONTAINER-ID为4650e8d1bcca" class="headerlink" title="第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca"></a>第二步：获取root权限，例如需要进入的CONTAINER ID为4650e8d1bcca</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root 4650e8d1bcca bash</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ssh生成公钥私钥对和远程免密登录</title>
+    <url>/post/588796899.html</url>
+    <content><![CDATA[<h5 id="1、在本地机器上使用ssh-keygen产生公钥私钥对"><a href="#1、在本地机器上使用ssh-keygen产生公钥私钥对" class="headerlink" title="1、在本地机器上使用ssh-keygen产生公钥私钥对"></a>1、在本地机器上使用ssh-keygen产生公钥私钥对</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">本地先安装git客户端，终端执行</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"yourname"</span></span><br><span class="line">一路回车</span><br><span class="line"></span><br><span class="line">全局设置git 用户信息</span><br><span class="line">git config --global user.email yourname</span><br><span class="line">git config --global user.name yourname</span><br><span class="line"></span><br><span class="line">chmod 600 ~/.ssh/id_rsa  ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、用ssh-copy-id将公钥复制到远程机器中"><a href="#2、用ssh-copy-id将公钥复制到远程机器中" class="headerlink" title="2、用ssh-copy-id将公钥复制到远程机器中"></a>2、用ssh-copy-id将公钥复制到远程机器中</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub  用户名字@192.168.x.xxx</span><br><span class="line"></span><br><span class="line">注意: ssh-copy-id 将key写到远程机器的 ~/ .ssh/authorized_key.文件中</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、登录到远程机器不用输入密码"><a href="#3、登录到远程机器不用输入密码" class="headerlink" title="3、登录到远程机器不用输入密码"></a>3、登录到远程机器不用输入密码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh 用户名字@192.168.x.xxx</span><br><span class="line">Last login: Sun Nov 16 17:22:33 2008 from 192.168.1.2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux下清除docker容器终端输出的全部日志</title>
+    <url>/post/3848110738.html</url>
+    <content><![CDATA[<p>查询当前目录下所有文件大小  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">du -h --max-depth=1</span><br></pre></td></tr></table></figure>
+
+<p>查询当前目录下所有文件大小  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls -lh</span><br></pre></td></tr></table></figure>
+
+<p>清除docker容器终端输出的全部日志  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">truncate -s 0 /var/lib/docker/containers/*/*-json.log</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>win10开机设置wsl子系统固定内网ip</title>
+    <url>/post/3748404520.html</url>
+    <content><![CDATA[<p>wsl的liunx子系统虽然很优秀，但是每次重启都会重新分配内网ip，但实际开发中，本地环境还是需要固定内网ip比较方便，但是wsl不支持设置固定内网ip，折中办法就是每次开机或重启是将内网ip设置为指定ip。</p>
+<h3 id="1、自制bat脚本"><a href="#1、自制bat脚本" class="headerlink" title="1、自制bat脚本"></a>1、自制bat脚本</h3><p>将下面的命令复制到.bat后缀的文件中，如fix_wsl_ip.bat</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line">:: 获取管理员权限</span><br><span class="line">setlocal</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> uac=~uac_permission_tmp_%random%</span><br><span class="line"></span><br><span class="line">md <span class="string">"%SystemRoot%\system32\%uac%"</span> 2&gt;nul</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> %errorlevel%==0 ( rd <span class="string">"%SystemRoot%\system32\%uac%"</span> &gt;nul 2&gt;nul ) <span class="keyword">else</span> (</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="built_in">set</span> uac = CreateObject^(<span class="string">"Shell.Application"</span>^)&gt;<span class="string">"%temp%\%uac%.vbs"</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> uac.ShellExecute <span class="string">"%~s0"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">"runas"</span>,1 &gt;&gt;<span class="string">"%temp%\%uac%.vbs"</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> WScript.Quit &gt;&gt;<span class="string">"%temp%\%uac%.vbs"</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"%temp%\%uac%.vbs"</span> /f</span><br><span class="line"></span><br><span class="line">    del /f /q <span class="string">"%temp%\%uac%.vbs"</span> &amp; <span class="built_in">exit</span> )</span><br><span class="line"></span><br><span class="line">endlocal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给wsl 中的ubuntu 设置ipv4 的ip 192.168.33.10，要在windows中访问wsl就用此ip</span></span><br><span class="line">wsl -d Ubuntu-20.04 -u root ip addr add 192.168.33.10/24 broadcast 192.168.33.255 dev eth0 label eth0:1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给windows 设置ipv4 的ip 192.168.33.11，要在wsl中访问宿主机就用此ip</span></span><br><span class="line">netsh interface ip add address <span class="string">"vEthernet (WSL)"</span> 192.168.33.11 255.255.255.0</span><br></pre></td></tr></table></figure>
+<p>注意的是bat中的给wsl中的ubuntu设置固定ip中的Ubuntu-20.04为ubuntu的版本名称，具体版本名可以直接wsl -l命令查询，如图：</p>
+<p><img src="/resource/images/pasted2-6.png" alt="upload successful"></p>
+<h3 id="2、查看win10宿主机和子系统是否ip设置成功"><a href="#2、查看win10宿主机和子系统是否ip设置成功" class="headerlink" title="2、查看win10宿主机和子系统是否ip设置成功"></a>2、查看win10宿主机和子系统是否ip设置成功</h3><p>右键管理员运行bat文件（一定要管理员权限运行！），然后查看是否设置成功。</p>
+<p><img src="/resource/images/pasted2-9.png" alt="upload successful"></p>
+<p><img src="/resource/images/pasted2-10.png" alt="upload successful"></p>
+<h3 id="3、设置bat脚本开机自动启动"><a href="#3、设置bat脚本开机自动启动" class="headerlink" title="3、设置bat脚本开机自动启动"></a>3、设置bat脚本开机自动启动</h3><p>1、设置bat脚本开机自动启动”窗口+R”打开命令窗口，并且输入命令<strong>Shell:startup</strong>，点击确定按钮运行该命令<br>2、将自制的bat启动脚本快捷方式放入文件夹中</p>
+<p><img src="/resource/images/pasted2-7.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WSL子系统修改默认root登入</title>
+    <url>/post/2798337741.html</url>
+    <content><![CDATA[<p>一般子系统就是自己用，每次启动还要人工切到root权限，很是麻烦，如何让Win10的WSL子系统默认root登入呢？</p>
+<h5 id="命令行操作方法如下："><a href="#命令行操作方法如下：" class="headerlink" title="命令行操作方法如下："></a>命令行操作方法如下：</h5><p>1、Windows进入cmd命令行，执行指令进入Apps目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> %HOMEPATH%\AppData\Local\Microsoft\WindowsApps</span><br></pre></td></tr></table></figure>
+
+<p>2、执行指令列出文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure>
+
+<p>3、进入定位的子系统文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc</span><br></pre></td></tr></table></figure>
+
+<p>4、执行指令列出文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dir</span><br></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu2004.exe</span><br></pre></td></tr></table></figure>
+
+<p>5、执行指令修改默认用户为root：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu2004.exe config --default-user root</span><br></pre></td></tr></table></figure>
+
+<p>6、重启WSL子系统即可看到效果，默认登入的就是root账户了。</p>
+<p>原文链接：<a href="https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html" target="_blank" rel="noopener">https://shipengliang.com/software-exp/win10-wsl-%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4root%E7%99%BB%E5%85%A5.html</a></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>基于win10 + wsl + ubuntu + terminal的本地开发环境</title>
+    <url>/post/2270783465.html</url>
+    <content><![CDATA[<h3 id="先来一堆废话背景介绍："><a href="#先来一堆废话背景介绍：" class="headerlink" title="先来一堆废话背景介绍："></a><strong>先来一堆废话背景介绍：</strong></h3><p>之前都是使用vagrant+VirtualBox做为本地开发环境，一直也都是挺不错的，后来在新公司认识到win10 + wsl + ubuntu + terminal的开发环境，相较起vagrant+VirtualBox，优势和劣势如下：<br><strong>优势：</strong><br>1、可以直接将项目代码放入linux环境，而不是通过目录映射的方式。目录映射一方面代码编译速度慢，另一方面有可能会出现因为window和linux环境文件编码不同而导致的编译失败问题（这点本人在执行compose等操作时曾经吃过亏）。<br>2、hosts文件和.ssh文件夹可实现自动共享，不用本地定义个域名要window写一次，虚拟机里面的hosts文件也写一份。</p>
+<p><strong>劣势：</strong><br>1、代码是放在子系统虚拟机中的，如果子系统突然奔溃修复不了的话很可能会导致代码没及时上传git而丢失白写的情况。所以需要养成每天下班前上传代码的好习惯。<br>2、占用内存大，本人实际开发中实际占内存10GB多点，加上其它开发软件，占了19GB左右（幸亏公司电脑内存是32GB）。</p>
+<h3 id="环境搭建流程："><a href="#环境搭建流程：" class="headerlink" title="环境搭建流程："></a><strong>环境搭建流程：</strong></h3><h4 id="1-打开“Linux-子系统”与“虚拟机平台”"><a href="#1-打开“Linux-子系统”与“虚拟机平台”" class="headerlink" title="1. 打开“Linux 子系统”与“虚拟机平台”"></a>1. 打开“Linux 子系统”与“虚拟机平台”</h4><p><img src="/resource/images/pasted2-5.png" alt="upload successful"><br>选中上图圈出的两个项目，点击“确定”。</p>
+<p>或者，也可以通过命令行操作。以管理员身份执行 CMD 或 PowerShell，执行如下两个命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable</span>-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable</span>-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装-WSL-内核"><a href="#2-安装-WSL-内核" class="headerlink" title="2. 安装 WSL 内核"></a>2. 安装 WSL 内核</h4><p>点击下面的按钮从微软下载最新的 x64 或 arm64 WSL 内核：<br><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank" rel="noopener">最新版 x64 WSL 2 内核</a><br><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi" target="_blank" rel="noopener">最新版 arm64 wsl 2 内核</a></p>
+<p>下载并安装 MSI 包即可。</p>
+<h4 id="3-设置-WSL-默认版本为-2"><a href="#3-设置-WSL-默认版本为-2" class="headerlink" title="3. 设置 WSL 默认版本为 2"></a>3. 设置 WSL 默认版本为 2</h4><p>打开 CMD 或 PowerShell，执行如下的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --<span class="built_in">set</span>-default-version 2</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-安装ubuntu-和-terminal"><a href="#4-安装ubuntu-和-terminal" class="headerlink" title="4.安装ubuntu 和 terminal"></a>4.安装ubuntu 和 terminal</h4><p>直接从Microsoft store商店直接搜索下载即可，建议ubuntu版本为20.04或以上。</p>
+<h4 id="5-安装docker"><a href="#5-安装docker" class="headerlink" title="5.安装docker"></a>5.安装docker</h4><p>直接下载安装即可（建议版本为4.1）<br><a href="https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/release-notes/#docker-desktop-310</a></p>
+<p>至此，虚拟机环境搭建完毕。  </p>
+<p><strong>注意必看：</strong><br>1、ubuntu默认是安装时创建的账号，非root账号，这给开发带来不便，如何设置默认root登入可以看我另一篇文章： <a href="/post/2798337741.html" target="_blank">WSL子系统修改默认root登入</a></p>
+<p>2、wsl内子系统的ip每次启动都会重置，这给开发带来不便，如何解决这个问题可以看我另一篇文章： <a href="/post/3748404520.html" target="_blank">win10开机设置wsl子系统固定内网ip</a></p>
+<p>3、鄙人本地的lnmp环境是使用的是docker-compose.yaml一键安装及配置文件和目录挂载，git地址为(私人仓库不对外开放)：<a href="https://github.com/yzdzh/docker_php_dev" target="_blank" rel="noopener">https://github.com/yzdzh/docker_php_dev</a></p>
+<p>4.安装docker-compose命令如下:  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(1). 下载docker-compose</span><br><span class="line">curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.28.3/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose  </span><br><span class="line">(2). 修改执行权限</span><br><span class="line">chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>docker安装软件环境集合</title>
     <url>/post/527254571.html</url>
     <content><![CDATA[<p>有一个小想法，整理一篇docker安装软件环境集合下安装环境文章，方便自己或其它人开箱即用，目前就自己遇到哪些需要安装的软件安装后就顺便更新到这篇博客文章。</p>
 <h3 id="1、hexo（私有仓库，不提供开放）"><a href="#1、hexo（私有仓库，不提供开放）" class="headerlink" title="1、hexo（私有仓库，不提供开放）"></a>1、hexo（私有仓库，不提供开放）</h3><p>本人私有博客打包，仅做个人笔记记录，不提供开放</p>
-<p>1、下载镜像<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull yizhidaozuihou/hexo</span><br></pre></td></tr></table></figure><br>2、创建启动容器<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name hexo -it  -p 4000:4000 -w /home/wwwroot/hexo -v /home/wwwroot/hexo:/home/wwwroot/hexo  --entrypoint=<span class="string">"/home/wwwroot/hexo/hexo-sever.sh"</span> yizhidaozuihou/hexo</span><br></pre></td></tr></table></figure></p>
+<p>1、下载镜像<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull yizhidaozuihou/hexo</span><br></pre></td></tr></table></figure><br>2、创建启动容器<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name hexo -it  -p 4000:4000 -w /home/wwwroot/hexo -v /home/wwwroot/hexo:/home/wwwroot/hexo  --entrypoint=<span class="string">"/home/wwwroot/hexo/hexo-sever.sh"</span> yizhidaozuihou/hexo</span><br></pre></td></tr></table></figure><br>  注：<br>   1)、第一次启动容器时需要将hexo-sever.sh中的#npm install解除注释，初始化node_modules</p>
 <h3 id="2、elasticsearch"><a href="#2、elasticsearch" class="headerlink" title="2、elasticsearch"></a>2、elasticsearch</h3><p>基于elasticsearch7.12版本打包，允许跨域操作<br>1、下载镜像<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull yizhidaozuihou/es</span><br></pre></td></tr></table></figure><br>2、创建用户定义的网络（用于连接到连接到同一网络的其他服务（例如，Kibana））<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network create somenetwork</span><br></pre></td></tr></table></figure><br>3、创建挂载的目录<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /mydata/elasticsearch/data</span><br><span class="line"></span><br><span class="line">//生产环境才需要执行以下命令（挂载配置文件和插件目录）</span><br><span class="line">mkdir -p /mydata/elasticsearch/config</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"http.host: 0.0.0.0"</span> &gt;&gt; /mydata/elasticsearch/config/elasticsearch.yml</span><br><span class="line"></span><br><span class="line">mkdir -p /mydata/elasticsearch/config</span><br><span class="line">/mydata/elasticsearch/plugins</span><br><span class="line"></span><br><span class="line">//需要设置挂载目录可读写权限，不然docker容器启动不了</span><br><span class="line">chmod -R 777 mydata/elasticsearch/</span><br></pre></td></tr></table></figure><br>4、创建容器并启动<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//测试环境docker（直接挂载数据库就行了）</span><br><span class="line">docker run -d --name es --net somenetwork -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span>  -e ES_JAVA_OPTS=<span class="string">"-Xms64m -Xmx128m"</span> -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data yizhidaozuihou/es</span><br><span class="line"></span><br><span class="line">//生产环境docker(需要挂载配置文件和插件目录)</span><br><span class="line">docker run --name elasticsearch -p 9200:9200 -p 9300:9300  -e <span class="string">"discovery.type=single-node"</span> -e ES_JAVA_OPTS=<span class="string">"-Xms64m -Xmx128m"</span> -v /mydata/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins -d elasticsearch:7.6.2</span><br></pre></td></tr></table></figure><br>其中elasticsearch.yml是挂载的配置文件，data是挂载的数据，plugins是es的插件，如ik，而数据挂载需要权限，需要设置data文件的权限为可读可写,需要下边的指令。<br>chmod -R 777 要修改的路径</p>
 <p>-e “discovery.type=single-node” 设置为单节点<br>特别注意：<br>-e ES_JAVA_OPTS=”-Xms256m -Xmx256m” \ 测试环境下，设置ES的初始内存和最大内存，否则导致过大启动不了ES</p>
 <h3 id="3、elasticsearch-head"><a href="#3、elasticsearch-head" class="headerlink" title="3、elasticsearch-head"></a>3、elasticsearch-head</h3> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//基于elasticsearch-head5版本打包，兼容elasticsearch7.X版本</span><br><span class="line">docker pull yizhidaozuihou/es-head</span><br><span class="line">docker run  -d --name es-head -p 9100:9100 yizhidaozuihou/es-head</span><br></pre></td></tr></table></figure>]]></content>
@@ -33,9 +468,34 @@
     <title>phpstrom实用插件集合</title>
     <url>/post/1452351953.html</url>
     <content><![CDATA[<p>以下是个人在实践工作中总结的好用的phpstrom集合，持续不断更新中。。</p>
-<h3 id="1、中英文转换：translation"><a href="#1、中英文转换：translation" class="headerlink" title="1、中英文转换：translation"></a>1、中英文转换：translation</h3><pre><code>快捷键 Ctrl+Shift+Y   OR 选中需要翻译的文本，然后鼠标右键选择Translate</code></pre><h3 id="2、拼写法转换：camelCase"><a href="#2、拼写法转换：camelCase" class="headerlink" title="2、拼写法转换：camelCase"></a>2、拼写法转换：camelCase</h3><pre><code>选中需要改变的变量  使用  快捷键 shift + alt + u ，变量就会改变，直到找到需要的格式。</code></pre><h3 id="3、php-注释增强工具：PHP-Annotation"><a href="#3、php-注释增强工具：PHP-Annotation" class="headerlink" title="3、php 注释增强工具：PHP Annotation"></a>3、php 注释增强工具：PHP Annotation</h3><pre><code>可以自动提示补全注解名和点击跳转追踪</code></pre><h3 id="4、自动关联数组键输入和完成：deep-assoc-completion"><a href="#4、自动关联数组键输入和完成：deep-assoc-completion" class="headerlink" title="4、自动关联数组键输入和完成：deep-assoc-completion"></a>4、自动关联数组键输入和完成：deep-assoc-completion</h3><pre><code>帮助完成数组参数 - 可以使用哪些键</code></pre>]]></content>
+<h3 id="1、中英文转换：translation"><a href="#1、中英文转换：translation" class="headerlink" title="1、中英文转换：translation"></a>1、中英文转换：translation</h3><pre><code>快捷键 Ctrl+Shift+Y   OR 选中需要翻译的文本，然后鼠标右键选择Translate</code></pre><h3 id="2、拼写法转换：camelCase"><a href="#2、拼写法转换：camelCase" class="headerlink" title="2、拼写法转换：camelCase"></a>2、拼写法转换：camelCase</h3><pre><code>选中需要改变的变量  使用  快捷键 shift + alt + u ，变量就会改变，直到找到需要的格式。</code></pre><h3 id="3、php-注释增强工具：PHP-Annotation"><a href="#3、php-注释增强工具：PHP-Annotation" class="headerlink" title="3、php 注释增强工具：PHP Annotation"></a>3、php 注释增强工具：PHP Annotation</h3><pre><code>可以自动提示补全注解名和点击跳转追踪</code></pre><h3 id="4、自动关联数组键输入和完成：deep-assoc-completion"><a href="#4、自动关联数组键输入和完成：deep-assoc-completion" class="headerlink" title="4、自动关联数组键输入和完成：deep-assoc-completion"></a>4、自动关联数组键输入和完成：deep-assoc-completion</h3><pre><code>帮助完成数组参数 - 可以使用哪些键</code></pre><h3 id="5、proto语法高亮追踪提示：Protocol-Buffers"><a href="#5、proto语法高亮追踪提示：Protocol-Buffers" class="headerlink" title="5、proto语法高亮追踪提示：Protocol Buffers"></a>5、proto语法高亮追踪提示：Protocol Buffers</h3><pre><code>proto语法高亮追踪提示，临时看其他项目不想安装依赖包时使用</code></pre><h3 id="6、Chinese-​-Simplified-​-Language-Pack-中文语言包"><a href="#6、Chinese-​-Simplified-​-Language-Pack-中文语言包" class="headerlink" title="6、Chinese ​(Simplified)​ Language Pack / 中文语言包"></a>6、Chinese ​(Simplified)​ Language Pack / 中文语言包</h3><pre><code>中文语言汉化包</code></pre><h3 id="7、无限重置有效期插件：IDE-Eval-Reset"><a href="#7、无限重置有效期插件：IDE-Eval-Reset" class="headerlink" title="7、无限重置有效期插件：IDE Eval Reset"></a>7、无限重置有效期插件：IDE Eval Reset</h3><pre><code>需要先添加第三方仓库地址：https://plugins.zhile.io</code></pre><p><img src="/resource/images/pasted2-2.png" alt="upload successful"></p>
+]]></content>
       <categories>
         <category>phpStorm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>php获取指定前缀常量便捷操作方法</title>
+    <url>/post/4113924384.html</url>
+    <content><![CDATA[<p>例如一张订单表的订单状态有：1待付款 2已付款 3已取消4已退款，php的常见做法都是会将这些常量的值和中文注释写在对应表的model文件，只要统一类型常量前缀都统一的话，后续操作会方便多。 </p>
+<p>1、在model中定义的字段类型规范如下order_status字段的常量前缀都是ORDER_STATUS_，常量内容都是：[值，中文解释]</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 仅为示例代码，实际三个封装方法可以直接放在基础类BaseModel里面所有model公用</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> <span class="title">BaseModel</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> int 订单类型 */</span></span><br><span class="line">    <span class="keyword">const</span> ORDER_STATUS_PAY_WAITING = [<span class="number">0</span>,<span class="string">'待付款'</span>];</span><br><span class="line">    <span class="keyword">const</span> ORDER_STATUS_PAY_SUCCESS = [<span class="number">1</span>,<span class="string">'已付款'</span>];</span><br><span class="line">    <span class="keyword">const</span> ORDER_STATUS_REFUNDED    = [<span class="number">2</span>,<span class="string">'已退款'</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据常量的前缀获取键值对数组（返回无指定key的集合的二维数组）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $key 常量下标</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array [[0,'待付款'],[1,'已付款']]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getConstDesc</span><span class="params">(string $key)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $oClass = <span class="keyword">new</span> \ReflectionClass(<span class="keyword">static</span>::class);</span><br><span class="line">        $constAry = $oClass-&gt;getConstants();</span><br><span class="line">        $desc = [];</span><br><span class="line">        <span class="keyword">foreach</span> ($constAry <span class="keyword">as</span> $const =&gt; $v) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strpos($const, $key) === <span class="number">0</span>) &#123;</span><br><span class="line">                $desc[] = $v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据常量的前缀获取键值对数组 (结果返回指定key，value字段名的二维数组)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $key 常量下标</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array  二维数组，可以指定key和value的字段名 例：[['id'=&gt;0,'name'=&gt;'待付款'],['id'=&gt;1,'name'=&gt;'已付款']]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getConstSelect</span><span class="params">(string $key,string $key_field = <span class="string">'id'</span> , string $value_field = <span class="string">'name'</span>)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $const_list = <span class="keyword">self</span>::getConstDesc($key);</span><br><span class="line">        $desc = [];</span><br><span class="line">        <span class="keyword">foreach</span> ($const_list <span class="keyword">as</span> $const =&gt; $v) &#123;</span><br><span class="line">            $desc[] = [</span><br><span class="line">                $key_field=&gt;$v[<span class="number">0</span>]??<span class="number">0</span>,</span><br><span class="line">                $value_field=&gt;$v[<span class="number">1</span>]??<span class="string">''</span>,</span><br><span class="line">            ];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据常量的前缀获取键值对数组 (結果返回一维数组)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $key 常量下标</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array  一维数组，key为索引第一位数，value为索引第二位数。 例：['key'=&gt;value,0=&gt;'待付款',1=&gt;'已付款']</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getConstPluck</span><span class="params">(string $key)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $oClass = <span class="keyword">new</span> \ReflectionClass(<span class="keyword">static</span>::class);</span><br><span class="line">        $constAry = $oClass-&gt;getConstants();</span><br><span class="line">        $desc = [];</span><br><span class="line">        <span class="keyword">foreach</span> ($constAry <span class="keyword">as</span> $const =&gt; $v) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strpos($const, $key) === <span class="number">0</span>) &#123;</span><br><span class="line">                $desc[$v[<span class="number">0</span>]] = $v[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用方法示例：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$getConstDesc = Order::getConstDesc(<span class="string">'ORDER_STATUS_'</span>);</span><br><span class="line">$getConstSelect = Order::getConstSelect(<span class="string">'ORDER_STATUS_'</span>);</span><br><span class="line">$getConstPluck = Order::getConstPluck(<span class="string">'ORDER_STATUS_'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">empty</span>(Order::getConstPluck(<span class="string">'ORDER_STATUS_'</span>)[$params[<span class="string">'order_status'</span>]]))&#123;</span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> BusinessException(ErrorHelper::FAIL_CODE,<span class="string">'订单类型不存在'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux设置开机服务自动启动/关闭自动启动命令</title>
+    <url>/post/1924607937.html</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># chkconfig --list 显示开机可以自动启动的服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --add *** 添加开机自动启动***服务 </span></span><br><span class="line">[root@localhost ~]<span class="comment"># chkconfig --del *** 删除开机自动启动***服务</span></span><br></pre></td></tr></table></figure>
+
+<p>参考地址：<a href="https://blog.csdn.net/weixin_34254823/article/details/92815942" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34254823/article/details/92815942</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
       </categories>
   </entry>
   <entry>
@@ -1473,7 +1933,8 @@
 <p>3.多个相互隔离开发环境。<br>   可以在不用box里跑不同的语言，或者编译安装同一语言不同版本，搭建多个相互隔离的开发环境，卸载清除时也很快捷轻松。</p>
 <h5 id="win7-win10系统下使用流程"><a href="#win7-win10系统下使用流程" class="headerlink" title="win7/win10系统下使用流程"></a>win7/win10系统下使用流程</h5><h6 id="1、安装VirtualBox、vagrant两款软件"><a href="#1、安装VirtualBox、vagrant两款软件" class="headerlink" title="1、安装VirtualBox、vagrant两款软件"></a>1、安装VirtualBox、vagrant两款软件</h6><p>   直接到官网下载安装即可官网如下：<br>   <a href="https://www.virtualbox.org" target="_blank" rel="noopener">https://www.virtualbox.org</a><br>    <a href="https://www.vagrantup.com" target="_blank" rel="noopener">https://www.vagrantup.com</a><br>   官网范围速度比较慢，而且这两位软件不同版本可能会造成兼容问题，也就是有可能导致你的vagrant用起来出现一些莫名其妙的问题，所以最好是制定两款的版本安装。<br>   win10版本为：<br>   VirtualBox-5.2.12-122591-Win.exe<br>   vagrant_2.2.7_x86_64.msi  </p>
 <h6 id="2、下载一个box镜像文件"><a href="#2、下载一个box镜像文件" class="headerlink" title="2、下载一个box镜像文件"></a>2、下载一个box镜像文件</h6><p>安装后需要下载一个box镜像文件，也就是linux的镜像（其实也可以在vagrant add安装的时候直接指定官方的镜像名称就会自动下载安装，但鉴于国内下载官方的速度太慢了，所以强烈鉴于先用迅雷之类的工具加速下载下来再本地安装）<br>   下载官网地址如下：<br>   <a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">https://app.vagrantup.com/boxes/search</a><br>   如果是安装centos的话直接点击下面的链接直达：<br>   <a href="https://app.vagrantup.com/centos/boxes/7" target="_blank" rel="noopener">https://app.vagrantup.com/centos/boxes/7</a>  </p>
-<h6 id="3、将镜像加载到vagrant容器中"><a href="#3、将镜像加载到vagrant容器中" class="headerlink" title="3、将镜像加载到vagrant容器中"></a>3、将镜像加载到vagrant容器中</h6><p>   执行如下命令：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   vagrant box add -name [虚拟机名称] [box放置的位置]</span><br></pre></td></tr></table></figure><br>   centos/7是虚拟机名称 最后的box放置位置直接写你下载后返的根目录即可，如果没指定的话，默认会自己从官网下载<br>   如：vagrant box add -name ‘centos/7’ [box放置的位置]</p>
+<h6 id="3、将镜像加载到vagrant容器中"><a href="#3、将镜像加载到vagrant容器中" class="headerlink" title="3、将镜像加载到vagrant容器中"></a>3、将镜像加载到vagrant容器中</h6><p><font color='red'>特别注意的前置操作：</font><br>必须将.vagrant.d和VirtualBox VMs虚拟机迁移出C盘，因为默认都是放在C盘的，占用空间非常大。<br>.vagrant.d迁移方法：<br>window下我的电脑右键属性环境变量添加：<font color='red'>VAGRANT_HOME = D:.vagrant.d </font>  </p>
+<p>VirtualBox VMs虚拟机迁移方法：<br><font color='red'>打开VirtualBox软件，选择”管理-&gt;全局设定”,修改默认虚拟机位置。</font>如下图：<br><img src="/resource/images/pasted2-4.png" alt="upload successful"><br>   执行如下命令：<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   vagrant box add -name [虚拟机名称] [box放置的位置]</span><br></pre></td></tr></table></figure><br>   centos/7是虚拟机名称 最后的box放置位置直接写你下载后返的根目录即可，如果没指定的话，默认会自己从官网下载<br>   如：vagrant box add -name ‘centos/7’ [box放置的位置]</p>
 <p>   下面是我自己放置的位置习惯：  </p>
 <p><img src="http://images.tiance.club/resource/images/pasted-1.png" alt="upload successful"><br><img src="http://images.tiance.club/resource/images/pasted-0.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vagrant box add xuni CentOS20200119.box</span><br></pre></td></tr></table></figure>
@@ -2100,7 +2561,7 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[swoole]</span><br><span class="line">extension=swoole</span><br><span class="line">swoole.use_shortname = Off</span><br></pre></td></tr></table></figure>
 
-<h3 id="6、xlswriter"><a href="#6、xlswriter" class="headerlink" title="6、xlswriter"></a>6、xlswriter</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget  https://pecl.php.net/get/xlswriter-1.3.5.tgz &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> xlswriter-1.3.5 &amp;&amp; \</span><br><span class="line">phpize &amp;&amp; ./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config --<span class="built_in">enable</span>-reader &amp;&amp; \</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">然后在php.ini里面加一下extension = xlswriter.so，再重启php</span><br></pre></td></tr></table></figure>
+<h3 id="6、xlswriter"><a href="#6、xlswriter" class="headerlink" title="6、xlswriter"></a>6、xlswriter</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget  https://pecl.php.net/get/xlswriter-1.3.5.tgz &amp;&amp; \</span><br><span class="line">tar zxvf xlswriter-1.3.5.tgz &amp;&amp;  \</span><br><span class="line"><span class="built_in">cd</span> xlswriter-1.3.5 &amp;&amp; \</span><br><span class="line">phpize &amp;&amp; ./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config --<span class="built_in">enable</span>-reader &amp;&amp; \</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">然后在php.ini里面加一下extension = xlswriter.so，再重启php</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="7、redis"><a href="#7、redis" class="headerlink" title="7、redis"></a>7、redis</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://pecl.php.net/get/redis-5.3.4.tgz &amp;&amp; \</span><br><span class="line">tar zxvf redis-5.3.4.tgz &amp;&amp; \</span><br><span class="line"><span class="built_in">cd</span> redis-5.3.4 &amp;&amp; \</span><br><span class="line">phpize &amp;&amp; \</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config &amp;&amp; make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">然后在php.ini里面加一下extension = redis.so，再重启php</span><br></pre></td></tr></table></figure>
