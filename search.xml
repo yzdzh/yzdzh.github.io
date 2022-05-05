@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WSL2 从C盘 导入到 D盘</title>
+    <url>/post/1539025967.html</url>
+    <content><![CDATA[<h3 id="首先还是查看已经安装"><a href="#首先还是查看已经安装" class="headerlink" title="首先还是查看已经安装"></a>首先还是查看已经安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PS C:\Users\Windows10&gt; wsl -l</span><br><span class="line">适用于 Linux 的 Windows 子系统分发版:Ubuntu (默认)</span><br><span class="line">准备移动</span><br></pre></td></tr></table></figure>
+<p>记得使用管理员权限打开这个powershell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --<span class="built_in">export</span> Ubuntu d://ubuntu.tar</span><br></pre></td></tr></table></figure>
+<h3 id="注销旧有的WSL"><a href="#注销旧有的WSL" class="headerlink" title="注销旧有的WSL"></a>注销旧有的WSL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --unregister UbuntuPS D:\&gt; wsl --unregister Ubuntu</span><br><span class="line">正在注销...</span><br><span class="line">PS D:\&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="重新导入到D盘现在D-盘新建一个空目录"><a href="#重新导入到D盘现在D-盘新建一个空目录" class="headerlink" title="重新导入到D盘现在D 盘新建一个空目录"></a>重新导入到D盘现在D 盘新建一个空目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir Ubuntu_wsl2 </span><br><span class="line">wsl --import Ubuntu D://Ubuntu_wsl2  D://ubuntu-20.04.tar</span><br></pre></td></tr></table></figure>
+<h3 id="更改登录用户"><a href="#更改登录用户" class="headerlink" title="更改登录用户"></a>更改登录用户</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Ubuntu config --default-user root</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category> </category>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>certbot自动签证机器人</title>
     <url>/post/1542514284.html</url>
     <content><![CDATA[<h3 id="宿主机安装插件方法"><a href="#宿主机安装插件方法" class="headerlink" title="宿主机安装插件方法"></a>宿主机安装插件方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install certbot python2-certbot-nginx -y</span><br></pre></td></tr></table></figure>
