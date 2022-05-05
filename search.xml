@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>wsl安装centos7方法</title>
+    <url>/post/3450921099.html</url>
+    <content><![CDATA[<p>使用大神封装好的工具即可！</p>
+<p><a href="https://github.com/yuk7/wsldl#wsldl" target="_blank" rel="noopener">https://github.com/yuk7/wsldl#wsldl</a></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>WSL2 从C盘 导入到 D盘</title>
     <url>/post/1539025967.html</url>
     <content><![CDATA[<h3 id="首先还是查看已经安装"><a href="#首先还是查看已经安装" class="headerlink" title="首先还是查看已经安装"></a>首先还是查看已经安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">PS C:\Users\Windows10&gt; wsl -l</span><br><span class="line">适用于 Linux 的 Windows 子系统分发版:Ubuntu (默认)</span><br><span class="line">准备移动</span><br></pre></td></tr></table></figure>
