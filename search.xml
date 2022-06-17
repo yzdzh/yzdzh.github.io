@@ -39,18 +39,17 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -rf /var/lib/letsencrypt/temp_checkpoint/*</span><br></pre></td></tr></table></figure>
 
 <p>#定时脚本更新证书有效期</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * * /usr/bin/certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * * /usr/bin/certbot renew --force-renew</span><br></pre></td></tr></table></figure>
 
 <p>#定时脚本更新证书有效期（docker内访问）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * *  docker <span class="built_in">exec</span> -it com_nginx  bash -c  <span class="string">"/usr/bin/certbot renew --dry-run"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10 20 7 * *  docker <span class="built_in">exec</span> -it com_nginx  bash -c  <span class="string">"/usr/bin/certbot renew --force-renew"</span></span><br></pre></td></tr></table></figure>
 
 
 <p>nginx常用命令<br>检测重启是否nginx正常： </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
 
 <p>重启nginx：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -2282,7 +2281,21 @@
 <p>.tar.z  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">解压：tar zxvf filename.tar.z  </span><br><span class="line">压缩：tar zcvf filename.tar.z dirname</span><br></pre></td></tr></table></figure>
 <p>zip命令  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">解压：unzip filename.zip  </span><br><span class="line">    压缩：zip -r filename.zip dirname</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">解压：unzip filename.zip  </span><br><span class="line">    压缩：zip -r filename.zip dirname</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="CentOS安装7z压缩工具以及使用方法"><a href="#CentOS安装7z压缩工具以及使用方法" class="headerlink" title="CentOS安装7z压缩工具以及使用方法"></a>CentOS安装7z压缩工具以及使用方法</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install p7zip</span><br></pre></td></tr></table></figure>
+<p>如果显示：<br>No package p7zip available.<br>Error: Nothing to do<br>则执行如下命令：安装epel-release</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+<p>压缩命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">7za a 压缩包.7z 被压缩文件或目录</span><br></pre></td></tr></table></figure>
+<p>解压命令：</p>
+<p>#将压缩包解压到指定目录，注意：指定目录参数-o后面不要有空格</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">7za x 压缩包.7z -o解压目录</span><br></pre></td></tr></table></figure>
+<p>#将压缩包解压到当前目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">7za x 压缩包.7z</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>

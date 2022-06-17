@@ -10,18 +10,17 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/letsencrypt/temp_checkpoint/*</span><br></pre></td></tr></table></figure>
 
 <p>#定时脚本更新证书有效期</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20 7 * * /usr/bin/certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20 7 * * /usr/bin/certbot renew --force-renew</span><br></pre></td></tr></table></figure>
 
 <p>#定时脚本更新证书有效期（docker内访问）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20 7 * *  docker <span class="built_in">exec</span> -it com_nginx  bash -c  <span class="string">"/usr/bin/certbot renew --dry-run"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20 7 * *  docker <span class="built_in">exec</span> -it com_nginx  bash -c  <span class="string">"/usr/bin/certbot renew --force-renew"</span></span><br></pre></td></tr></table></figure>
 
 
 <p>nginx常用命令<br>检测重启是否nginx正常： </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
 
 <p>重启nginx：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-</div><div class="post-copyright"><blockquote><p>原文作者: xingguang</p><p>原文链接: <a href="https://yzdzh.github.io/post/1542514284.html">https://yzdzh.github.io/post/1542514284.html</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/post/1539025967.html" class="pre">WSL2 从C盘 导入到 D盘</a><a href="/post/2040882575.html" class="next">Windows11安装Android子系统及抓包方法</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.5"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.5"></script><script>var gitalk = new Gitalk({
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure></div><div class="post-copyright"><blockquote><p>原文作者: xingguang</p><p>原文链接: <a href="https://yzdzh.github.io/post/1542514284.html">https://yzdzh.github.io/post/1542514284.html</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/post/1539025967.html" class="pre">WSL2 从C盘 导入到 D盘</a><a href="/post/2040882575.html" class="next">Windows11安装Android子系统及抓包方法</a></div><div id="comments"><div id="container"><script type="text/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js?v=2.0.5"></script><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=2.0.5"></script><script>var gitalk = new Gitalk({
   clientID: 'fe51b6fab2e6bc732537',
   clientSecret: '73b392debaae9e2cb42af08aeeb8f9de753b00b8',
   repo: 'blogtalk',
