@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>快捷搭建vpn</title>
+    <url>/post/3544074938.html</url>
+    <content><![CDATA[<h3 id="更新内核及一键安装vpn"><a href="#更新内核及一键安装vpn" class="headerlink" title="更新内核及一键安装vpn"></a>更新内核及一键安装vpn</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y update kernel &amp; yum -y update &amp; <span class="built_in">cd</span> / &amp; wget https://github.com/Nyr/openvpn-install/raw/master/openvpn-install.sh &amp;&amp; bash openvpn-install.sh</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="开启-BBR-加速"><a href="#开启-BBR-加速" class="headerlink" title="开启 BBR 加速"></a>开启 BBR 加速</h3><p>1、bbr一键安装脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh</span><br></pre></td></tr></table></figure>
+
+<p>2、打开sysctl.conf文件添加 启动bbr配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
+
+<p>3、重新加载系统配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<p>4、查看bbr是否生效  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
+
+<p>结果有返回bbr说明已启动  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>wsl安装centos7方法</title>
     <url>/post/3450921099.html</url>
     <content><![CDATA[<p>使用大神封装好的工具即可！</p>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-05-05T17:06:39.744Z</updated>
+  <updated>2022-06-26T13:27:27.707Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快捷搭建vpn</title>
+    <link href="https://yzdzh.github.io/post/3544074938.html"/>
+    <id>https://yzdzh.github.io/post/3544074938.html</id>
+    <published>2022-06-26T13:26:00.000Z</published>
+    <updated>2022-06-26T13:27:27.707Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="更新内核及一键安装vpn"><a href="#更新内核及一键安装vpn" class="headerlink" title="更新内核及一键安装vpn"></a>更新内核及一键安装vpn</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update kernel &amp; yum -y update &amp; <span class="built_in">cd</span> / &amp; wget https://github.com/Nyr/openvpn-install/raw/master/openvpn-install.sh &amp;&amp; bash openvpn-install.sh</span><br></pre></td></tr></table></figure><h3 id="开启-BBR-加速"><a href="#开启-BBR-加速" class="headerlink" title="开启 BBR 加速"></a>开启 BBR 加速</h3><p>1、bbr一键安装脚本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh</span><br></pre></td></tr></table></figure><p>2、打开sysctl.conf文件添加 启动bbr配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure><p>3、重新加载系统配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><p>4、查看bbr是否生效  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure><p>结果有返回bbr说明已启动  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;更新内核及一键安装vpn&quot;&gt;&lt;a href=&quot;#更新内核及一键安装vpn&quot; class=&quot;headerlink&quot; title=&quot;更新内核及一键安装vpn&quot;&gt;&lt;/a&gt;更新内核及一键安装vpn&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://yzdzh.github.io/categories/linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>wsl安装centos7方法</title>
@@ -480,31 +504,6 @@
     
     
       <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>phpstrom实用插件集合</title>
-    <link href="https://yzdzh.github.io/post/1452351953.html"/>
-    <id>https://yzdzh.github.io/post/1452351953.html</id>
-    <published>2021-01-30T18:02:00.000Z</published>
-    <updated>2021-09-24T03:01:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>以下是个人在实践工作中总结的好用的phpstrom集合，持续不断更新中。。</p><h3 id="1、中英文转换：translation"><a href="#1、中英文转换：translation" class="headerlink" title="1、中英文转换：translation"></a>1、中英文转换：translation</h3><pre><code>快捷键 Ctrl+Shift+Y   OR 选中需要翻译的文本，然后鼠标右键选择Translate</code></pre><h3 id="2、拼写法转换：camelCase"><a href="#2、拼写法转换：camelCase" class="headerlink" title="2、拼写法转换：camelCase"></a>2、拼写法转换：camelCase</h3><pre><code>选中需要改变的变量  使用  快捷键 shift + alt + u ，变量就会改变，直到找到需要的格式。</code></pre><h3 id="3、php-注释增强工具：PHP-Annotation"><a href="#3、php-注释增强工具：PHP-Annotation" class="headerlink" title="3、php 注释增强工具：PHP Annotation"></a>3、php 注释增强工具：PHP Annotation</h3><pre><code>可以自动提示补全注解名和点击跳转追踪</code></pre><h3 id="4、自动关联数组键输入和完成：deep-assoc-completion"><a href="#4、自动关联数组键输入和完成：deep-assoc-completion" class="headerlink" title="4、自动关联数组键输入和完成：deep-assoc-completion"></a>4、自动关联数组键输入和完成：deep-assoc-completion</h3><pre><code>帮助完成数组参数 - 可以使用哪些键</code></pre><h3 id="5、proto语法高亮追踪提示：Protocol-Buffers"><a href="#5、proto语法高亮追踪提示：Protocol-Buffers" class="headerlink" title="5、proto语法高亮追踪提示：Protocol Buffers"></a>5、proto语法高亮追踪提示：Protocol Buffers</h3><pre><code>proto语法高亮追踪提示，临时看其他项目不想安装依赖包时使用</code></pre><h3 id="6、Chinese-​-Simplified-​-Language-Pack-中文语言包"><a href="#6、Chinese-​-Simplified-​-Language-Pack-中文语言包" class="headerlink" title="6、Chinese ​(Simplified)​ Language Pack / 中文语言包"></a>6、Chinese ​(Simplified)​ Language Pack / 中文语言包</h3><pre><code>中文语言汉化包</code></pre><h3 id="7、无限重置有效期插件：IDE-Eval-Reset"><a href="#7、无限重置有效期插件：IDE-Eval-Reset" class="headerlink" title="7、无限重置有效期插件：IDE Eval Reset"></a>7、无限重置有效期插件：IDE Eval Reset</h3><pre><code>需要先添加第三方仓库地址：https://plugins.zhile.io</code></pre><p><img src="/resource/images/pasted2-2.png" alt="upload successful"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;以下是个人在实践工作中总结的好用的phpstrom集合，持续不断更新中。。&lt;/p&gt;
-&lt;h3 id=&quot;1、中英文转换：translation&quot;&gt;&lt;a href=&quot;#1、中英文转换：translation&quot; class=&quot;headerlink&quot; title=&quot;1、中英文转换：t
-      
-    
-    </summary>
-    
-    
-      <category term="phpStorm" scheme="https://yzdzh.github.io/categories/phpStorm/"/>
     
     
   </entry>
