@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>rabbitmq的四种交换机类型</title>
+    <url>/post/3830161646.html</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/xingxia/p/rabbitmq_types.html" target="_blank" rel="noopener">https://www.cnblogs.com/xingxia/p/rabbitmq_types.html</a></p>
+]]></content>
+      <categories>
+        <category>rabbitmq</category>
+      </categories>
+  </entry>
+  <entry>
     <title>快捷搭建vpn</title>
     <url>/post/3544074938.html</url>
     <content><![CDATA[<h3 id="更新内核及一键安装vpn"><a href="#更新内核及一键安装vpn" class="headerlink" title="更新内核及一键安装vpn"></a>更新内核及一键安装vpn</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y update kernel &amp; yum -y update &amp; <span class="built_in">cd</span> / &amp; wget https://github.com/Nyr/openvpn-install/raw/master/openvpn-install.sh &amp;&amp; bash openvpn-install.sh</span><br></pre></td></tr></table></figure>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yzdzh.github.io/"/>
-  <updated>2022-06-26T13:27:27.707Z</updated>
+  <updated>2022-07-25T19:37:56.911Z</updated>
   <id>https://yzdzh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rabbitmq的四种交换机类型</title>
+    <link href="https://yzdzh.github.io/post/3830161646.html"/>
+    <id>https://yzdzh.github.io/post/3830161646.html</id>
+    <published>2022-07-25T19:37:00.000Z</published>
+    <updated>2022-07-25T19:37:56.911Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/xingxia/p/rabbitmq_types.html" target="_blank" rel="noopener">https://www.cnblogs.com/xingxia/p/rabbitmq_types.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xingxia/p/rabbitmq_types.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/xingxia/p/rabbitmq
+      
+    
+    </summary>
+    
+    
+      <category term="rabbitmq" scheme="https://yzdzh.github.io/categories/rabbitmq/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>快捷搭建vpn</title>
@@ -474,30 +498,6 @@
       
         &lt;p&gt;有一个小想法，整理一篇docker安装软件环境集合下安装环境文章，方便自己或其它人开箱即用，目前就自己遇到哪些需要安装的软件安装后就顺便更新到这篇博客文章。&lt;/p&gt;
 &lt;h3 id=&quot;1、hexo（私有仓库，不提供开放）&quot;&gt;&lt;a href=&quot;#1、hexo（私有仓库，不提供开
-      
-    
-    </summary>
-    
-    
-      <category term="docker" scheme="https://yzdzh.github.io/categories/docker/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>docker打包自定义镜像并上传docker hub</title>
-    <link href="https://yzdzh.github.io/post/1624279696.html"/>
-    <id>https://yzdzh.github.io/post/1624279696.html</id>
-    <published>2021-04-26T08:05:00.000Z</published>
-    <updated>2021-04-27T01:33:41.867Z</updated>
-    
-    <content type="html"><![CDATA[<h6 id="docker打包自定义镜像并上传docker-hub"><a href="#docker打包自定义镜像并上传docker-hub" class="headerlink" title="docker打包自定义镜像并上传docker hub"></a>docker打包自定义镜像并上传docker hub</h6><p>1、使用dockers commit命令来打包</p><p>dockers commit 容器名 要保存成的镜像名：版本名（若没有：版本名则直接默认为latest）<br>例如 docker commit vser vs:v1</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit 49ba413b3614 es</span><br></pre></td></tr></table></figure><p>2、将刚刚commit 的镜像名 打包成特定的格式。例如：<br>docker tag vs:v1 你docker的用户名/你dockerhub上创建的仓库名：版本号 （若无则默认为latest）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag es:v1 yizhidaozuihou/es</span><br></pre></td></tr></table></figure><p>3、打包好后, 将镜像拉取到仓库</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker push yizhidaozuihou/es</span><br><span class="line">注：如果未登录docker hub的话是不能push上传的，需要先 docker login 命令输入账号密码登录后才能push</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h6 id=&quot;docker打包自定义镜像并上传docker-hub&quot;&gt;&lt;a href=&quot;#docker打包自定义镜像并上传docker-hub&quot; class=&quot;headerlink&quot; title=&quot;docker打包自定义镜像并上传docker hub&quot;&gt;&lt;/a&gt;docker打包
       
     
     </summary>
