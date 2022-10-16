@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>adb设置网络代理方法</title>
+    <url>/post/21760092.html</url>
+    <content><![CDATA[<p>用window11的安卓子系统配合fiddler抓包，设置网络代理后每次重启系统后设置的网络配置都会重置，这里需要利用adb工具固定代理配置。</p>
+<h5 id="1、adb工具-谷歌下载地址"><a href="#1、adb工具-谷歌下载地址" class="headerlink" title="1、adb工具-谷歌下载地址"></a>1、adb工具-谷歌下载地址</h5><p><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip" target="_blank" rel="noopener">https://dl.google.com/android/repository/platform-tools-latest-windows.zip</a></p>
+<h5 id="2、设置环境变量："><a href="#2、设置环境变量：" class="headerlink" title="2、设置环境变量："></a>2、设置环境变量：</h5><p>把下载好的adb软件解压放到 ：D:\Program Files\platform-tools，然后path环境变量加入D:\Program Files\platform-tools\bin</p>
+<h5 id="3、设置代理（无需重启）："><a href="#3、设置代理（无需重启）：" class="headerlink" title="3、设置代理（无需重启）："></a>3、设置代理（无需重启）：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell settings put global http_proxy 代理IP地址:端口号</span><br><span class="line">例如：</span><br><span class="line">adb shell settings put global http_proxy  192.168.33.11:8888</span><br></pre></td></tr></table></figure>
+
+
+<p>移除代理方法（移除代理后要重启手机才能生效。）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb shell settings delete global http_proxy</span><br><span class="line">adb shell settings delete global global_http_proxy_host</span><br><span class="line">adb shell settings delete global global_http_proxy_port</span><br><span class="line">adb reboot</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>清除window版docker容器日志</title>
+    <url>/post/2418778912.html</url>
+    <content><![CDATA[<p>在 Windows 上，Docker 在名为 MobyLinuxVM 的 VM 中运行，但您无法通过 Hyper-V 管理器登录到该 VM。从技术上讲，我们不会通过 SSH 进入 VM，我们将创建一个具有完全 root 访问权限的容器，然后从那里访问文件系统。</p>
+<p>步骤分三步<br>1、获取可以访问 Docker 守护进程的容器<br>2、以完全 root 访问权限运行容器<br>3、切换到主机文件系统</p>
+<h6 id="1、打开PowerShell窗口并执行以下命令"><a href="#1、打开PowerShell窗口并执行以下命令" class="headerlink" title="1、打开PowerShell窗口并执行以下命令"></a>1、打开PowerShell窗口并执行以下命令</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --privileged -it -v /var/run/docker.sock:/var/run/docker.sock jongallant/ubuntu-docker-client </span><br><span class="line">docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh</span><br><span class="line">chroot /host</span><br></pre></td></tr></table></figure>
+
+<p>最后执行清除日志命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">truncate -s 0 /var/lib/docker/containers/*/*-json.log</span><br></pre></td></tr></table></figure>
+
+
+<p>参考原文：<a href="https://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows" target="_blank" rel="noopener">https://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows</a></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>sourcetree和phpstrom使用wsl中的git方法</title>
+    <url>/post/2354606930.html</url>
+    <content><![CDATA[<p>如果把代码放在wsl子系统中，sourcetree却是window的话，这时候sourcetree访问代码速度会很慢，有个解决方法就是sourcetree直接使用wsl中的git来处理代码。</p>
+<h6 id="1、升级wsl中的git版本"><a href="#1、升级wsl中的git版本" class="headerlink" title="1、升级wsl中的git版本"></a>1、升级wsl中的git版本</h6><p>注:安装更高版本是因为phpstrom不支持yum默认安装的git1.8版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</span><br><span class="line">yum -y install git</span><br><span class="line">git version</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2、复制git-exe文件到-D-Program-Files-Git-bin"><a href="#2、复制git-exe文件到-D-Program-Files-Git-bin" class="headerlink" title="2、复制git.exe文件到 D:\Program Files\Git\bin"></a>2、复制git.exe文件到 D:\Program Files\Git\bin</h6><p>wslgit.exe下载地址：<br><a href="https://github.com/andy-5/wslgit/releases" target="_blank" rel="noopener">https://github.com/andy-5/wslgit/releases</a></p>
+<p>注：git.exe文件有wslgit.exe改名而来</p>
+<h6 id="3、安装指定的sourcetree版本，3-3-9或3-3-8"><a href="#3、安装指定的sourcetree版本，3-3-9或3-3-8" class="headerlink" title="3、安装指定的sourcetree版本，3.3.9或3.3.8"></a>3、安装指定的sourcetree版本，3.3.9或3.3.8</h6><p>sourcetree版本下载地址：<br><a href="https://www.sourcetreeapp.com/download-archives" target="_blank" rel="noopener">https://www.sourcetreeapp.com/download-archives</a></p>
+<h6 id="4、sourcetree-gt-工具-gt-选项-gt-Git-gt-git版本-gt-禁用LibGit2集成"><a href="#4、sourcetree-gt-工具-gt-选项-gt-Git-gt-git版本-gt-禁用LibGit2集成" class="headerlink" title="4、sourcetree-&gt;工具-&gt;选项-&gt;Git-&gt;git版本-&gt;禁用LibGit2集成"></a>4、sourcetree-&gt;工具-&gt;选项-&gt;Git-&gt;git版本-&gt;禁用LibGit2集成</h6>]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>docker-desktop数据迁移到其他盘</title>
+    <url>/post/216260312.html</url>
+    <content><![CDATA[<h6 id="1、停止docker服务"><a href="#1、停止docker服务" class="headerlink" title="1、停止docker服务"></a>1、停止docker服务</h6><h6 id="2、备份现有镜像文件"><a href="#2、备份现有镜像文件" class="headerlink" title="2、备份现有镜像文件"></a>2、备份现有镜像文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --<span class="built_in">export</span> docker-desktop-data <span class="string">"D:\wsl\data\docker-desktop-data.tar"</span></span><br><span class="line"></span><br><span class="line">wsl --<span class="built_in">export</span> docker-desktop-data 备份文件输出的位置</span><br></pre></td></tr></table></figure>
+
+<h6 id="3、删除旧的数据"><a href="#3、删除旧的数据" class="headerlink" title="3、删除旧的数据"></a>3、删除旧的数据</h6><p>敲入如下指令，注销子系统</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --unregister docker-desktop-data</span><br></pre></td></tr></table></figure>
+
+<p><img src="/resource/images/pasted2-34.png" alt="upload successful"></p>
+<h6 id="4、导入备份文件，生成新的文件"><a href="#4、导入备份文件，生成新的文件" class="headerlink" title="4、导入备份文件，生成新的文件"></a>4、导入备份文件，生成新的文件</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wsl --import docker-desktop-data <span class="string">"D:\wsl\data"</span> <span class="string">"D:\wsl\data\docker-desktop-data.tar"</span> --version 2</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="5、运行docker，验证服务是否正常，正常情况下可以删除备份的tar文件"><a href="#5、运行docker，验证服务是否正常，正常情况下可以删除备份的tar文件" class="headerlink" title="5、运行docker，验证服务是否正常，正常情况下可以删除备份的tar文件"></a>5、运行docker，验证服务是否正常，正常情况下可以删除备份的tar文件</h6><p><img src="/resource/images/pasted2-35.png" alt="upload successful"></p>
+<h6 id="6、可以使用docker-system-df查看磁盘使用情况，可以使用docker-system-prune释放空间。"><a href="#6、可以使用docker-system-df查看磁盘使用情况，可以使用docker-system-prune释放空间。" class="headerlink" title="6、可以使用docker system df查看磁盘使用情况，可以使用docker system prune释放空间。"></a>6、可以使用docker system df查看磁盘使用情况，可以使用docker system prune释放空间。</h6><p><img src="/resource/images/pasted2-36.png" alt="upload successful"><br><img src="/resource/images/pasted2-37.png" alt="upload successful"></p>
+<p>参考原文：<a href="https://blog.csdn.net/daobaqin/article/details/122204270" target="_blank" rel="noopener">https://blog.csdn.net/daobaqin/article/details/122204270</a></p>
+]]></content>
+      <categories>
+        <category>wsl</category>
+      </categories>
+  </entry>
+  <entry>
     <title>rabbitmq的四种交换机类型</title>
     <url>/post/3830161646.html</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/xingxia/p/rabbitmq_types.html" target="_blank" rel="noopener">https://www.cnblogs.com/xingxia/p/rabbitmq_types.html</a></p>
@@ -263,6 +332,21 @@
 <h3 id="2、mongorestore恢复数据库"><a href="#2、mongorestore恢复数据库" class="headerlink" title="2、mongorestore恢复数据库"></a>2、mongorestore恢复数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongorestore -h 127.0.0.1:27017 -d ag_mongo --dir /mongo_sql_back/ag_mongo -u root -p 123456 --authenticationDatabase admin</span><br></pre></td></tr></table></figure>
 
 <p>注：<br>-h 地址<br>-d 数据库名称<br>-u 用户名<br>-p 密码<br>–dir 导入的数据库文件夹<br>–authenticationDatabase admin 验证账户的数据库  </p>
+<h3 id="以上方法针对是整库，如需导入导出指定集合，可用如下方法："><a href="#以上方法针对是整库，如需导入导出指定集合，可用如下方法：" class="headerlink" title="以上方法针对是整库，如需导入导出指定集合，可用如下方法："></a>以上方法针对是整库，如需导入导出指定集合，可用如下方法：</h3><h4 id="mongodbdump导入导出指定集合方法"><a href="#mongodbdump导入导出指定集合方法" class="headerlink" title="mongodbdump导入导出指定集合方法"></a>mongodbdump导入导出指定集合方法</h4><p>导出指定集合参数  -c collection_name</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongodump -h 127.0.0.1:27017 -d ag_mongo -c cb_member_history  -u root -p 123456 --authenticationDatabase admin -o /opt/bitnami/mongodb/logs/mongo_sql_back</span><br></pre></td></tr></table></figure>
+
+
+<p>导入指定集合参数  –nsInclude db_name.collection_name </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u root com_mongo mongorestore -h 127.0.0.1:27017 --nsInclude ag_mongo.cb_member_history --dir /opt/bitnami/mongodb/logs/mongo_sql_back/ag_mongo -u root -p 123456 --authenticationDatabase admin</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="mongoexport和mongoimport导入导出指定集合方法"><a href="#mongoexport和mongoimport导入导出指定集合方法" class="headerlink" title="mongoexport和mongoimport导入导出指定集合方法"></a>mongoexport和mongoimport导入导出指定集合方法</h4><h5 id="mongoexport-导出"><a href="#mongoexport-导出" class="headerlink" title="mongoexport 导出"></a>mongoexport 导出</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongoexport --port=27017 -u <span class="string">"root"</span> --authenticationDatabase <span class="string">"admin"</span> -p <span class="string">"123456"</span> -d ag_mongo -c cb_member_history --<span class="built_in">type</span>=json  -o /opt/bitnami/mongodb/logs/cb_member_history.json</span><br></pre></td></tr></table></figure>
+<h5 id="mongoimport-导入"><a href="#mongoimport-导入" class="headerlink" title="mongoimport 导入"></a>mongoimport 导入</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongoimport --port=27017 -u <span class="string">"root"</span> --authenticationDatabase <span class="string">"admin"</span> -p <span class="string">"123456"</span> -d ag_mongo -c cb_member_history --<span class="built_in">type</span>=json --file=/opt/bitnami/mongodb/logs/cb_member_history.json</span><br></pre></td></tr></table></figure>
+
+
+<p>备份方面比较：<br>1、mongoexport 可以指定集合中的字段，   mongodump最多到集合<br>2、mongoexport 可以带导出的过滤条件 -q, mongodump则不可以<br>3、mongoexport 可以导出json和csv格式，  mongodump导出的是bson可读性不如前者   </p>
+<p>4、mongodump   的速度和压缩率都最好，每秒125M的数据，压缩率达28%<br>5、mongodump   更适合全库备份，mongoexport更适合单个集合备份   </p>
+<p>恢复方面比较：<br>1、mongoimport  速度较快，但不保证数据完整导入 。<br>2、mongorestore 速度较慢，比mongoimport慢2.5倍左右，但是根据mongodump导出的数据，可以完整导入数据  </p>
 <p>借鉴于原文：<a href="https://www.jianshu.com/p/398bcccd7981" target="_blank" rel="noopener">https://www.jianshu.com/p/398bcccd7981</a></p>
 ]]></content>
       <categories>
